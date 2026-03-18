@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ---------- Netlify Forms — Waitlist ---------- */
+  /* ---------- Netlify Forms — Register Your Interest ---------- */
   const waitlistForm = document.querySelector('form[name="fact-waitlist"]');
   if (waitlistForm) {
     waitlistForm.addEventListener('submit', async (e) => {
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Disable button
       if (submitBtn) {
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
+        submitBtn.textContent = 'Registering...';
       }
 
       try {
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (response.ok) {
           waitlistForm.reset();
           if (successEl) {
-            successEl.textContent = "You're on the list! We'll be in touch when public training opens.";
+            successEl.textContent = "You're registered! We'll be in touch as soon as bookings open. Keep an eye on your inbox.";
             successEl.style.display = 'block';
           }
         } else {
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } finally {
         if (submitBtn) {
           submitBtn.disabled = false;
-          submitBtn.textContent = 'Join Waitlist';
+          submitBtn.textContent = 'Register Your Interest';
         }
       }
     });

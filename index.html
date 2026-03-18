@@ -44,7 +44,7 @@
         <a href="#delivery">How We Deliver</a>
         <a href="#advisory">AI Advisory</a>
         <a href="#partnerships">Partnerships</a>
-        <a href="#waitlist" class="nav-cta">Get in Touch</a>
+        <a href="#waitlist" class="nav-cta">Register Your Interest</a>
       </div>
       <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -59,7 +59,7 @@
     <a href="#delivery">How We Deliver</a>
     <a href="#advisory">AI Advisory</a>
     <a href="#partnerships">Partnerships</a>
-    <a href="#waitlist">Get in Touch</a>
+    <a href="#waitlist">Register Your Interest</a>
   </div>
 
   <!-- Hero Section -->
@@ -70,8 +70,12 @@
       <h1 class="h1">Build capability.<br>Not dependency.</h1>
       <p>FACT delivers practitioner-led training, coaching, facilitation, and AI advisory that equips your people to lead in the age of AI. From agile fundamentals to cognitive governance — we come to you.</p>
       <div class="hero-actions">
-        <a href="#services" class="btn btn-white btn-lg">Explore Services</a>
-        <a href="#waitlist" class="btn btn-outline btn-lg">Book a Discovery Call</a>
+        <a href="#waitlist" class="btn btn-white btn-lg">Register Your Interest</a>
+        <a href="#services" class="btn btn-outline btn-lg">Explore Services</a>
+      </div>
+      <div class="hero-prelaunch">
+        <span class="prelaunch-dot"></span>
+        <strong>Pre-launch</strong> — We're finalising our training calendar. Register your interest to get early access and launch pricing.
       </div>
       <div class="hero-gsd">
         <strong>Formerly the GSD Framework</strong> — Now evolved into our full AI Cognitive Governance &amp; Context Saturation™ advisory practice
@@ -289,17 +293,34 @@
   <!-- Waitlist / CTA -->
   <section class="section waitlist-section text-center" id="waitlist">
     <div class="container container-narrow">
-      <p class="overline" style="color: var(--purple-light);">Get Started</p>
-      <h2 class="h2">Ready to build capability that lasts?</h2>
-      <p style="max-width: 560px; margin: 0 auto 32px;">Whether you need training, coaching, facilitation, or AI advisory — let's start with a conversation. Sign up to be notified when public training opens, or book a discovery call today.</p>
-      <form class="waitlist-form" name="fact-waitlist" method="POST" data-netlify="true">
+      <div class="waitlist-badge">Coming Soon</div>
+      <p class="overline" style="color: var(--purple-light);">Be First in Line</p>
+      <h2 class="h2">Register your interest</h2>
+      <p style="max-width: 620px; margin: 0 auto 12px;">We're putting the finishing touches on our training programmes, courses, and advisory offerings. Register your interest below and we'll notify you as soon as bookings open.</p>
+      <p style="color: var(--gray-500); font-size: 0.9rem; margin-bottom: 36px;">No spam. No obligation. Just early access when we launch.</p>
+      <form class="waitlist-form-full" name="fact-waitlist" method="POST" data-netlify="true">
         <input type="hidden" name="form-name" value="fact-waitlist">
-        <input type="email" name="email" placeholder="Enter your email address" required>
-        <button type="submit" class="btn btn-purple">Join Waitlist</button>
+        <div class="form-row">
+          <input type="text" name="name" placeholder="Your name" required>
+          <input type="email" name="email" placeholder="Your email address" required>
+        </div>
+        <div class="form-row">
+          <select name="interest" required>
+            <option value="" disabled selected>What are you most interested in?</option>
+            <option value="agile-training">Agile Training &amp; Coaching</option>
+            <option value="team-building">Team Building (CliftonStrengths)</option>
+            <option value="facilitation">Facilitation &amp; Workshops</option>
+            <option value="ai-advisory">AI Cognitive Governance Advisory</option>
+            <option value="keynote-speaking">Speaker &amp; Keynotes</option>
+            <option value="public-training">Public Training Courses</option>
+            <option value="everything">All of the above</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-purple btn-lg">Register Your Interest</button>
       </form>
       <div class="form-success"></div>
       <div class="form-error"></div>
-      <p style="color: var(--gray-500); font-size: 0.85rem; margin-top: 16px;">Or <a href="https://agilityops.com.au/pages/contact.html" style="color: var(--purple-light); text-decoration: underline;">book a discovery call</a> to discuss your specific needs.</p>
+      <p style="color: var(--gray-500); font-size: 0.85rem; margin-top: 20px;">Have an immediate need? <a href="https://agilityops.com.au/pages/contact.html" style="color: var(--purple-light); text-decoration: underline;">Contact us directly</a> to discuss your requirements.</p>
     </div>
   </section>
 

@@ -535,6 +535,95 @@ h1, h2, h3, h4, h5, h6 {
 .waitlist-section h2 { color: var(--white); margin-bottom: 16px; }
 .waitlist-section p { color: var(--gray-300); margin-bottom: 32px; }
 
+/* Waitlist badge */
+.waitlist-badge {
+  display: inline-block;
+  padding: 6px 20px;
+  background: rgba(245,158,11,0.15);
+  color: var(--amber);
+  border: 1px solid rgba(245,158,11,0.25);
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 20px;
+}
+
+/* Pre-launch banner in hero */
+.hero-prelaunch {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 32px;
+  margin-bottom: 12px;
+  padding: 12px 24px;
+  background: rgba(245,158,11,0.1);
+  border: 1px solid rgba(245,158,11,0.2);
+  border-radius: var(--radius);
+  color: var(--gray-300);
+  font-size: 0.88rem;
+}
+.hero-prelaunch strong { color: var(--amber); }
+.prelaunch-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--amber);
+  animation: pulse-dot 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(245,158,11,0.4); }
+  50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(245,158,11,0); }
+}
+
+/* Full waitlist form */
+.waitlist-form-full {
+  max-width: 520px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.form-row {
+  display: flex;
+  gap: 12px;
+}
+.waitlist-form-full input[type="text"],
+.waitlist-form-full input[type="email"],
+.waitlist-form-full select {
+  flex: 1;
+  padding: 14px 20px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.06);
+  border-radius: var(--radius-full);
+  color: var(--white);
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+  outline: none;
+  transition: border-color 0.3s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.waitlist-form-full input::placeholder { color: var(--gray-500); }
+.waitlist-form-full input:focus,
+.waitlist-form-full select:focus { border-color: var(--purple); }
+.waitlist-form-full select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 20px center;
+  padding-right: 44px;
+}
+.waitlist-form-full select option {
+  background: var(--navy-mid);
+  color: var(--white);
+}
+.waitlist-form-full .btn {
+  margin-top: 4px;
+}
+
+/* Legacy inline form (keep for backwards compat) */
 .waitlist-form {
   display: flex;
   gap: 12px;
@@ -651,6 +740,8 @@ h1, h2, h3, h4, h5, h6 {
   .section { padding: 72px 0; }
   .footer-grid { grid-template-columns: 1fr; }
   .waitlist-form { flex-direction: column; }
+  .form-row { flex-direction: column; }
+  .hero-prelaunch { flex-direction: row; text-align: left; font-size: 0.82rem; }
   .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
   .partner-card { flex-direction: column; }
 }

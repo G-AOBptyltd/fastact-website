@@ -9,7 +9,11 @@ Standalone marketing website for FACT — the training, coaching, facilitation, 
 **GitHub:** https://github.com/G-AOBptyltd/fastact-website
 **Visibility:** Public repo
 **Hosting:** Netlify (auto-deploys from main branch)
+**Netlify subdomain:** https://fastact.netlify.app
 **Parent brand:** https://agilityops.com.au
+**DNS:** GoDaddy → A record @ → 75.2.60.5, CNAME www → fastact.netlify.app
+**SSL:** Let's Encrypt via Netlify (auto-provisioned)
+**Status:** Live (deployed March 6, 2026)
 
 ## Brand Positioning
 
@@ -71,7 +75,7 @@ fastact-website/
 
 - Waitlist form on `index.html` uses **Netlify Forms** with `data-netlify="true"` attribute
 - Form name: `fact-waitlist`
-- **Setup requirement:** Form detection must be enabled in Netlify dashboard and a redeploy triggered after enabling
+- **Form detection:** Enabled in Netlify dashboard (March 6, 2026)
 - Form handler in `js/main.js` uses `fetch()` POST with `x-www-form-urlencoded` encoding
 - Also prepared for a `fact-contact` form for future contact page
 
@@ -89,6 +93,13 @@ fastact-website/
 | `sprintinsite-website` | SprintINSite product website |
 | `portfolioinsite-website` | PortfolioInSite product website |
 
+## Deployment History
+
+| Date | Change | Branch |
+|------|--------|--------|
+| 2026-03-06 | Initial site build — 6 services, 3 delivery models, waitlist form, purple brand | main |
+| 2026-03-06 | Netlify connected, DNS configured, SSL provisioned, form detection enabled | main |
+
 ## Key Learnings
 
 - Site design matches AOB/PortfolioInSite look and feel: same fonts, layout patterns, card components
@@ -96,6 +107,9 @@ fastact-website/
 - GSD Framework is retained as "Previously known as" — do not remove the reference entirely
 - All external links to AOB properties use full URLs with target="_blank"
 - FACT was formerly called "Fast Agile Coaching & Training" — the abbreviation FACT is retained but the full name is no longer used
+- DNS was previously set to forward fastact.com.au → agilityops.com.au — this forwarding was removed in GoDaddy to allow Netlify hosting
+- GoDaddy A records are locked when forwarding is active — must remove forwarding first to unlock DNS editing
+- Domain architecture document (v3) tracks all AOB brand domains, hosting, and email config
 
 ## Workflow Preferences
 
