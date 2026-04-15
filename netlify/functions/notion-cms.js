@@ -153,16 +153,6 @@ exports.handler = async (event) => {
 
   try {
     const databaseId = getDbId(type);
-
-    // Debug: check env vars are present
-    if (!process.env.NOTION_API_KEY) {
-      return {
-        statusCode: 500,
-        headers,
-        body: JSON.stringify({ error: 'NOTION_API_KEY not set', debug: 'env var missing' }),
-      };
-    }
-
     const data = await queryDatabase(databaseId);
     const pages = data.results.map(extractProperties);
 
@@ -180,12 +170,7 @@ exports.handler = async (event) => {
     return {
       statusCode: 500,
       headers,
-      body: JSON.stringify({
-        error: 'Failed to fetch from Notion CMS',
-        detail: error.message,
-        dbId: getDbId(type) ? 'set' : 'missing',
-        apiKey: process.env.NOTION_API_KEY ? 'set' : 'missing',
-      }),
+      body: JSON.stringify({ error: 'Failed to fetch from Notion CMS' }),
     };
   }
 };
