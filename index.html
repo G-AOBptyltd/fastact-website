@@ -31,273 +31,421 @@
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav class="nav" role="navigation" aria-label="Main navigation">
-    <div class="container nav-inner">
-      <a href="index.html" class="nav-logo">
-        <div class="nav-logo-icon">F</div>
-        FACT
-      </a>
-      <div class="nav-links">
-        <a href="index.html" class="active">Home</a>
-        <a href="#services">Services</a>
-        <a href="#delivery">How We Deliver</a>
-        <a href="#advisory">AI Advisory</a>
-        <a href="#partnerships">Partnerships</a>
-        <a href="#waitlist" class="nav-cta">Register Your Interest</a>
-      </div>
-      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar">
+    <a href="index.html" class="sidebar-logo">
+      <div class="sidebar-logo-icon">F</div>
+      FACT Training
+    </a>
+    <div class="sidebar-brand">by <a href="https://agilityops.com.au">Agility Ops</a></div>
+
+    <div class="sidebar-search">
+      <span>🔍</span> Search
+      <kbd>⌘K</kbd>
     </div>
-  </nav>
 
-  <!-- Mobile Navigation -->
-  <div class="nav-mobile">
-    <a href="index.html">Home</a>
-    <a href="#services">Services</a>
-    <a href="#delivery">How We Deliver</a>
-    <a href="#advisory">AI Advisory</a>
-    <a href="#partnerships">Partnerships</a>
-    <a href="#waitlist">Register Your Interest</a>
-  </div>
+    <nav class="sidebar-nav">
+      <a href="index.html" class="nav-link active" data-section="home"><span class="nav-icon">🏠</span> Home</a>
+      <a href="#workshops" class="nav-link" data-section="workshops"><span class="nav-icon">📅</span> Workshops</a>
+      <a href="#guides" class="nav-link" data-section="guides"><span class="nav-icon">📖</span> Guides</a>
+      <a href="#courses" class="nav-link" data-section="courses"><span class="nav-icon">🎓</span> Courses</a>
+      <a href="#advisory" class="nav-link" data-section="advisory"><span class="nav-icon">🧠</span> Advisory</a>
+      <a href="#waitlist" class="nav-link" data-section="waitlist"><span class="nav-icon">✨</span> Waitlist</a>
+    </nav>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
-      <div class="hero-badge">Practitioner-Led Training &amp; Advisory — Australian Made</div>
-      <div class="hero-brand">Part of the <a href="https://agilityops.com.au">Agility Ops</a> family — AI transformation consulting for enterprise teams</div>
-      <h1 class="h1">Build capability.<br>Not dependency.</h1>
-      <p>FACT delivers practitioner-led training, coaching, facilitation, and AI advisory that equips your people to lead in the age of AI. From agile fundamentals to cognitive governance — we come to you.</p>
-      <div class="hero-actions">
-        <a href="#waitlist" class="btn btn-white btn-lg">Register Your Interest</a>
-        <a href="#services" class="btn btn-outline btn-lg">Explore Services</a>
-      </div>
-      <div class="hero-prelaunch">
-        <span class="prelaunch-dot"></span>
-        <strong>Pre-launch</strong> — We're finalising our training calendar. Register your interest to get early access and launch pricing.
-      </div>
-      <div class="hero-gsd">
-        <strong>Formerly the GSD Framework</strong> — Now evolved into our full AI Cognitive Governance &amp; Context Saturation™ advisory practice
-      </div>
+    <div class="sidebar-bottom">
+      <a href="https://agilityops.com.au/pages/privacy.html" target="_blank" rel="noopener">🔒 Privacy</a>
+      <a href="https://agilityops.com.au/pages/contact.html" target="_blank" rel="noopener">💬 Contact</a>
+      <a href="#waitlist" class="sidebar-login">Register Your Interest</a>
     </div>
-  </section>
+  </aside>
 
-  <!-- Services Section -->
-  <section class="section" id="services">
-    <div class="container">
-      <div class="section-head text-center">
-        <p class="overline">What We Offer</p>
-        <h2 class="h2">Six ways to build your team's capability</h2>
-        <p>Every engagement is practitioner-designed, data-informed, and tailored to your organisation. No off-the-shelf courseware. No generic playbooks.</p>
-      </div>
+  <!-- Mobile hamburger menu -->
+  <button class="hamburger-toggle" aria-label="Toggle menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 
-      <div class="grid grid-3">
-        <!-- 1. Agile Training & Coaching -->
-        <div class="service-card reveal">
-          <div class="service-icon">🎯</div>
-          <h3>Agile Training &amp; Coaching</h3>
-          <p>From foundational Scrum and Kanban through to advanced delivery frameworks. Hands-on coaching that embeds agile practice into your teams — not just theory into their heads.</p>
-          <div>
-            <span class="service-tag">Scrum</span>
-            <span class="service-tag">Kanban</span>
-            <span class="service-tag">SAFe</span>
-            <span class="service-tag">Coaching</span>
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="main">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <div class="hero-badge">Practitioner-Led Training &amp; Advisory — Australian Made</div>
+          <h1>Build capability.<br><span class="accent">Not dependency.</span></h1>
+          <p class="hero-sub">FACT delivers practitioner-led training, coaching, facilitation, and AI advisory that equips your people to lead in the age of AI. From agile fundamentals to cognitive governance — we come to you.</p>
+          <div class="hero-actions">
+            <a href="#waitlist" class="btn btn-purple">Register Your Interest</a>
+            <a href="#workshops" class="btn btn-outline-light">Explore What's Coming</a>
+          </div>
+          <div class="hero-prelaunch">
+            <span class="prelaunch-dot"></span>
+            <strong>Pre-launch</strong> — We're finalising our training calendar. Register your interest to get early access and launch pricing.
+          </div>
+          <div class="hero-gsd">
+            <strong>Formerly the GSD Framework</strong> — Now evolved into our full AI Cognitive Governance &amp; Context Saturation™ advisory practice
           </div>
         </div>
 
-        <!-- 2. Team Building -->
-        <div class="service-card reveal">
-          <div class="service-icon">🤝</div>
-          <h3>Team Building</h3>
-          <p>Strengths-based team development using Gallup CliftonStrengths and proven psychometric tools. Build trust, uncover team dynamics, and design high-performance cultures that last.</p>
-          <div>
-            <span class="service-tag">CliftonStrengths</span>
-            <span class="service-tag">Team Dynamics</span>
+        <!-- Social proof card -->
+        <div class="hero-proof">
+          <div class="proof-label">Early Adopters</div>
+          <div class="proof-count">Growing</div>
+          <div class="proof-avatars">
+            <div class="proof-avatar">G</div>
+            <div class="proof-avatar">AO</div>
+            <div class="proof-avatar">FT</div>
           </div>
-        </div>
-
-        <!-- 3. Facilitation -->
-        <div class="service-card reveal">
-          <div class="service-icon">🗂️</div>
-          <h3>Facilitation</h3>
-          <p>Expert facilitation for workshops, planning events, retrospectives, strategy sessions, and leadership offsites. We design and run the session — you focus on the outcomes.</p>
-          <div>
-            <span class="service-tag">Workshops</span>
-            <span class="service-tag">PI Planning</span>
-            <span class="service-tag">Strategy</span>
-          </div>
-        </div>
-
-        <!-- 4. Speaker -->
-        <div class="service-card reveal">
-          <div class="service-icon">🎤</div>
-          <h3>Speaker &amp; Keynotes</h3>
-          <p>Engaging keynotes and conference talks on AI transformation, agile at scale, delivery leadership, and the future of work. Available for conferences, executive offsites, and industry events.</p>
-          <div>
-            <span class="service-tag">Keynotes</span>
-            <span class="service-tag">Conferences</span>
-            <span class="service-tag">Panels</span>
-          </div>
-        </div>
-
-        <!-- 5. AI Cognitive Governance — Flagship -->
-        <div class="service-card reveal" style="border-color: rgba(168,85,247,0.3); background: linear-gradient(180deg, rgba(168,85,247,0.03) 0%, var(--white) 100%);">
-          <div class="service-icon" style="background: linear-gradient(135deg, var(--purple), var(--purple-deep)); color: white; font-size: 1.2rem;">AI</div>
-          <h3>AI Cognitive Governance &amp; Context Saturation™</h3>
-          <p>Our flagship advisory program. Protect your organisation's attention architecture, design AI guardrails, and govern cognitive load at scale. Built on 17+ years of delivery leadership.</p>
-          <div>
-            <span class="service-tag">Cognitive Load</span>
-            <span class="service-tag">AI Guardrails</span>
-            <span class="service-tag">Deep Work</span>
-          </div>
-        </div>
-
-        <!-- 6. Partnership Offerings -->
-        <div class="service-card reveal">
-          <div class="service-icon">🌏</div>
-          <h3>Partnership Programmes</h3>
-          <p>Co-delivered programmes combining FACT's practitioner expertise with world-class partner methodologies. Gallup strengths coaching, AI advisory, and more — blended for your context.</p>
-          <div>
-            <span class="service-tag">Gallup</span>
-            <span class="service-tag">AI Partners</span>
-            <span class="service-tag">Co-delivery</span>
-          </div>
+          <div class="proof-quote">"FACT brings practical AI training that your teams can apply immediately — backed by 17+ years of delivery expertise."</div>
+          <div class="proof-author">— Agility Ops Community</div>
         </div>
       </div>
+    </section>
+
+    <!-- FEATURE PILLS -->
+    <div class="feature-pills">
+      <div class="feature-pill"><div class="pill-icon">🎯</div> Agile Training &amp; Coaching</div>
+      <div class="feature-pill"><div class="pill-icon">🤝</div> Team Building (CliftonStrengths)</div>
+      <div class="feature-pill"><div class="pill-icon">🧠</div> AI Cognitive Governance</div>
+      <div class="feature-pill"><div class="pill-icon">🎤</div> Keynote Speaking</div>
     </div>
-  </section>
 
-  <!-- AI Cognitive Governance Deep-Dive (formerly GSD Framework) -->
-  <section class="section advisory-section" id="advisory">
-    <div class="container">
-      <div class="section-head text-center">
-        <p class="overline">Flagship Advisory</p>
-        <h2 class="h2">AI Cognitive Governance &amp; Context Saturation™</h2>
-        <p>A structured advisory engagement that protects your organisation's most valuable resource — human attention — while embedding AI capability responsibly.</p>
+    <div class="section-sep"></div>
+
+    <!-- ===== WEEKLY WORKSHOPS ===== -->
+    <section class="content-section" id="workshops">
+      <div class="section-header">
+        <div>
+          <h2>Weekly Workshops</h2>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <a href="#waitlist" class="btn btn-purple btn-sm">Register Your Interest</a>
+          <div class="nav-arrows">
+            <button class="nav-arrow nav-prev" aria-label="Scroll left">‹</button>
+            <button class="nav-arrow nav-next" aria-label="Scroll right">›</button>
+          </div>
+        </div>
       </div>
+      <div class="section-meta">Coming Soon — Join Waitlist to Be First Notified</div>
+
+      <div class="card-row workshops-row">
+        <!-- Workshop 1 -->
+        <div class="workshop-card">
+          <div class="workshop-thumb">
+            🤖
+            <div class="workshop-tag tag-coming-soon">COMING SOON</div>
+            <div class="workshop-date">Dates TBA</div>
+          </div>
+          <div class="workshop-body">
+            <div class="workshop-title">Prompt Engineering for Business Teams</div>
+            <div class="workshop-instructor">
+              <div class="instructor-avatar">G</div>
+              Taught by Greg
+            </div>
+            <div class="workshop-level level-beginner">Beginner</div>
+            <div class="workshop-actions">
+              <a href="#waitlist" class="btn btn-purple btn-sm">Register Interest</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Workshop 2 -->
+        <div class="workshop-card">
+          <div class="workshop-thumb" style="background: linear-gradient(135deg, rgba(37,99,235,0.2), rgba(6,182,212,0.3));">
+            🧠
+            <div class="workshop-tag tag-coming-soon">COMING SOON</div>
+            <div class="workshop-date">Dates TBA</div>
+          </div>
+          <div class="workshop-body">
+            <div class="workshop-title">AI Cognitive Governance — Intro Session</div>
+            <div class="workshop-instructor">
+              <div class="instructor-avatar">G</div>
+              Taught by Greg
+            </div>
+            <div class="workshop-level level-intermediate">Intermediate</div>
+            <div class="workshop-actions">
+              <a href="#waitlist" class="btn btn-purple btn-sm">Register Interest</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Workshop 3 -->
+        <div class="workshop-card">
+          <div class="workshop-thumb" style="background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(6,182,212,0.2));">
+            📊
+            <div class="workshop-tag tag-coming-soon">COMING SOON</div>
+            <div class="workshop-date">Dates TBA</div>
+          </div>
+          <div class="workshop-body">
+            <div class="workshop-title">Context Saturation™ — Hands-On Lab</div>
+            <div class="workshop-instructor">
+              <div class="instructor-avatar">G</div>
+              Taught by Greg
+            </div>
+            <div class="workshop-level level-advanced">Advanced</div>
+            <div class="workshop-actions">
+              <a href="#waitlist" class="btn btn-purple btn-sm">Register Interest</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Workshop 4 -->
+        <div class="workshop-card">
+          <div class="workshop-thumb" style="background: linear-gradient(135deg, rgba(245,158,11,0.2), rgba(239,68,68,0.2));">
+            🎯
+            <div class="workshop-tag tag-coming-soon">COMING SOON</div>
+            <div class="workshop-date">Dates TBA</div>
+          </div>
+          <div class="workshop-body">
+            <div class="workshop-title">Agile Fundamentals for Teams</div>
+            <div class="workshop-instructor">
+              <div class="instructor-avatar">G</div>
+              Taught by Greg
+            </div>
+            <div class="workshop-level level-beginner">Beginner</div>
+            <div class="workshop-actions">
+              <a href="#waitlist" class="btn btn-purple btn-sm">Register Interest</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-sep"></div>
+
+    <!-- ===== PRACTITIONER GUIDES ===== -->
+    <section class="content-section" id="guides">
+      <div class="section-header">
+        <div>
+          <h2>Practitioner Guides</h2>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div class="nav-arrows">
+            <button class="nav-arrow nav-prev" aria-label="Scroll left">‹</button>
+            <button class="nav-arrow nav-next" aria-label="Scroll right">›</button>
+          </div>
+        </div>
+      </div>
+      <div class="section-meta">Free Resources Coming Soon</div>
+
+      <div class="card-row guides-row">
+        <div class="guide-card">
+          <div class="guide-thumb">
+            📋
+          </div>
+          <div class="guide-body">
+            <div class="guide-title">AI-Powered Sprint Retrospectives: A Step-by-Step Playbook</div>
+            <div class="workshop-instructor">
+              <div class="instructor-avatar">G</div>
+              By Greg
+            </div>
+            <div class="workshop-level level-beginner">Beginner</div>
+          </div>
+        </div>
+
+        <div class="guide-card">
+          <div class="guide-thumb" style="background: linear-gradient(135deg, rgba(168,85,247,0.15), rgba(124,58,237,0.25));">
+            🛡️
+          </div>
+          <div class="guide-body">
+            <div class="guide-title">Cognitive Load Audit: How to Measure What's Draining Your Team</div>
+            <div class="workshop-instructor">
+              <div class="instructor-avatar">G</div>
+              By Greg
+            </div>
+            <div class="workshop-level level-intermediate">Intermediate</div>
+          </div>
+        </div>
+
+        <div class="guide-card">
+          <div class="guide-thumb" style="background: linear-gradient(135deg, rgba(245,158,11,0.15), rgba(239,68,68,0.15));">
+            ⚡
+          </div>
+          <div class="guide-body">
+            <div class="guide-title">From Jira Chaos to AI Clarity: Setting Up SprintINSite</div>
+            <div class="workshop-instructor">
+              <div class="instructor-avatar">G</div>
+              By Greg
+            </div>
+            <div class="workshop-level level-beginner">Beginner</div>
+          </div>
+        </div>
+
+        <div class="guide-card">
+          <div class="guide-thumb" style="background: linear-gradient(135deg, rgba(6,182,212,0.15), rgba(37,99,235,0.2));">
+            🚀
+          </div>
+          <div class="guide-body">
+            <div class="guide-title">Building High-Performance Agile Teams</div>
+            <div class="workshop-instructor">
+              <div class="instructor-avatar">G</div>
+              By Greg
+            </div>
+            <div class="workshop-level level-intermediate">Intermediate</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-sep"></div>
+
+    <!-- ===== DEEP-DIVE COURSES ===== -->
+    <section class="content-section" id="courses">
+      <div class="section-header">
+        <div>
+          <h2>Deep-Dive Courses</h2>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <a href="#waitlist" class="btn btn-purple btn-sm">Register Your Interest</a>
+          <div class="nav-arrows">
+            <button class="nav-arrow nav-prev" aria-label="Scroll left">‹</button>
+            <button class="nav-arrow nav-next" aria-label="Scroll right">›</button>
+          </div>
+        </div>
+      </div>
+      <div class="section-meta">Coming Soon</div>
+
+      <div class="card-row courses-row">
+        <div class="course-card">
+          <div class="course-thumb">
+            <div class="course-thumb-bg cg">
+              <div class="course-thumb-label">Flagship Course</div>
+              <div class="course-thumb-title">AI Cognitive Governance &amp; Context Saturation™</div>
+            </div>
+          </div>
+          <div class="course-body">
+            <div class="course-title">AI Cognitive Governance Masterclass</div>
+            <div class="course-meta-row">12 modules • 8h 30m</div>
+            <div class="workshop-instructor">
+              <div class="instructor-avatar">G</div>
+              Taught by Greg
+            </div>
+          </div>
+        </div>
+
+        <div class="course-card">
+          <div class="course-thumb">
+            <div class="course-thumb-bg agile">
+              <div class="course-thumb-label" style="color: var(--cyan);">Applied AI Course</div>
+              <div class="course-thumb-title">AI for Agile Teams: From Sprint to Ship</div>
+            </div>
+          </div>
+          <div class="course-body">
+            <div class="course-title">AI for Agile Teams</div>
+            <div class="course-meta-row">8 modules • 5h 15m</div>
+            <div class="workshop-instructor">
+              <div class="instructor-avatar">G</div>
+              Taught by Greg
+            </div>
+          </div>
+        </div>
+
+        <div class="course-card">
+          <div class="course-thumb">
+            <div class="course-thumb-bg strengths">
+              <div class="course-thumb-label" style="color: var(--green);">Team Development</div>
+              <div class="course-thumb-title">Strengths-Based Team Building with Gallup</div>
+            </div>
+          </div>
+          <div class="course-body">
+            <div class="course-title">Strengths-Based Team Building</div>
+            <div class="course-meta-row">6 modules • 3h 45m</div>
+            <div class="workshop-instructor">
+              <div class="instructor-avatar">G</div>
+              Taught by Greg
+            </div>
+          </div>
+        </div>
+
+        <div class="course-card">
+          <div class="course-thumb">
+            <div class="course-thumb-bg" style="background: linear-gradient(135deg, #0a1628, #0f2440);">
+              <div class="course-thumb-label" style="color: var(--purple-light);">Advisory Program</div>
+              <div class="course-thumb-title">Facilitation &amp; Workshop Design</div>
+            </div>
+          </div>
+          <div class="course-body">
+            <div class="course-title">Advanced Facilitation</div>
+            <div class="course-meta-row">5 modules • 4h</div>
+            <div class="workshop-instructor">
+              <div class="instructor-avatar">G</div>
+              Taught by Greg
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-sep"></div>
+
+    <!-- ===== AI ADVISORY SECTION ===== -->
+    <section class="content-section" id="advisory">
+      <div class="section-header">
+        <h2>AI Cognitive Governance &amp; Context Saturation™</h2>
+      </div>
+      <p style="color: var(--gray-400); font-size: 0.95rem; max-width: 680px; margin-bottom: 28px;">Our flagship advisory engagement protects your organisation's most valuable resource — human attention — while embedding AI capability responsibly. Built on 17+ years of delivery leadership.</p>
 
       <div class="advisory-grid">
-        <div class="advisory-pillar reveal">
+        <div class="advisory-pillar">
           <span class="pillar-num">1</span>
           <h4>Cognitive Load Diagnostics</h4>
           <p>Measure the invisible burden on your people before it becomes burnout</p>
         </div>
-        <div class="advisory-pillar reveal">
+        <div class="advisory-pillar">
           <span class="pillar-num">2</span>
           <h4>Attention Architecture</h4>
           <p>Design how focus flows through the organisation — collaboration and deep work in balance</p>
         </div>
-        <div class="advisory-pillar reveal">
+        <div class="advisory-pillar">
           <span class="pillar-num">3</span>
           <h4>Demand Governance</h4>
           <p>Control what enters the system before it overwhelms capacity and quality</p>
         </div>
-        <div class="advisory-pillar reveal">
+        <div class="advisory-pillar">
           <span class="pillar-num">4</span>
           <h4>AI Guardrail Design</h4>
           <p>Boundaries that protect clarity and trust without limiting AI capability</p>
         </div>
-        <div class="advisory-pillar reveal">
+        <div class="advisory-pillar">
           <span class="pillar-num">5</span>
           <h4>Deep Work Protection</h4>
           <p>Defend the space where strategy, innovation, and real outcomes happen</p>
         </div>
       </div>
 
-      <div class="advisory-legacy">
-        <p>Previously known as the <strong>GSD Framework — The Human Operating System for the AI Age™</strong>. Evolved to address the full spectrum of cognitive governance in AI-augmented organisations.</p>
+      <div style="margin-top: 40px; padding: 20px; background: rgba(168,85,247,0.05); border: 1px solid rgba(168,85,247,0.1); border-radius: var(--radius-lg);">
+        <p style="font-size: 0.9rem; color: var(--gray-400);">Previously known as the <strong>GSD Framework — The Human Operating System for the AI Age™</strong>. Evolved to address the full spectrum of cognitive governance in AI-augmented organisations.</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- How We Deliver -->
-  <section class="section section-alt" id="delivery">
-    <div class="container">
-      <div class="section-head text-center">
-        <p class="overline">How We Deliver</p>
-        <h2 class="h2">Your context. Your pace. Your place.</h2>
-        <p>Choose the delivery model that fits your organisation. All programmes are tailored — never off-the-shelf.</p>
-      </div>
+    <div class="section-sep"></div>
 
-      <div class="grid grid-3">
-        <div class="delivery-card reveal">
-          <div class="delivery-icon" style="background: rgba(168,85,247,0.1);">💻</div>
-          <h3>Fully Virtual</h3>
-          <p>Live, instructor-led sessions delivered via video conference. Interactive workshops, not passive webinars. Same energy, same outcomes — no travel required.</p>
-          <span class="badge badge-live">Available Now</span>
-        </div>
-
-        <div class="delivery-card reveal">
-          <div class="delivery-icon" style="background: rgba(37,99,235,0.1);">🏢</div>
-          <h3>In-House Training</h3>
-          <p>We come to you. On-site delivery at your offices, tailored to your teams, your tools, and your challenges. The premium experience for enterprise transformation.</p>
-          <span class="badge badge-live">Available Now</span>
-        </div>
-
-        <div class="delivery-card reveal">
-          <div class="delivery-icon" style="background: rgba(245,158,11,0.1);">📅</div>
-          <h3>Public Training</h3>
-          <p>Open-enrolment courses for individuals and small groups. Join a cohort, build your credentials, and connect with practitioners from across industries.</p>
-          <span class="badge badge-soon">Coming Soon — Join Waitlist</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Partnerships -->
-  <section class="section" id="partnerships">
-    <div class="container">
-      <div class="section-head text-center">
-        <p class="overline">Partnerships</p>
-        <h2 class="h2">Better together</h2>
-        <p>We partner with world-class organisations to deliver blended programmes that combine FACT's practitioner expertise with leading methodologies and tools.</p>
-      </div>
-
-      <div class="grid grid-2">
-        <div class="partner-card reveal">
-          <div class="partner-icon" style="background: rgba(16,185,129,0.1);">🔬</div>
-          <div>
-            <h3>Gallup CliftonStrengths</h3>
-            <p>Certified strengths coaching combined with agile team development. Understand what your people do best, then build delivery structures that amplify those strengths.</p>
+    <!-- ===== COMMUNITY BANNER ===== -->
+    <section id="community" style="padding: 0 48px 56px;">
+      <div class="community-banner">
+        <div class="community-banner-text">
+          <h3>Join Our Community</h3>
+          <p>Connect with practitioners building real AI capability. Get early access to workshops, guides, and our growing community of teams transforming with FACT.</p>
+          <div class="community-banner-actions">
+            <a href="#waitlist" class="btn btn-purple btn-sm">Register Your Interest</a>
+            <a href="https://agilityops.com.au" class="btn btn-ghost btn-sm" target="_blank" rel="noopener">Learn more about Agility Ops</a>
           </div>
         </div>
-
-        <div class="partner-card reveal">
-          <div class="partner-icon" style="background: rgba(168,85,247,0.1);">🤖</div>
-          <div>
-            <h3>AI Cognitive Governance Partners</h3>
-            <p>Co-delivered AI advisory engagements combining FACT's cognitive governance framework with specialist AI implementation partners for end-to-end transformation.</p>
-          </div>
-        </div>
-
-        <div class="partner-card reveal">
-          <div class="partner-icon" style="background: rgba(37,99,235,0.1);">🔧</div>
-          <div>
-            <h3>Atlassian Ecosystem</h3>
-            <p>Training and advisory backed by deep Atlassian Forge expertise. Our own SprintINSite and PortfolioInSite tools demonstrate practitioner credibility in the ecosystem.</p>
-          </div>
-        </div>
-
-        <div class="partner-card reveal">
-          <div class="partner-icon" style="background: rgba(245,158,11,0.1);">🌐</div>
-          <div>
-            <h3>Industry &amp; Conference Partners</h3>
-            <p>Speaking, workshop delivery, and co-branded programme development with conferences, industry bodies, and professional associations across Australia and globally.</p>
-          </div>
-        </div>
+        <div style="font-size: 4rem; opacity: 0.6;">👥</div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Waitlist / CTA -->
-  <section class="section waitlist-section text-center" id="waitlist">
-    <div class="container container-narrow">
+    <!-- ===== WAITLIST SECTION ===== -->
+    <section class="content-section waitlist-section text-center" id="waitlist" style="padding-top: 56px;">
       <div class="waitlist-badge">Coming Soon</div>
       <p class="overline" style="color: var(--purple-light);">Be First in Line</p>
-      <h2 class="h2">Register your interest</h2>
-      <p style="max-width: 620px; margin: 0 auto 12px;">We're putting the finishing touches on our training programmes, courses, and advisory offerings. Register your interest below and we'll notify you as soon as bookings open.</p>
+      <h2 style="font-size: 2rem; margin-bottom: 16px;">Register your interest</h2>
+      <p style="max-width: 620px; margin: 0 auto 12px; color: var(--gray-400); font-size: 0.95rem;">We're putting the finishing touches on our training programmes, courses, and advisory offerings. Register your interest below and we'll notify you as soon as bookings open.</p>
       <p style="color: var(--gray-500); font-size: 0.9rem; margin-bottom: 36px;">No spam. No obligation. Just early access when we launch.</p>
+
       <form class="waitlist-form-full" name="fact-waitlist" method="POST" data-netlify="true">
         <input type="hidden" name="form-name" value="fact-waitlist">
         <div class="form-row">
@@ -318,58 +466,28 @@
         </div>
         <button type="submit" class="btn btn-purple btn-lg">Register Your Interest</button>
       </form>
-      <div class="form-success"></div>
-      <div class="form-error"></div>
-      <p style="color: var(--gray-500); font-size: 0.85rem; margin-top: 20px;">Have an immediate need? <a href="https://agilityops.com.au/pages/contact.html" style="color: var(--purple-light); text-decoration: underline;">Contact us directly</a> to discuss your requirements.</p>
-    </div>
-  </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="index.html" class="nav-logo" style="color: var(--white); margin-bottom: 0;">
-            <div class="nav-logo-icon">F</div>
-            FACT
-          </a>
-          <p>Practitioner-led training, coaching, facilitation, and AI advisory. Part of the Agility Ops family. Australian owned and operated.</p>
-        </div>
-        <div>
-          <h4>Services</h4>
-          <ul class="footer-links">
-            <li><a href="#services">Agile Training</a></li>
-            <li><a href="#services">Team Building</a></li>
-            <li><a href="#services">Facilitation</a></li>
-            <li><a href="#services">Speaking</a></li>
-            <li><a href="#advisory">AI Advisory</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Family</h4>
-          <ul class="footer-links">
-            <li><a href="https://agilityops.com.au" target="_blank" rel="noopener">Agility Ops</a></li>
-            <li><a href="https://sprintinsite.com" target="_blank" rel="noopener">SprintINSite</a></li>
-            <li><a href="https://portfolioinsite.com.au" target="_blank" rel="noopener">PortfolioInSite</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Legal</h4>
-          <ul class="footer-links">
-            <li><a href="https://agilityops.com.au/pages/privacy.html" target="_blank" rel="noopener">Privacy Policy</a></li>
-            <li><a href="https://agilityops.com.au/pages/terms.html" target="_blank" rel="noopener">Terms of Service</a></li>
-          </ul>
-        </div>
+      <div class="form-success" style="display:none; margin-top: 20px; padding: 16px; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); border-radius: var(--radius); color: var(--green);">
+        Thank you! We'll be in touch soon with early access details.
       </div>
-      <div class="footer-bottom">
-        <span>&copy; 2026 Agility Ops Business Pty Ltd (ABN 47 635 411 209). All rights reserved.</span>
-        <div class="footer-socials">
-          <a href="https://www.linkedin.com/company/agility-ops-business" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
-          <a href="https://github.com/G-AOBptyltd" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
-        </div>
+      <div class="form-error" style="display:none; margin-top: 20px; padding: 16px; background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); border-radius: var(--radius); color: var(--red);">
+        Something went wrong. Please try again.
       </div>
-    </div>
-  </footer>
+
+      <p style="color: var(--gray-500); font-size: 0.85rem; margin-top: 20px;">Have an immediate need? <a href="https://agilityops.com.au/pages/contact.html" style="color: var(--purple-light); text-decoration: underline;" target="_blank" rel="noopener">Contact us directly</a> to discuss your requirements.</p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer-mini">
+      <span>&copy; 2026 Agility Ops Business Pty Ltd (ABN 47 635 411 209). All rights reserved.</span>
+      <div>
+        <a href="https://agilityops.com.au" target="_blank" rel="noopener">Agility Ops</a>
+        <a href="https://agilityops.com.au/pages/privacy.html" target="_blank" rel="noopener">Privacy</a>
+        <a href="https://agilityops.com.au/pages/terms.html" target="_blank" rel="noopener">Terms</a>
+      </div>
+    </footer>
+
+  </main>
 
   <script src="js/main.js"></script>
 </body>
