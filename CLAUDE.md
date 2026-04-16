@@ -49,12 +49,29 @@ The GSD Framework ("The Human Operating System for the AI Age™") has been evol
 - **ALWAYS use:** "Developed within our R&D program" or "Methodology under active R&D development"
 - R&D Tax Incentive application is in progress — not approved
 
+## Notion CMS Integration (Live)
+
+FACT is the first site using the AOB centralised CMS. Content is managed in Notion and rendered dynamically with static HTML fallback.
+
+**For full CMS/payment architecture details, see:** `../CLAUDE-aob-payment-platform.md`
+
+- **Central API:** `https://api.agilityops.com.au/api/cms` (LIVE — Phase 1 complete)
+- **Site slug:** `fact`
+- **Frontend client:** `js/notion-cms.js` — fetches from central API, renders workshop/guide/course cards
+- **Content detail page:** `pages/content.html` — dynamic SPA-style page, reads slug from `/content/{slug}` URL
+- **Product detail page:** `pages/product.html` — dynamic SPA-style page, reads slug from `/product/{slug}` URL, fetches all active products (no brand filter) and pricing
+- **Serverless function:** `netlify/functions/notion-cms.js` — LEGACY, no longer used (functions config removed from netlify.toml). Netlify proxy redirects route `/api/cms` to central API instead.
+- **CMS setup docs:** `NOTION-CMS-SETUP.md`
+- **Netlify routing:** SPA-style redirects in `netlify.toml` — `/content/*` → `pages/content.html`, `/product/*` → `pages/product.html`
+- **API proxy:** `/api/cms` → `https://api.agilityops.com.au/api/cms` (backward-compatible passthrough)
+
 ## Tech Stack
 
 - **Framework:** Static HTML/CSS/JS (no build tools)
 - **Fonts:** Inter + Plus Jakarta Sans (Google Fonts) — matches all AOB properties
 - **Styling:** Custom CSS with CSS variables, responsive grid
 - **Hosting:** Netlify (auto-deploy from GitHub main branch)
+- **CMS:** Notion via AOB Central API (`api.agilityops.com.au`)
 - **SEO:** OG tags, Twitter cards, canonical URLs
 
 ## File Structure
@@ -63,12 +80,20 @@ The GSD Framework ("The Human Operating System for the AI Age™") has been evol
 fastact-website/
 ├── index.html              — Homepage (all services, advisory, delivery, partnerships)
 ├── CLAUDE.md               — This file
+├── NOTION-CMS-SETUP.md     — CMS integration setup docs
+├── netlify.toml            — Netlify config (SPA redirects, API proxy, headers)
 ├── css/
 │   └── styles.css          — Main stylesheet (purple brand theme)
 ├── js/
-│   └── main.js             — Mobile nav, scroll reveal, Netlify form handlers
+│   ├── main.js             — Mobile nav, scroll reveal, Netlify form handlers
+│   └── notion-cms.js       — CMS client v2 (fetches from central API, renders cards)
+├── netlify/
+│   └── functions/
+│       └── notion-cms.js   — LEGACY serverless function (no longer deployed)
 ├── img/                    — Images (to be populated)
-└── pages/                  — Future subpages (individual service detail pages)
+└── pages/
+    ├── content.html        — Dynamic content detail page (workshops, guides, courses)
+    └── product.html        — Dynamic product detail page (apps, tools)
 ```
 
 ## Netlify Forms
@@ -85,13 +110,16 @@ fastact-website/
 - Footer links use `target="_blank"` to open in new tab
 - No local legal pages — all legal content centralised on agilityops.com.au
 
-## Related Repositories
+## Related Repositories & CLAUDE.md Files
 
-| Repo | Purpose |
+| Repo / File | Purpose |
 |------|---------|
 | `aob-corporate-hub` | AOB corporate website (parent brand) |
 | `sprintinsite-website` | SprintINSite product website |
 | `portfolioinsite-website` | PortfolioInSite product website |
+| `aob-api` (planned) | Central API for CMS + payments |
+| `../CLAUDE-aob-payment-platform.md` | **Payment platform & CMS architecture** (use for cross-site work) |
+| `../CLAUDE-blog-content.md` | Blog content engine |
 
 ## Deployment History
 
@@ -99,6 +127,10 @@ fastact-website/
 |------|--------|--------|
 | 2026-03-06 | Initial site build — 6 services, 3 delivery models, waitlist form, purple brand | main |
 | 2026-03-06 | Netlify connected, DNS configured, SSL provisioned, form detection enabled | main |
+| 2026-04-15 | Central API integration — notion-cms.js v2, netlify.toml updated, API proxy | main |
+| 2026-04-15 | Content detail page (pages/content.html) — dynamic SPA-style landing pages | main |
+| 2026-04-15 | Product detail page (pages/product.html) — dynamic product landing pages | main |
+| 2026-04-16 | Product page fix — removed brand filter so all active products match by slug | pending |
 
 ## Key Learnings
 
@@ -110,6 +142,11 @@ fastact-website/
 - DNS was previously set to forward fastact.com.au → agilityops.com.au — this forwarding was removed in GoDaddy to allow Netlify hosting
 - GoDaddy A records are locked when forwarding is active — must remove forwarding first to unlock DNS editing
 - Domain architecture document (v3) tracks all AOB brand domains, hosting, and email config
+- **CORS:** Sites database Domain field MUST include `https://` prefix (e.g., `https://fastact.com.au` not `fastact.com.au`). Browser `Origin` header includes the protocol.
+- **API cache:** Central API has 5-minute in-memory cache. After Notion data changes, wait up to 5 minutes for API to reflect updates.
+- **Product pages are brand-agnostic:** product.html fetches ALL active products (no brand filter) and matches by slug. This allows any product to have a landing page on any site.
+- **Content pages are site-specific:** content.html fetches content filtered by `site=fact` so only FACT-branded content appears.
+- **Cowork + Git:** Cowork sandbox cannot remove `.git/index.lock` files. If git operations fail in Cowork, do them from the Mac terminal instead.
 
 ## Workflow Preferences
 

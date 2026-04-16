@@ -440,8 +440,8 @@
       }
 
       try {
-        // Fetch products for this brand/site
-        const response = await fetch(`${CMS_API}?type=products&brand=${SITE_SLUG}`);
+        // Fetch all active products (no brand filter — product pages are universal)
+        const response = await fetch(`${CMS_API}?type=products`);
         if (!response.ok) throw new Error(`API error: ${response.status}`);
         const json = await response.json();
         const products = json.data || [];
@@ -554,7 +554,7 @@
 
     async function loadPricing(pricingIds) {
       try {
-        const response = await fetch(`${CMS_API}?type=pricing&brand=${SITE_SLUG}`);
+        const response = await fetch(`${CMS_API}?type=pricing`);
         if (!response.ok) return;
         const json = await response.json();
         const allPricing = json.data || [];
