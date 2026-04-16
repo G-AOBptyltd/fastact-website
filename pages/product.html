@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Dynamic meta tags set by JS -->
+  <title>Loading... — FACT Training</title>
+  <meta name="description" content="Software products by Agility Ops — tools for agile teams, AI governance, and operational excellence.">
+  <meta name="robots" content="index, follow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+
+  <style>
+    /* === Product Detail Page Styles === */
+    .product-detail {
+      max-width: 900px;
+      padding: 56px 48px 80px;
+    }
+
+    .product-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--gray-400);
+      font-size: 0.85rem;
+      margin-bottom: 28px;
+      transition: color 0.15s;
+    }
+
+    .product-back:hover {
+      color: var(--white);
+    }
+
+    .product-hero {
+      display: flex;
+      gap: 36px;
+      align-items: flex-start;
+      margin-bottom: 36px;
+    }
+
+    .product-screenshot {
+      width: 360px;
+      min-width: 280px;
+      height: 220px;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      background: var(--navy-card);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .product-screenshot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-screenshot .placeholder-icon {
+      font-size: 3rem;
+      opacity: 0.5;
+    }
+
+    .product-hero-text {
+      flex: 1;
+    }
+
+    .product-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .product-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .badge-type {
+      background: rgba(37, 99, 235, 0.12);
+      color: var(--blue);
+    }
+
+    .badge-platform {
+      background: rgba(6, 182, 212, 0.12);
+      color: var(--cyan);
+    }
+
+    .badge-status-live {
+      background: rgba(16, 185, 129, 0.12);
+      color: var(--green);
+    }
+
+    .badge-status-beta {
+      background: rgba(245, 158, 11, 0.12);
+      color: var(--amber);
+    }
+
+    .badge-status-dev {
+      background: rgba(168, 85, 247, 0.12);
+      color: var(--purple-light);
+    }
+
+    .product-detail h1 {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      margin-bottom: 8px;
+      line-height: 1.12;
+    }
+
+    .product-version {
+      font-size: 0.85rem;
+      color: var(--gray-500);
+      margin-bottom: 16px;
+    }
+
+    .product-short-desc {
+      font-size: 1.05rem;
+      color: var(--gray-400);
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+
+    .product-long-desc {
+      font-size: 0.95rem;
+      color: var(--gray-300);
+      line-height: 1.75;
+      margin-bottom: 36px;
+    }
+
+    .product-long-desc p {
+      margin-bottom: 16px;
+    }
+
+    .product-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+
+    .product-pricing-section {
+      margin-bottom: 36px;
+    }
+
+    .product-pricing-section h3 {
+      font-size: 1.3rem;
+      margin-bottom: 16px;
+    }
+
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .pricing-card {
+      padding: 24px;
+      background: var(--navy-card);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-lg);
+      transition: border-color 0.2s;
+    }
+
+    .pricing-card:hover {
+      border-color: rgba(168, 85, 247, 0.2);
+    }
+
+    .pricing-card .pricing-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--white);
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .pricing-card .pricing-cycle {
+      font-size: 0.78rem;
+      color: var(--gray-500);
+      margin-bottom: 12px;
+    }
+
+    .pricing-card .pricing-amount {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .pricing-card .pricing-amount .currency {
+      font-size: 1rem;
+      color: var(--gray-400);
+      font-weight: 600;
+    }
+
+    .pricing-card .pricing-desc {
+      font-size: 0.85rem;
+      color: var(--gray-400);
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    .pricing-card .pricing-units {
+      font-size: 0.82rem;
+      color: var(--gray-500);
+      margin-bottom: 16px;
+    }
+
+    .product-support {
+      padding: 20px;
+      background: var(--navy-card);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .product-support .support-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(168, 85, 247, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .product-support .support-text {
+      font-size: 0.9rem;
+      color: var(--gray-400);
+    }
+
+    .product-support .support-text a {
+      color: var(--purple-light);
+      text-decoration: underline;
+    }
+
+    /* Loading / Error states */
+    .product-loading {
+      text-align: center;
+      padding: 120px 48px;
+      color: var(--gray-400);
+    }
+
+    .product-loading .spinner {
+      width: 36px;
+      height: 36px;
+      border: 3px solid rgba(168, 85, 247, 0.2);
+      border-top-color: var(--purple);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 16px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .product-error {
+      text-align: center;
+      padding: 120px 48px;
+    }
+
+    .product-error h2 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+    }
+
+    .product-error p {
+      color: var(--gray-400);
+      margin-bottom: 24px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .product-detail {
+        padding: 28px 20px 60px;
+      }
+
+      .product-hero {
+        flex-direction: column;
+      }
+
+      .product-screenshot {
+        width: 100%;
+        min-width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar">
+    <a href="/" class="sidebar-logo">
+      <div class="sidebar-logo-icon">F</div>
+      FACT Training
+    </a>
+    <div class="sidebar-brand">by <a href="https://agilityops.com.au">Agility Ops</a></div>
+
+    <div class="sidebar-search">
+      <span>🔍</span> Search
+      <kbd>⌘K</kbd>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="/" class="nav-link" data-section="home"><span class="nav-icon">🏠</span> Home</a>
+      <a href="/#workshops" class="nav-link" data-section="workshops"><span class="nav-icon">📅</span> Workshops</a>
+      <a href="/#guides" class="nav-link" data-section="guides"><span class="nav-icon">📖</span> Guides</a>
+      <a href="/#courses" class="nav-link" data-section="courses"><span class="nav-icon">🎓</span> Courses</a>
+      <a href="/#advisory" class="nav-link" data-section="advisory"><span class="nav-icon">🧠</span> Advisory</a>
+      <a href="/#waitlist" class="nav-link" data-section="waitlist"><span class="nav-icon">✨</span> Waitlist</a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <a href="https://agilityops.com.au/pages/privacy.html" target="_blank" rel="noopener">🔒 Privacy</a>
+      <a href="https://agilityops.com.au/pages/contact.html" target="_blank" rel="noopener">💬 Contact</a>
+      <a href="/#waitlist" class="sidebar-login">Register Your Interest</a>
+    </div>
+  </aside>
+
+  <!-- Mobile hamburger menu -->
+  <button class="hamburger-toggle" aria-label="Toggle menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="main">
+
+    <!-- Loading state -->
+    <div id="product-loading" class="product-loading">
+      <div class="spinner"></div>
+      <p>Loading product...</p>
+    </div>
+
+    <!-- Error state -->
+    <div id="product-error" class="product-error" style="display: none;">
+      <h2>Product not found</h2>
+      <p>The product you're looking for doesn't exist or has been removed.</p>
+      <a href="/" class="btn btn-purple">Back to Home</a>
+    </div>
+
+    <!-- Product detail (hidden until loaded) -->
+    <div id="product-detail" class="product-detail" style="display: none;">
+
+      <a href="/" class="product-back">← Back to FACT Training</a>
+
+      <!-- Hero: screenshot + text -->
+      <div class="product-hero">
+        <div id="product-screenshot" class="product-screenshot">
+          <span class="placeholder-icon">📦</span>
+        </div>
+        <div class="product-hero-text">
+          <div class="product-meta-row">
+            <span id="product-type-badge" class="product-badge badge-type">Extension</span>
+            <span id="product-platform-badge" class="product-badge badge-platform">Jira</span>
+            <span id="product-status-badge" class="product-badge badge-status-live">Live</span>
+          </div>
+          <h1 id="product-title"></h1>
+          <div id="product-version" class="product-version" style="display: none;"></div>
+          <p id="product-short-desc" class="product-short-desc"></p>
+        </div>
+      </div>
+
+      <!-- Action links -->
+      <div id="product-links" class="product-links"></div>
+
+      <!-- Long description -->
+      <div id="product-long-desc" class="product-long-desc" style="display: none;"></div>
+
+      <!-- Pricing section -->
+      <div id="product-pricing-section" class="product-pricing-section" style="display: none;">
+        <h3>Pricing</h3>
+        <div id="pricing-cards" class="pricing-cards"></div>
+      </div>
+
+      <!-- Support -->
+      <div id="product-support" class="product-support" style="display: none;">
+        <div class="support-icon">💬</div>
+        <div class="support-text">
+          Need help? Contact us at <a id="support-email-link" href=""></a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer-mini">
+      <span>&copy; 2026 Agility Ops Business Pty Ltd (ABN 47 635 411 209). All rights reserved.</span>
+      <div>
+        <a href="https://agilityops.com.au" target="_blank" rel="noopener">Agility Ops</a>
+        <a href="https://agilityops.com.au/pages/privacy.html" target="_blank" rel="noopener">Privacy</a>
+        <a href="https://agilityops.com.au/pages/terms.html" target="_blank" rel="noopener">Terms</a>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="/js/main.js"></script>
+  <script>
+    // ============================================
+    // Product Detail Page — Dynamic Loader
+    // ============================================
+
+    const CMS_API = 'https://api.agilityops.com.au/api/cms';
+    const SITE_SLUG = 'fact';
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    async function loadProduct() {
+      // Extract slug from URL path: /product/sprintinsite → "sprintinsite"
+      const pathParts = window.location.pathname.split('/').filter(Boolean);
+      const slug = pathParts.length > 1 ? pathParts[pathParts.length - 1] : null;
+
+      if (!slug) {
+        showError();
+        return;
+      }
+
+      try {
+        // Fetch products for this brand/site
+        const response = await fetch(`${CMS_API}?type=products&brand=${SITE_SLUG}`);
+        if (!response.ok) throw new Error(`API error: ${response.status}`);
+        const json = await response.json();
+        const products = json.data || [];
+
+        // Find product by landing page slug
+        const product = products.find(p => p.landingPageSlug === slug);
+
+        if (!product) {
+          showError();
+          return;
+        }
+
+        renderProduct(product);
+
+        // Fetch pricing if product has pricing IDs
+        if (product.pricingIds && product.pricingIds.length > 0) {
+          await loadPricing(product.pricingIds);
+        }
+
+      } catch (error) {
+        console.error('Failed to load product:', error);
+        showError();
+      }
+    }
+
+    function renderProduct(product) {
+      // Update page title
+      document.title = `${product.productName} — FACT Training`;
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc && product.shortDescription) {
+        metaDesc.setAttribute('content', product.shortDescription.replace(/<[^>]*>/g, '').substring(0, 160));
+      }
+
+      // Screenshot
+      const screenshotEl = document.getElementById('product-screenshot');
+      if (product.screenshotUrl) {
+        screenshotEl.innerHTML = `<img src="${escapeHtml(product.screenshotUrl)}" alt="${escapeHtml(product.productName)} screenshot" loading="lazy">`;
+      }
+
+      // Badges
+      const typeBadge = document.getElementById('product-type-badge');
+      typeBadge.textContent = product.type || 'Product';
+
+      const platformBadge = document.getElementById('product-platform-badge');
+      platformBadge.textContent = product.platform || 'Web';
+
+      const statusBadge = document.getElementById('product-status-badge');
+      const status = (product.status || 'Live').toLowerCase();
+      statusBadge.textContent = product.status || 'Live';
+      if (status === 'beta') {
+        statusBadge.className = 'product-badge badge-status-beta';
+      } else if (status === 'development' || status === 'coming soon') {
+        statusBadge.className = 'product-badge badge-status-dev';
+      } else {
+        statusBadge.className = 'product-badge badge-status-live';
+      }
+
+      // Title
+      document.getElementById('product-title').textContent = product.productName;
+
+      // Version
+      if (product.version) {
+        const versionEl = document.getElementById('product-version');
+        versionEl.textContent = `Version ${product.version}`;
+        versionEl.style.display = 'block';
+      }
+
+      // Short description
+      if (product.shortDescription) {
+        document.getElementById('product-short-desc').innerHTML = product.shortDescription;
+      }
+
+      // Long description
+      if (product.longDescription) {
+        const longDescEl = document.getElementById('product-long-desc');
+        longDescEl.innerHTML = product.longDescription;
+        longDescEl.style.display = 'block';
+      }
+
+      // Action links
+      const linksContainer = document.getElementById('product-links');
+      const links = [];
+
+      if (product.marketplaceUrl) {
+        links.push(`<a href="${escapeHtml(product.marketplaceUrl)}" class="btn btn-purple" target="_blank" rel="noopener">Get It Now</a>`);
+      }
+      if (product.documentationUrl) {
+        links.push(`<a href="${escapeHtml(product.documentationUrl)}" class="btn btn-outline-light" target="_blank" rel="noopener">Documentation</a>`);
+      }
+
+      if (links.length === 0) {
+        links.push(`<a href="/#waitlist" class="btn btn-purple">Register Your Interest</a>`);
+      }
+
+      linksContainer.innerHTML = links.join('');
+
+      // Support email
+      if (product.supportEmail) {
+        const supportEl = document.getElementById('product-support');
+        const emailLink = document.getElementById('support-email-link');
+        emailLink.href = `mailto:${product.supportEmail}`;
+        emailLink.textContent = product.supportEmail;
+        supportEl.style.display = 'flex';
+      }
+
+      // Show detail, hide loading
+      document.getElementById('product-loading').style.display = 'none';
+      document.getElementById('product-detail').style.display = 'block';
+    }
+
+    async function loadPricing(pricingIds) {
+      try {
+        const response = await fetch(`${CMS_API}?type=pricing&brand=${SITE_SLUG}`);
+        if (!response.ok) return;
+        const json = await response.json();
+        const allPricing = json.data || [];
+
+        // Filter to just this product's pricing
+        const productPricing = allPricing.filter(p => pricingIds.includes(p.id));
+
+        if (productPricing.length === 0) return;
+
+        // Sort by sort order
+        productPricing.sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0));
+
+        const cardsContainer = document.getElementById('pricing-cards');
+        cardsContainer.innerHTML = productPricing.map(p => `
+          <div class="pricing-card">
+            <div class="pricing-name">${escapeHtml(p.productName)}</div>
+            <div class="pricing-cycle">${escapeHtml(p.billingCycle || 'One-time')}</div>
+            <div class="pricing-amount">
+              <span class="currency">${p.currency || 'AUD'} </span>${p.price != null ? ('$' + p.price.toLocaleString('en-AU', { minimumFractionDigits: 2 })) : 'Free'}
+            </div>
+            ${p.description ? `<div class="pricing-desc">${p.description}</div>` : ''}
+            ${p.includedUnits ? `<div class="pricing-units">Includes ${p.includedUnits} units</div>` : ''}
+            ${p.stripePriceId
+              ? `<a href="#" class="btn btn-purple btn-sm" onclick="alert('Stripe checkout coming soon!'); return false;">Subscribe</a>`
+              : `<a href="/#waitlist" class="btn btn-outline-light btn-sm">Register Interest</a>`
+            }
+          </div>
+        `).join('');
+
+        document.getElementById('product-pricing-section').style.display = 'block';
+
+      } catch (e) {
+        console.warn('Could not load pricing:', e);
+      }
+    }
+
+    function showError() {
+      document.getElementById('product-loading').style.display = 'none';
+      document.getElementById('product-error').style.display = 'block';
+    }
+
+    // Initialize
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', loadProduct);
+    } else {
+      loadProduct();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Dynamic meta tags set by JS -->
+  <title>Loading... — FACT Training</title>
+  <meta name="description" content="FACT Training content — practitioner-led training, coaching, and advisory by Agility Ops.">
+  <meta name="robots" content="index, follow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+
+  <style>
+    /* === Content Detail Page Styles === */
+    .content-detail {
+      max-width: 820px;
+      padding: 56px 48px 80px;
+    }
+
+    .content-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--gray-400);
+      font-size: 0.85rem;
+      margin-bottom: 28px;
+      transition: color 0.15s;
+    }
+
+    .content-back:hover {
+      color: var(--white);
+    }
+
+    .content-hero-thumb {
+      width: 100%;
+      height: 220px;
+      border-radius: var(--radius-xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      position: relative;
+      margin-bottom: 32px;
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(124, 58, 237, 0.3));
+    }
+
+    .content-hero-thumb .workshop-tag {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+    }
+
+    .content-hero-thumb .workshop-date {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+    }
+
+    .content-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .content-type-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      background: rgba(168, 85, 247, 0.12);
+      color: var(--purple-light);
+      border-radius: var(--radius-full);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .content-detail h1 {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      margin-bottom: 12px;
+      line-height: 1.12;
+    }
+
+    .content-subtitle {
+      font-size: 1.1rem;
+      color: var(--gray-400);
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    .content-description {
+      font-size: 0.95rem;
+      color: var(--gray-300);
+      line-height: 1.75;
+      margin-bottom: 32px;
+    }
+
+    .content-description p {
+      margin-bottom: 16px;
+    }
+
+    .content-info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+
+    .content-info-card {
+      padding: 20px;
+      background: var(--navy-card);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-lg);
+    }
+
+    .content-info-card .info-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gray-500);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .content-info-card .info-value {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      font-family: var(--font-display);
+    }
+
+    .content-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+
+    .content-tag {
+      padding: 4px 12px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      color: var(--gray-400);
+    }
+
+    .content-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .content-instructor-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px;
+      background: var(--navy-card);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-lg);
+      margin-bottom: 32px;
+    }
+
+    .content-instructor-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple), var(--purple-deep));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .content-instructor-name {
+      font-weight: 700;
+      color: var(--white);
+      font-family: var(--font-display);
+    }
+
+    .content-instructor-role {
+      font-size: 0.85rem;
+      color: var(--gray-400);
+    }
+
+    /* Loading / Error states */
+    .content-loading {
+      text-align: center;
+      padding: 120px 48px;
+      color: var(--gray-400);
+    }
+
+    .content-loading .spinner {
+      width: 36px;
+      height: 36px;
+      border: 3px solid rgba(168, 85, 247, 0.2);
+      border-top-color: var(--purple);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 16px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .content-error {
+      text-align: center;
+      padding: 120px 48px;
+    }
+
+    .content-error h2 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+    }
+
+    .content-error p {
+      color: var(--gray-400);
+      margin-bottom: 24px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .content-detail {
+        padding: 28px 20px 60px;
+      }
+
+      .content-hero-thumb {
+        height: 160px;
+        font-size: 3rem;
+      }
+
+      .content-info-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .content-info-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar">
+    <a href="/" class="sidebar-logo">
+      <div class="sidebar-logo-icon">F</div>
+      FACT Training
+    </a>
+    <div class="sidebar-brand">by <a href="https://agilityops.com.au">Agility Ops</a></div>
+
+    <div class="sidebar-search">
+      <span>🔍</span> Search
+      <kbd>⌘K</kbd>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="/" class="nav-link" data-section="home"><span class="nav-icon">🏠</span> Home</a>
+      <a href="/#workshops" class="nav-link" data-section="workshops"><span class="nav-icon">📅</span> Workshops</a>
+      <a href="/#guides" class="nav-link" data-section="guides"><span class="nav-icon">📖</span> Guides</a>
+      <a href="/#courses" class="nav-link" data-section="courses"><span class="nav-icon">🎓</span> Courses</a>
+      <a href="/#advisory" class="nav-link" data-section="advisory"><span class="nav-icon">🧠</span> Advisory</a>
+      <a href="/#waitlist" class="nav-link" data-section="waitlist"><span class="nav-icon">✨</span> Waitlist</a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <a href="https://agilityops.com.au/pages/privacy.html" target="_blank" rel="noopener">🔒 Privacy</a>
+      <a href="https://agilityops.com.au/pages/contact.html" target="_blank" rel="noopener">💬 Contact</a>
+      <a href="/#waitlist" class="sidebar-login">Register Your Interest</a>
+    </div>
+  </aside>
+
+  <!-- Mobile hamburger menu -->
+  <button class="hamburger-toggle" aria-label="Toggle menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="main">
+
+    <!-- Loading state (shown initially) -->
+    <div id="content-loading" class="content-loading">
+      <div class="spinner"></div>
+      <p>Loading content...</p>
+    </div>
+
+    <!-- Error state (hidden) -->
+    <div id="content-error" class="content-error" style="display: none;">
+      <h2>Content not found</h2>
+      <p>The page you're looking for doesn't exist or has been moved.</p>
+      <a href="/" class="btn btn-purple">Back to Home</a>
+    </div>
+
+    <!-- Content detail (hidden until loaded) -->
+    <div id="content-detail" class="content-detail" style="display: none;">
+
+      <a href="/" class="content-back">← Back to FACT Training</a>
+
+      <!-- Hero thumbnail -->
+      <div id="detail-thumb" class="content-hero-thumb">
+        <span id="detail-emoji">📋</span>
+        <div id="detail-status-tag" class="workshop-tag tag-coming-soon">COMING SOON</div>
+        <div id="detail-date" class="workshop-date" style="display: none;"></div>
+      </div>
+
+      <!-- Meta row -->
+      <div class="content-meta-row">
+        <span id="detail-type-badge" class="content-type-badge">Workshop</span>
+        <span id="detail-level" class="workshop-level level-beginner">Beginner</span>
+      </div>
+
+      <!-- Title & subtitle -->
+      <h1 id="detail-title"></h1>
+      <p id="detail-subtitle" class="content-subtitle" style="display: none;"></p>
+
+      <!-- Instructor card -->
+      <div id="detail-instructor" class="content-instructor-card" style="display: none;">
+        <div id="instructor-avatar" class="content-instructor-avatar">G</div>
+        <div>
+          <div id="instructor-name" class="content-instructor-name">Greg</div>
+          <div id="instructor-role" class="content-instructor-role">Instructor</div>
+        </div>
+      </div>
+
+      <!-- Info grid -->
+      <div id="detail-info-grid" class="content-info-grid"></div>
+
+      <!-- Description -->
+      <div id="detail-description" class="content-description"></div>
+
+      <!-- Long description -->
+      <div id="detail-long-description" class="content-description" style="display: none;"></div>
+
+      <!-- Tags -->
+      <div id="detail-tags" class="content-tags"></div>
+
+      <!-- Actions -->
+      <div class="content-actions">
+        <a href="/#waitlist" class="btn btn-purple">Register Your Interest</a>
+        <a href="/" class="btn btn-outline-light">Explore More</a>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer-mini">
+      <span>&copy; 2026 Agility Ops Business Pty Ltd (ABN 47 635 411 209). All rights reserved.</span>
+      <div>
+        <a href="https://agilityops.com.au" target="_blank" rel="noopener">Agility Ops</a>
+        <a href="https://agilityops.com.au/pages/privacy.html" target="_blank" rel="noopener">Privacy</a>
+        <a href="https://agilityops.com.au/pages/terms.html" target="_blank" rel="noopener">Terms</a>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="/js/main.js"></script>
+  <script>
+    // ============================================
+    // Content Detail Page — Dynamic Loader
+    // ============================================
+
+    const CMS_API = 'https://api.agilityops.com.au/api/cms';
+    const SITE_SLUG = 'fact';
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    function getThumbGradient(level) {
+      switch ((level || '').toLowerCase()) {
+        case 'intermediate': return 'linear-gradient(135deg, rgba(37,99,235,0.2), rgba(6,182,212,0.3))';
+        case 'advanced': return 'linear-gradient(135deg, rgba(16,185,129,0.2), rgba(6,182,212,0.2))';
+        default: return 'linear-gradient(135deg, rgba(168,85,247,0.2), rgba(124,58,237,0.3))';
+      }
+    }
+
+    function getLevelClass(level) {
+      switch ((level || '').toLowerCase()) {
+        case 'beginner': return 'level-beginner';
+        case 'intermediate': return 'level-intermediate';
+        case 'advanced': return 'level-advanced';
+        default: return 'level-beginner';
+      }
+    }
+
+    async function loadContent() {
+      // Extract slug from URL path: /content/my-slug → "my-slug"
+      const pathParts = window.location.pathname.split('/').filter(Boolean);
+      // pathParts = ["content", "my-slug"]
+      const slug = pathParts.length > 1 ? pathParts[pathParts.length - 1] : null;
+
+      if (!slug) {
+        showError();
+        return;
+      }
+
+      try {
+        // Fetch all content for this site
+        const response = await fetch(`${CMS_API}?type=content&site=${SITE_SLUG}`);
+        if (!response.ok) throw new Error(`API error: ${response.status}`);
+        const json = await response.json();
+        const items = json.data || [];
+
+        // Find item by slug
+        const item = items.find(i => i.slug === slug);
+
+        if (!item) {
+          showError();
+          return;
+        }
+
+        renderDetail(item);
+
+        // Resolve instructor
+        if (item.instructorIds && item.instructorIds.length > 0) {
+          await resolveInstructor(item.instructorIds[0]);
+        }
+
+      } catch (error) {
+        console.error('Failed to load content:', error);
+        showError();
+      }
+    }
+
+    function renderDetail(item) {
+      // Update page title
+      document.title = `${item.title} — FACT Training`;
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc && item.description) {
+        metaDesc.setAttribute('content', item.description.replace(/<[^>]*>/g, '').substring(0, 160));
+      }
+
+      // Thumbnail
+      const thumb = document.getElementById('detail-thumb');
+      thumb.style.background = getThumbGradient(item.level);
+
+      const emoji = document.getElementById('detail-emoji');
+      emoji.textContent = item.emoji || '📋';
+
+      // Status tag
+      const statusTag = document.getElementById('detail-status-tag');
+      statusTag.textContent = item.status || 'COMING SOON';
+      if (item.status === 'Live' || item.status === 'Upcoming') {
+        statusTag.className = 'workshop-tag tag-upcoming';
+      }
+
+      // Date
+      if (item.date) {
+        const dateEl = document.getElementById('detail-date');
+        dateEl.textContent = new Date(item.date).toLocaleDateString('en-AU', {
+          weekday: 'short', day: 'numeric', month: 'short', year: 'numeric'
+        });
+        dateEl.style.display = 'block';
+      }
+
+      // Type badge
+      const typeBadge = document.getElementById('detail-type-badge');
+      typeBadge.textContent = item.type || 'Content';
+
+      // Level
+      const levelEl = document.getElementById('detail-level');
+      levelEl.textContent = item.level || 'Beginner';
+      levelEl.className = `workshop-level ${getLevelClass(item.level)}`;
+
+      // Title
+      document.getElementById('detail-title').textContent = item.title;
+
+      // Subtitle
+      if (item.subtitle) {
+        const subtitleEl = document.getElementById('detail-subtitle');
+        subtitleEl.textContent = item.subtitle;
+        subtitleEl.style.display = 'block';
+      }
+
+      // Info grid
+      const infoGrid = document.getElementById('detail-info-grid');
+      const infoPairs = [];
+
+      if (item.type) infoPairs.push({ label: 'Type', value: item.type });
+      if (item.level) infoPairs.push({ label: 'Level', value: item.level });
+      if (item.duration) infoPairs.push({ label: 'Duration', value: item.duration });
+      if (item.modules) infoPairs.push({ label: 'Modules', value: item.modules });
+      if (item.date) {
+        infoPairs.push({
+          label: 'Date',
+          value: new Date(item.date).toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' })
+        });
+      }
+
+      if (infoPairs.length > 0) {
+        infoGrid.innerHTML = infoPairs.map(p => `
+          <div class="content-info-card">
+            <div class="info-label">${escapeHtml(p.label)}</div>
+            <div class="info-value">${escapeHtml(String(p.value))}</div>
+          </div>
+        `).join('');
+      }
+
+      // Description
+      if (item.description) {
+        document.getElementById('detail-description').innerHTML = item.description;
+      }
+
+      // Long description
+      if (item.longDescription) {
+        const longDescEl = document.getElementById('detail-long-description');
+        longDescEl.innerHTML = item.longDescription;
+        longDescEl.style.display = 'block';
+      }
+
+      // Tags
+      if (item.tags && item.tags.length > 0) {
+        document.getElementById('detail-tags').innerHTML = item.tags
+          .map(t => `<span class="content-tag">${escapeHtml(t)}</span>`)
+          .join('');
+      }
+
+      // Show instructor placeholder
+      if (item.instructorIds && item.instructorIds.length > 0) {
+        document.getElementById('detail-instructor').style.display = 'flex';
+      }
+
+      // Show detail, hide loading
+      document.getElementById('content-loading').style.display = 'none';
+      document.getElementById('content-detail').style.display = 'block';
+    }
+
+    async function resolveInstructor(instructorId) {
+      try {
+        const response = await fetch(`${CMS_API}?type=instructors`);
+        if (!response.ok) return;
+        const json = await response.json();
+        const instructors = json.data || [];
+        const instructor = instructors.find(i => i.id === instructorId);
+
+        if (instructor) {
+          document.getElementById('instructor-avatar').textContent = instructor.initials || instructor.name?.charAt(0) || '?';
+          document.getElementById('instructor-name').textContent = instructor.name || 'Instructor';
+          document.getElementById('instructor-role').textContent = instructor.role || 'Instructor';
+        }
+      } catch (e) {
+        console.warn('Could not resolve instructor:', e);
+      }
+    }
+
+    function showError() {
+      document.getElementById('content-loading').style.display = 'none';
+      document.getElementById('content-error').style.display = 'block';
+    }
+
+    // Initialize
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', loadContent);
+    } else {
+      loadContent();
+    }
+  </script>
+</body>
+</html>

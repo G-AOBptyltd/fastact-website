@@ -1,20 +1,32 @@
 [build]
   publish = "."
-  functions = "netlify/functions"
 
-[functions]
-  node_bundler = "esbuild"
+# --- Content & Product landing page routes ---
+# /content/some-slug → content.html (JS reads slug from URL)
+[[redirects]]
+  from = "/content/*"
+  to = "/pages/content.html"
+  status = 200
 
-# Redirect /api/cms to the serverless function for cleaner URLs
+# /product/some-slug → product.html (JS reads slug from URL)
+[[redirects]]
+  from = "/product/*"
+  to = "/pages/product.html"
+  status = 200
+
+# --- Legacy /api/cms proxy → Central API ---
+# Keeps backward compat if anything still calls /api/cms locally
 [[redirects]]
   from = "/api/cms"
-  to = "/.netlify/functions/notion-cms"
+  to = "https://api.agilityops.com.au/api/cms"
   status = 200
+  force = true
 
 [[redirects]]
   from = "/api/cms/*"
-  to = "/.netlify/functions/notion-cms"
+  to = "https://api.agilityops.com.au/api/cms/:splat"
   status = 200
+  force = true
 
 # Headers for security
 [[headers]]

@@ -1,31 +1,41 @@
 // ============================================
-// FACT Website — Notion CMS Client
-// Fetches content from Notion via Netlify Function
+// FACT Website — Notion CMS Client (v2)
+// Fetches content from AOB Central API
 // ============================================
 
-const CMS_API = '/api/cms';
+const CMS_API = 'https://api.agilityops.com.au/api/cms';
+const SITE_SLUG = 'fact';
 
 // Cache to avoid repeated fetches during a session
 const cmsCache = {};
 
 /**
- * Fetch content from Notion CMS
- * @param {string} type - workshops | guides | courses | instructors | sites
- * @returns {Promise<Array>} Array of content items
+ * Fetch content from Central CMS API
+ * @param {string} type - content | pricing | products | instructors | sites
+ * @returns {Promise<Array>} Array of items
  */
 async function fetchCMS(type) {
   if (cmsCache[type]) return cmsCache[type];
 
   try {
-    const response = await fetch(`${CMS_API}?type=${type}`);
+    const url = `${CMS_API}?type=${type}&site=${SITE_SLUG}`;
+    const response = await fetch(url);
     if (!response.ok) throw new Error(`CMS fetch failed: ${response.status}`);
-    const data = await response.json();
-    cmsCache[type] = data.results || [];
+    const json = await response.json();
+    cmsCache[type] = json.data || [];
     return cmsCache[type];
   } catch (error) {
     console.warn(`CMS fetch failed for ${type}, using static fallback:`, error);
     return null; // null signals "use static content"
   }
+}
+
+/**
+ * Filter content items by Type select property
+ */
+function filterByType(items, typeName) {
+  if (!items) return null;
+  return items.filter(item => item.type === typeName);
 }
 
 /**
@@ -37,20 +47,23 @@ function renderWorkshops(workshops) {
 
   row.innerHTML = workshops.map(w => `
     <div class="workshop-card">
-      <div class="workshop-thumb" style="${getThumbGradient(w.Level)}">
-        ${w._icon || w.Emoji || '📅'}
-        <div class="workshop-tag tag-coming-soon">${w.Status || 'COMING SOON'}</div>
-        <div class="workshop-date">${w.Date || 'Dates TBA'}</div>
+      <div class="workshop-thumb" style="${getThumbGradient(w.level)}">
+        ${w.emoji || '📅'}
+        <div class="workshop-tag tag-coming-soon">${w.status || 'COMING SOON'}</div>
+        <div class="workshop-date">${w.date || 'Dates TBA'}</div>
       </div>
       <div class="workshop-body">
-        <div class="workshop-title">${escapeHtml(w['Workshop Title'])}</div>
-        <div class="workshop-instructor" data-instructor-id="${(w.Instructor || [])[0] || ''}">
+        <div class="workshop-title">${escapeHtml(w.title)}</div>
+        <div class="workshop-instructor" data-instructor-id="${(w.instructorIds || [])[0] || ''}">
           <div class="instructor-avatar">G</div>
           Taught by Greg
         </div>
-        <div class="workshop-level ${getLevelClass(w.Level)}">${w.Level || 'Beginner'}</div>
+        <div class="workshop-level ${getLevelClass(w.level)}">${w.level || 'Beginner'}</div>
         <div class="workshop-actions">
-          <a href="#waitlist" class="btn btn-purple btn-sm">Register Interest</a>
+          ${w.slug
+            ? `<a href="/content/${w.slug}" class="btn btn-purple btn-sm">View Details</a>`
+            : `<a href="#waitlist" class="btn btn-purple btn-sm">Register Interest</a>`
+          }
         </div>
       </div>
     </div>
@@ -66,16 +79,16 @@ function renderGuides(guides) {
 
   row.innerHTML = guides.map(g => `
     <div class="guide-card">
-      <div class="guide-thumb" style="${getThumbGradient(g.Level)}">
-        ${g._icon || g.Emoji || '📖'}
+      <div class="guide-thumb" style="${getThumbGradient(g.level)}">
+        ${g.emoji || '📖'}
       </div>
       <div class="guide-body">
-        <div class="guide-title">${escapeHtml(g['Guide Title'])}</div>
-        <div class="workshop-instructor" data-instructor-id="${(g.Author || [])[0] || ''}">
+        <div class="guide-title">${escapeHtml(g.title)}</div>
+        <div class="workshop-instructor" data-instructor-id="${(g.instructorIds || [])[0] || ''}">
           <div class="instructor-avatar">G</div>
           By Greg
         </div>
-        <div class="workshop-level ${getLevelClass(g.Level)}">${g.Level || 'Beginner'}</div>
+        <div class="workshop-level ${getLevelClass(g.level)}">${g.level || 'Beginner'}</div>
       </div>
     </div>
   `).join('');
@@ -91,15 +104,15 @@ function renderCourses(courses) {
   row.innerHTML = courses.map(c => `
     <div class="course-card">
       <div class="course-thumb">
-        <div class="course-thumb-bg ${getCourseThemeClass(c.Label)}">
-          <div class="course-thumb-label">${escapeHtml(c.Label || '')}</div>
-          <div class="course-thumb-title">${escapeHtml(c.Subtitle || c['Course Title'])}</div>
+        <div class="course-thumb-bg ${getCourseThemeClass(c.label)}">
+          <div class="course-thumb-label">${escapeHtml(c.label || '')}</div>
+          <div class="course-thumb-title">${escapeHtml(c.subtitle || c.title)}</div>
         </div>
       </div>
       <div class="course-body">
-        <div class="course-title">${escapeHtml(c['Course Title'])}</div>
-        <div class="course-meta-row">${c.Modules || '?'} modules &bull; ${c.Duration || 'TBA'}</div>
-        <div class="workshop-instructor" data-instructor-id="${(c.Instructor || [])[0] || ''}">
+        <div class="course-title">${escapeHtml(c.title)}</div>
+        <div class="course-meta-row">${c.modules || '?'} modules &bull; ${c.duration || 'TBA'}</div>
+        <div class="workshop-instructor" data-instructor-id="${(c.instructorIds || [])[0] || ''}">
           <div class="instructor-avatar">G</div>
           Taught by Greg
         </div>
@@ -119,9 +132,9 @@ async function resolveInstructors() {
   const instructorMap = {};
   instructors.forEach(i => {
     instructorMap[i.id] = {
-      name: i.Name,
-      initials: i.Initials || i.Name?.charAt(0) || '?',
-      role: i.Role,
+      name: i.name,
+      initials: i.initials || i.name?.charAt(0) || '?',
+      role: i.role,
     };
   });
 
@@ -185,17 +198,20 @@ function getCourseThemeClass(label) {
  */
 async function initNotionCMS() {
   try {
-    // Fetch all content types in parallel
-    const [workshops, guides, courses] = await Promise.all([
-      fetchCMS('workshops'),
-      fetchCMS('guides'),
-      fetchCMS('courses'),
-    ]);
+    // Fetch all published content for this site in one call
+    const allContent = await fetchCMS('content');
 
-    // Only render if CMS returned data (null = use static fallback)
-    if (workshops) renderWorkshops(workshops);
-    if (guides) renderGuides(guides);
-    if (courses) renderCourses(courses);
+    if (allContent) {
+      // Split unified content by Type
+      const workshops = filterByType(allContent, 'Workshop');
+      const guides = filterByType(allContent, 'Guide');
+      const courses = filterByType(allContent, 'Course');
+
+      // Only render if CMS returned data for that type
+      if (workshops && workshops.length > 0) renderWorkshops(workshops);
+      if (guides && guides.length > 0) renderGuides(guides);
+      if (courses && courses.length > 0) renderCourses(courses);
+    }
 
     // Resolve instructor names from CMS
     await resolveInstructors();
@@ -205,9 +221,9 @@ async function initNotionCMS() {
       initCardRowArrows();
     }
 
-    console.log('Notion CMS content loaded successfully');
+    console.log('CMS content loaded from central API');
   } catch (error) {
-    console.warn('Notion CMS unavailable, using static content:', error);
+    console.warn('Central CMS unavailable, using static content:', error);
     // Static HTML content remains — no action needed
   }
 }
