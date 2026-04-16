@@ -130,7 +130,7 @@ fastact-website/
 | 2026-04-15 | Central API integration — notion-cms.js v2, netlify.toml updated, API proxy | main |
 | 2026-04-15 | Content detail page (pages/content.html) — dynamic SPA-style landing pages | main |
 | 2026-04-15 | Product detail page (pages/product.html) — dynamic product landing pages | main |
-| 2026-04-16 | Product page fix — removed brand filter so all active products match by slug | pending |
+| 2026-04-16 | Product page — restored brand filter (each site shows only its own products). Template is reusable across all sites. | pending |
 
 ## Key Learnings
 
@@ -144,7 +144,7 @@ fastact-website/
 - Domain architecture document (v3) tracks all AOB brand domains, hosting, and email config
 - **CORS:** Sites database Domain field MUST include `https://` prefix (e.g., `https://fastact.com.au` not `fastact.com.au`). Browser `Origin` header includes the protocol.
 - **API cache:** Central API has 5-minute in-memory cache. After Notion data changes, wait up to 5 minutes for API to reflect updates.
-- **Product pages are brand-agnostic:** product.html fetches ALL active products (no brand filter) and matches by slug. This allows any product to have a landing page on any site.
+- **Product pages are brand-scoped:** product.html fetches products filtered by `brand={SITE_SLUG}` so each site only shows its own products. The template is reusable across all sites — just change `SITE_SLUG`.
 - **Content pages are site-specific:** content.html fetches content filtered by `site=fact` so only FACT-branded content appears.
 - **Cowork + Git:** Cowork sandbox cannot remove `.git/index.lock` files. If git operations fail in Cowork, do them from the Mac terminal instead.
 
