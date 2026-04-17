@@ -3,7 +3,7 @@
 // Fetches content from AOB Central API
 // ============================================
 
-const CMS_API = 'https://api.agilityops.com.au/api/cms';
+const CMS_API = '/api/cms';
 const SITE_SLUG = 'fact';
 
 // Cache to avoid repeated fetches during a session
