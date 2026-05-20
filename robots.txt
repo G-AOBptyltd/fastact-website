@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Exclude dynamic CMS-rendered pages
+Disallow: /pages/product.html
+Disallow: /pages/content.html
+
+Sitemap: https://fastact.com.au/sitemap.xml
