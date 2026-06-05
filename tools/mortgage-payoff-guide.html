@@ -223,6 +223,17 @@ input[type=range]{width:100%;accent-color:var(--blue);margin-top:6px}
 .plinks{display:flex;flex-wrap:wrap;gap:8px;position:relative;z-index:2}
 .plink{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.8);padding:7px 14px;border-radius:var(--radius-full);font-size:.78rem;font-weight:600;text-decoration:none;transition:all .25s var(--ease)}
 .plink:hover{background:var(--blue);border-color:var(--blue);color:#fff}
+.pcard{position:relative;z-index:2;background:rgba(255,255,255,.04);border:1px solid rgba(96,165,250,.25);border-radius:var(--radius);padding:20px 22px;margin-bottom:18px}
+.pcard-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-glow);background:rgba(37,99,235,.15);border:1px solid rgba(37,99,235,.25);padding:4px 10px;border-radius:var(--radius-full);margin-bottom:10px}
+.pcard-name{font-family:var(--fd);font-size:1rem;font-weight:700;color:#fff;margin-bottom:6px}
+.pcard-tag{font-size:.8rem;color:rgba(255,255,255,.6);line-height:1.6;margin-bottom:14px}
+.pcard-svc{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.psvc{font-size:.72rem;font-weight:600;color:rgba(255,255,255,.85);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);padding:5px 11px;border-radius:var(--radius-full)}
+.pcard-meta{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.78rem;color:rgba(255,255,255,.6);margin-bottom:16px}
+.pcard-meta a{color:var(--blue-glow);text-decoration:none}
+.pcard-meta a:hover{text-decoration:underline}
+.pcard-cta{display:inline-block;background:var(--blue);color:#fff;font-size:.8rem;font-weight:700;text-decoration:none;padding:9px 18px;border-radius:var(--radius-full);transition:all .25s var(--ease)}
+.pcard-cta:hover{background:var(--blue-bright);transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,99,235,.3)}
 
 /* ── FOOTER ── */
 .site-footer{background:var(--navy);color:rgba(255,255,255,.5);padding:40px;margin-top:0;font-size:.78rem;line-height:1.7}
@@ -625,6 +636,24 @@ hr{border:none;border-top:1px solid var(--gray-200);margin:16px 0}
 <div class="pp-orb"></div>
 <h3>Ready to Go Beyond the Concepts?</h3>
 <p>These professionals can help you apply what you've learnt to your actual situation — with advice tailored to your circumstances, goals and risk tolerance.</p>
+<div class="pcard">
+<div class="pcard-badge">Local partner · Northern Beaches</div>
+<div class="pcard-name">23 Beaches Financial Solutions</div>
+<div class="pcard-tag">A Northern Beaches advisory firm covering mortgage broking, financial planning, accounting and taxation under one roof. Directed by Chris Malicki (CFP — financial adviser &amp; mortgage broker) and Ben Westcott (CPA — accountant).</div>
+<div class="pcard-svc">
+<span class="psvc">🏦 Mortgage Broking</span>
+<span class="psvc">📊 Financial Planning</span>
+<span class="psvc">🧾 Accounting &amp; Taxation</span>
+<span class="psvc">🛡️ General Insurance</span>
+</div>
+<div class="pcard-meta">
+<span>📍 2/1000 Pittwater Road, Collaroy NSW 2097</span>
+<span>📞 <a href="tel:+61299821329">02 9982 1329</a></span>
+<span>✉️ <a href="mailto:enquiries@23beaches.com.au">enquiries@23beaches.com.au</a></span>
+<span>🕘 Mon–Fri 9:00–17:00</span>
+</div>
+<a class="pcard-cta" href="https://23beachesmortgages.com.au" target="_blank" rel="noopener noreferrer">Visit 23 Beaches Mortgages ↗</a>
+</div>
 <div class="plinks">
 <a class="plink" href="https://www.mfaa.com.au/find-a-broker" target="_blank" rel="noopener">🏦 MFAA Mortgage Broker ↗</a>
 <a class="plink" href="https://www.fbaa.com.au" target="_blank" rel="noopener">🏦 FBAA Mortgage Broker ↗</a>
