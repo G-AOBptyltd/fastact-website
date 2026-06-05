@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Tools &amp; Games — FACT by Agility Ops</title>
+  <meta name="description" content="The FACT Tools &amp; Games library — playable mini-tools, calculators, and games we build along the way. Learn by doing. Australian-made by Agility Ops.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://fastact.com.au/tools-games">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://fastact.com.au/tools-games">
+  <meta property="og:title" content="Tools &amp; Games — FACT by Agility Ops">
+  <meta property="og:description" content="A growing library of playable tools and games from the FACT team.">
+  <meta property="og:image" content="https://fastact.com.au/img/og-image.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+
+  <style>
+    :root{
+      --tg-purple:#a855f7; --tg-deep:#7c3aed;
+      --tg-bg:#0b0713; --tg-card:#15101f; --tg-card-h:#1d1630;
+      --tg-line:rgba(168,85,247,.18); --tg-text:#ece8f5; --tg-mut:#a99fc4;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:radial-gradient(1200px 600px at 70% -10%,rgba(124,58,237,.25),transparent 60%),var(--tg-bg);color:var(--tg-text);font-family:'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    .tg-wrap{max-width:1120px;margin:0 auto;padding:22px 22px 80px}
+
+    /* top bar */
+    .tg-top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 0 26px}
+    .tg-brand{display:flex;align-items:center;gap:11px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.05rem}
+    .tg-logo{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--tg-purple),var(--tg-deep));display:flex;align-items:center;justify-content:center;font-size:1rem;color:#fff;font-weight:800}
+    .tg-toplinks{display:flex;gap:20px;font-size:.9rem;color:var(--tg-mut)}
+    .tg-toplinks a:hover{color:#fff}
+
+    /* hero */
+    .tg-hero{text-align:center;padding:34px 10px 30px}
+    .tg-eyebrow{display:inline-block;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--tg-purple);font-weight:700;border:1px solid var(--tg-line);border-radius:999px;padding:6px 14px;margin-bottom:18px}
+    .tg-hero h1{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:clamp(2.2rem,6vw,3.6rem);line-height:1.04;margin:0 0 14px;background:linear-gradient(120deg,#fff 20%,#d8b4fe 60%,#a855f7);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .tg-hero p{max-width:620px;margin:0 auto;color:var(--tg-mut);font-size:1.05rem;line-height:1.6}
+
+    /* filters */
+    .tg-filters{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:30px 0 26px}
+    .tg-chip{cursor:pointer;border:1px solid var(--tg-line);background:transparent;color:var(--tg-mut);font:600 .86rem 'Inter',sans-serif;padding:9px 18px;border-radius:999px;transition:.15s}
+    .tg-chip:hover{color:#fff;border-color:var(--tg-purple)}
+    .tg-chip.on{background:linear-gradient(135deg,var(--tg-purple),var(--tg-deep));color:#fff;border-color:transparent}
+
+    /* grid */
+    .tg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+    .tg-card{display:flex;flex-direction:column;background:var(--tg-card);border:1px solid var(--tg-line);border-radius:18px;overflow:hidden;transition:transform .18s,border-color .18s,box-shadow .18s}
+    .tg-card:hover{transform:translateY(-4px);border-color:var(--tg-purple);box-shadow:0 18px 40px rgba(124,58,237,.22)}
+    .tg-thumb{height:140px;display:flex;align-items:center;justify-content:center;font-size:3.4rem;background:linear-gradient(135deg,rgba(168,85,247,.18),rgba(124,58,237,.30));position:relative}
+    .tg-badge{position:absolute;top:12px;left:12px;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:#fff;background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.2);padding:4px 9px;border-radius:999px}
+    .tg-body{padding:16px 17px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+    .tg-body h3{margin:0;font-family:'Plus Jakarta Sans',sans-serif;font-size:1.08rem;font-weight:700;color:#fff}
+    .tg-body p{margin:0;color:var(--tg-mut);font-size:.88rem;line-height:1.5;flex:1}
+    .tg-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+    .tg-tag{font-size:.68rem;color:var(--tg-purple);border:1px solid var(--tg-line);border-radius:999px;padding:3px 9px}
+    .tg-play{margin-top:12px;display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:.86rem;color:#fff;background:linear-gradient(135deg,var(--tg-purple),var(--tg-deep));padding:10px 14px;border-radius:10px;justify-content:center;transition:.15s}
+    .tg-card:hover .tg-play{filter:brightness(1.1)}
+
+    .tg-empty{grid-column:1/-1;text-align:center;color:var(--tg-mut);padding:50px 20px;border:1px dashed var(--tg-line);border-radius:16px}
+    .tg-foot{text-align:center;color:var(--tg-mut);font-size:.82rem;margin-top:46px;padding-top:26px;border-top:1px solid var(--tg-line)}
+    .tg-foot a{color:var(--tg-purple)}
+    @media(max-width:560px){.tg-toplinks{display:none}}
+  </style>
+</head>
+<body>
+  <div class="tg-wrap">
+    <div class="tg-top">
+      <a class="tg-brand" href="https://fastact.com.au"><span class="tg-logo">F</span> FACT</a>
+      <nav class="tg-toplinks">
+        <a href="https://fastact.com.au">Home</a>
+        <a href="https://fastact.com.au/#workshops">Workshops</a>
+        <a href="https://fastact.com.au/#courses">Courses</a>
+        <a href="https://agilityops.com.au" target="_blank" rel="noopener">Agility Ops</a>
+      </nav>
+    </div>
+
+    <header class="tg-hero">
+      <span class="tg-eyebrow">Play. Tinker. Learn.</span>
+      <h1>Tools &amp; Games</h1>
+      <p>A growing playground of mini-tools, calculators and games we build along the way. Quick brain breaks, handy utilities, and a bit of fun — new pieces drop in as we make them.</p>
+    </header>
+
+    <div class="tg-filters" id="tgFilters">
+      <button class="tg-chip on" data-filter="all">Everything</button>
+      <button class="tg-chip" data-filter="Game">🎮 Games</button>
+      <button class="tg-chip" data-filter="Tool">🛠 Tools</button>
+    </div>
+
+    <div class="tg-grid" id="tgGrid" aria-live="polite"></div>
+
+    <div class="tg-foot">
+      More tools &amp; games are on the way. Built by the <a href="https://fastact.com.au">FACT</a> team · &copy; 2026 Agility Ops Business Pty Ltd (ABN 47 635 411 209).
+    </div>
+  </div>
+
+  <script>
+    // Built-in fallback catalog — used if the CMS is empty/unreachable.
+    // To add via CMS: add a Content row (Type=Game|Tool, Slug, Description, Tags, Emoji), relate to FACT site, Published.
+    const FALLBACK = [
+      { title:'Pac-Man',              type:'Game', slug:'pacman',                emoji:'🟡', description:'The classic maze chase — a 60-second brain break.', tags:['Arcade'] },
+      { title:'Slot Machine',         type:'Game', slug:'slot-machine',          emoji:'🎰', description:'Spin the reels. Configurable symbols and payouts.', tags:['Arcade'] },
+      { title:'Invaders',             type:'Game', slug:'invaders',              emoji:'👾', description:'Defend the line against the descending swarm.', tags:['Arcade'] },
+      { title:'Token Kong',           type:'Game', slug:'token-kong',            emoji:'🦍', description:'The 2026 Alignment Climb — dodge the barrels, reach the top.', tags:['Arcade'] },
+      { title:'TrailView',            type:'Game', slug:'trail-map',             emoji:'🥾', description:'A topographic hiking-map explorer you can roam.', tags:['Map','Explorer'] },
+      { title:'Mortgage Payoff Guide',type:'Tool', slug:'mortgage-payoff-guide', emoji:'🏠', description:'Model extra repayments and see the interest you save.', tags:['Calculator'] }
+    ];
+
+    const FOLDER = { Game:'games', Tool:'tools' };
+    function hrefFor(item){ return '/' + (FOLDER[item.type] || 'games') + '/' + item.slug + '.html'; }
+
+    function cardHTML(it){
+      const tags = (it.tags||[]).map(t=>'<span class="tg-tag">'+t+'</span>').join('');
+      return '<a class="tg-card" href="'+hrefFor(it)+'">'+
+        '<div class="tg-thumb"><span class="tg-badge">'+(it.type||'Game')+'</span>'+(it.emoji||'🎮')+'</div>'+
+        '<div class="tg-body"><h3>'+(it.title||'Untitled')+'</h3>'+
+        '<p>'+(it.description||'')+'</p>'+
+        '<div class="tg-tags">'+tags+'</div>'+
+        '<span class="tg-play">Play / Open →</span></div></a>';
+    }
+
+    let CATALOG = [];
+    function render(filter){
+      const grid = document.getElementById('tgGrid');
+      const items = CATALOG.filter(i => filter==='all' || i.type===filter);
+      grid.innerHTML = items.length ? items.map(cardHTML).join('')
+        : '<div class="tg-empty">Nothing here yet — check back soon.</div>';
+    }
+
+    async function load(){
+      let cms = null;
+      try {
+        const r = await fetch('/api/cms?type=content&site=fact');
+        if (r.ok){ const j = await r.json(); cms = (j.data||[]).filter(x => x.type==='Game' || x.type==='Tool'); }
+      } catch(e){ /* ignore -> fallback */ }
+      CATALOG = (cms && cms.length) ? cms.map(x => ({
+        title:x.title, type:x.type, slug:x.slug, emoji:x.emoji || (x.type==='Tool'?'🛠':'🎮'),
+        description:x.description || x.subtitle || '', tags:x.tags || []
+      })) : FALLBACK;
+      render('all');
+    }
+
+    document.getElementById('tgFilters').addEventListener('click', e => {
+      const b = e.target.closest('.tg-chip'); if(!b) return;
+      document.querySelectorAll('.tg-chip').forEach(c=>c.classList.toggle('on', c===b));
+      render(b.dataset.filter);
+    });
+
+    load();
+  </script>
+</body>
+</html>
