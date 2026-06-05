@@ -65,8 +65,22 @@
     .tg-card:hover .tg-play{filter:brightness(1.1)}
 
     .tg-empty{grid-column:1/-1;text-align:center;color:var(--tg-mut);padding:50px 20px;border:1px dashed var(--tg-line);border-radius:16px}
-    .tg-foot{text-align:center;color:var(--tg-mut);font-size:.82rem;margin-top:46px;padding-top:26px;border-top:1px solid var(--tg-line)}
-    .tg-foot a{color:var(--tg-purple)}
+
+    /* full footer (AOB-style) */
+    .tg-bigfoot{margin-top:64px;border-top:1px solid var(--tg-line);padding-top:44px}
+    .tg-fgrid{display:grid;grid-template-columns:2fr 1fr 1.3fr 1fr;gap:30px}
+    .tg-fbrand .tg-brand{margin-bottom:14px}
+    .tg-fbrand p{color:var(--tg-mut);font-size:.86rem;line-height:1.6;max-width:300px;margin:0}
+    .tg-bigfoot h4{font-family:'Plus Jakarta Sans',sans-serif;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;color:#fff;margin:0 0 14px}
+    .tg-flinks{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:9px}
+    .tg-flinks a{color:var(--tg-mut);font-size:.88rem}
+    .tg-flinks a:hover{color:#fff}
+    .tg-fbot{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:38px;padding-top:22px;border-top:1px solid var(--tg-line);color:var(--tg-mut);font-size:.8rem;flex-wrap:wrap}
+    .tg-fsoc{display:flex;gap:10px}
+    .tg-fsoc a{width:32px;height:32px;border-radius:8px;border:1px solid var(--tg-line);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;color:var(--tg-mut)}
+    .tg-fsoc a:hover{color:#fff;border-color:var(--tg-purple)}
+    @media(max-width:760px){.tg-fgrid{grid-template-columns:1fr 1fr}}
+    @media(max-width:460px){.tg-fgrid{grid-template-columns:1fr}}
     @media(max-width:560px){.tg-toplinks{display:none}}
   </style>
 </head>
@@ -96,9 +110,48 @@
 
     <div class="tg-grid" id="tgGrid" aria-live="polite"></div>
 
-    <div class="tg-foot">
-      More tools &amp; games are on the way. Built by the <a href="https://fastact.com.au">FACT</a> team · &copy; 2026 Agility Ops Business Pty Ltd (ABN 47 635 411 209).
-    </div>
+    <footer class="tg-bigfoot">
+      <div class="tg-fgrid">
+        <div class="tg-fbrand">
+          <a class="tg-brand" href="https://fastact.com.au"><span class="tg-logo">F</span> FACT</a>
+          <p>Applied AI training, coaching, facilitation and AI advisory. Practitioner-led and Australian owned — part of the Agility Ops family.</p>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul class="tg-flinks">
+            <li><a href="https://agilityops.com.au/pages/about.html" target="_blank" rel="noopener">About Us</a></li>
+            <li><a href="https://agilityops.com.au/pages/team.html" target="_blank" rel="noopener">Our Team</a></li>
+            <li><a href="https://agilityops.com.au/pages/blog.html" target="_blank" rel="noopener">Blog</a></li>
+            <li><a href="https://agilityops.com.au/pages/contact.html" target="_blank" rel="noopener">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>InSite Suite</h4>
+          <ul class="tg-flinks">
+            <li><a href="https://sprintinsite.com" target="_blank" rel="noopener">SprintINSite</a></li>
+            <li><a href="https://sprintinsite.com/tools/flowinsite" target="_blank" rel="noopener">FlowInSite</a></li>
+            <li><a href="https://portfolioinsite.com.au" target="_blank" rel="noopener">PortfolioInSite</a></li>
+            <li><a href="https://portfolioinsite.com.au/tools/forecastinsite" target="_blank" rel="noopener">ForecastInSite</a></li>
+            <li><a href="https://portfolioinsite.com.au/tools/planinsite" target="_blank" rel="noopener">PlanInSite</a></li>
+            <li><a href="https://fastact.com.au" target="_blank" rel="noopener">FACT Training</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul class="tg-flinks">
+            <li><a href="https://agilityops.com.au/pages/privacy.html" target="_blank" rel="noopener">Privacy Policy</a></li>
+            <li><a href="https://agilityops.com.au/pages/terms.html" target="_blank" rel="noopener">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="tg-fbot">
+        <span>&copy; 2026 Agility Ops Business Pty Ltd (ABN 47 635 411 209). All rights reserved.</span>
+        <div class="tg-fsoc">
+          <a href="https://www.linkedin.com/company/agility-ops-business" aria-label="LinkedIn" target="_blank" rel="noopener">in</a>
+          <a href="https://github.com/G-AOBptyltd" aria-label="GitHub" target="_blank" rel="noopener">GH</a>
+        </div>
+      </div>
+    </footer>
   </div>
 
   <script>
