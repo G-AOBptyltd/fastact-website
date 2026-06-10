@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow">
+    <title>Career Relevance Compass</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Primary">
+        <div class="brand">
+          <span class="brand-mark">AI</span>
+          <span>
+            <strong>Career Relevance</strong>
+            <small>Compass</small>
+          </span>
+        </div>
+        <nav class="nav-list">
+          <button class="nav-item active" data-view="dashboard" type="button" aria-label="Dashboard">
+            <span class="icon">⌂</span><span>Dashboard</span>
+          </button>
+          <button class="nav-item" data-view="score" type="button" aria-label="My score">
+            <span class="icon">◉</span><span>My Score</span>
+          </button>
+          <button class="nav-item" data-view="roadmap" type="button" aria-label="Roadmap">
+            <span class="icon">↗</span><span>Roadmap</span>
+          </button>
+          <button class="nav-item" data-view="missions" type="button" aria-label="Missions">
+            <span class="icon">✓</span><span>Missions</span>
+          </button>
+          <button class="nav-item" data-view="coach" type="button" aria-label="AI coach">
+            <span class="icon">✦</span><span>AI Coach</span>
+          </button>
+        </nav>
+        <div class="sidebar-card">
+          <span class="status-dot"></span>
+          <p>Next coach checkpoint</p>
+          <strong>Roadmap review</strong>
+          <small>Friday, 2:00 PM</small>
+        </div>
+      </aside>
+
+      <main>
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Career relevance operating system</p>
+            <h1>Know your value. Shape your future.</h1>
+          </div>
+          <div class="profile-pill">
+            <span>GC</span>
+            <div>
+              <strong>Greg Collocott</strong>
+              <small>Leadership & AI readiness</small>
+            </div>
+          </div>
+        </header>
+
+        <section class="view active" id="dashboard">
+          <div class="hero-panel">
+            <div class="hero-copy">
+              <p class="eyebrow">Today’s focus</p>
+              <h2>Turn career risk into a practical action plan.</h2>
+              <p>
+                Your score is strong, but AI fluency and reputation capital need deliberate work this quarter.
+              </p>
+              <div class="action-row">
+                <button class="primary-button" type="button" data-view-link="missions">Start weekly missions</button>
+                <button class="secondary-button" type="button" data-view-link="coach">Prepare coach debrief</button>
+              </div>
+            </div>
+            <div class="signal-map" aria-hidden="true">
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+
+          <div class="metric-grid">
+            <article class="metric-card">
+              <p>Career Relevance Index</p>
+              <div class="score-ring" style="--score: 82"><span>82</span></div>
+              <strong>Future ready</strong>
+              <small>Well positioned, with focused growth needed.</small>
+            </article>
+            <article class="metric-card">
+              <p>2030 Relevance Score</p>
+              <div class="score-ring teal" style="--score: 79"><span>79</span></div>
+              <strong>Strong</strong>
+              <small>On track if AI fluency improves.</small>
+            </article>
+            <article class="risk-card">
+              <p>AI Automation Risk</p>
+              <strong>Moderate</strong>
+              <small>Some tasks are exposed. Redesign work around judgement, influence, and AI leverage.</small>
+              <div class="sparkline">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+            </article>
+          </div>
+
+          <div class="content-grid">
+            <section class="panel">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Framework</p>
+                  <h3>Eight relevance dimensions</h3>
+                </div>
+                <button class="text-button" type="button" data-view-link="score">Review score</button>
+              </div>
+              <div class="dimension-list" id="dimensionList"></div>
+            </section>
+
+            <section class="panel coach-panel">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Coach loop</p>
+                  <h3>When the app brings you back</h3>
+                </div>
+              </div>
+              <ul class="coach-triggers">
+                <li><strong>Score debrief</strong><span>After first CRI assessment</span></li>
+                <li><strong>Risk spike</strong><span>Automation or market exposure rises</span></li>
+                <li><strong>Roadmap choice</strong><span>When priorities need judgement</span></li>
+                <li><strong>Low momentum</strong><span>After missed missions or inactivity</span></li>
+              </ul>
+            </section>
+          </div>
+        </section>
+
+        <section class="view" id="score">
+          <div class="page-title">
+            <p class="eyebrow">Assessment</p>
+            <h2>My Career Relevance Score</h2>
+          </div>
+          <div class="assessment-layout">
+            <section class="panel">
+              <h3>Self-serve assessment</h3>
+              <p class="muted">Adjust the sliders to model how the score engine could work. Coach review is triggered when any dimension falls below 60.</p>
+              <div class="slider-stack" id="sliderStack"></div>
+            </section>
+            <aside class="panel result-panel">
+              <p class="eyebrow">Live score</p>
+              <div class="large-score" id="liveScore">82</div>
+              <strong id="scoreLabel">Future ready</strong>
+              <p id="scoreAdvice">Book a coach review to validate the roadmap and choose your next two capability bets.</p>
+              <button class="primary-button wide" type="button" data-view-link="coach">Create coach briefing</button>
+            </aside>
+          </div>
+        </section>
+
+        <section class="view" id="roadmap">
+          <div class="page-title">
+            <p class="eyebrow">2026-2030</p>
+            <h2>Personal Roadmap</h2>
+          </div>
+          <div class="timeline">
+            <article><span>2026</span><strong>Build AI fluency</strong><p>Automate routine work, learn prompting, audit role exposure.</p></article>
+            <article><span>2027</span><strong>Deepen expertise</strong><p>Move from user to translator in your domain.</p></article>
+            <article><span>2028</span><strong>Expand influence</strong><p>Publish insights, mentor others, grow reputation capital.</p></article>
+            <article><span>2029</span><strong>Lead and innovate</strong><p>Shape workflows, teams, and AI-enabled decisions.</p></article>
+            <article><span>2030</span><strong>Be indispensable</strong><p>Combine strategic judgement, trust, and AI leverage.</p></article>
+          </div>
+        </section>
+
+        <section class="view" id="missions">
+          <div class="page-title">
+            <p class="eyebrow">Self-serve action</p>
+            <h2>This Week’s Missions</h2>
+          </div>
+          <div class="mission-grid" id="missionGrid"></div>
+        </section>
+
+        <section class="view" id="coach">
+          <div class="page-title">
+            <p class="eyebrow">Hybrid support</p>
+            <h2>AI Coach and Human Coach Handoff</h2>
+          </div>
+          <div class="coach-layout">
+            <section class="chat-panel">
+              <div class="chat-message ai">
+                <strong>AI Coach</strong>
+                <p>Your CRI is strong. The best conversation with your coach is not “what does this mean?” It is “which two moves matter most now?”</p>
+              </div>
+              <div class="chat-message user">
+                <strong>You</strong>
+                <p>Help me prepare for the roadmap review.</p>
+              </div>
+              <div class="chat-message ai">
+                <strong>AI Coach</strong>
+                <p>Bring three items: your exposed tasks, the skill you want to build first, and the role position you want by 2030.</p>
+              </div>
+              <div class="chat-input">
+                <input aria-label="Message AI coach" placeholder="Ask about your roadmap, risk, skills, or next mission..." />
+                <button type="button">Send</button>
+              </div>
+            </section>
+            <aside class="panel">
+              <h3>Coach briefing</h3>
+              <ul class="brief-list">
+                <li><strong>Primary risk</strong><span>AI fluency below target for 2030 role direction.</span></li>
+                <li><strong>Decision needed</strong><span>Prioritise expert positioning or leadership influence.</span></li>
+                <li><strong>Suggested session</strong><span>45-minute roadmap validation.</span></li>
+                <li><strong>Self-serve prep</strong><span>Complete AI task audit and LinkedIn positioning mission.</span></li>
+              </ul>
+              <button class="primary-button wide" type="button">Book coach session</button>
+            </aside>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
