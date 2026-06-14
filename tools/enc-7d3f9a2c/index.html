@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Encore — Survey Experience (Design Mockup)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14233b; --navy:#1e3a5f; --blue:#2563eb; --teal:#0d8a7d; --teal-d:#0b6f64;
+    --thr:#0d8a7d; --str:#c47d12; --suf:#b23a55;
+    --bg:#eef2f7; --bg2:#f6f9fc; --card:#ffffff;
+    --text:#1f2a37; --muted:#697a8d; --line:#e3e9f0; --line2:#eef2f7;
+    --shadow:0 12px 34px -16px rgba(20,35,59,.28);
+    --shadow-sm:0 6px 18px -10px rgba(20,35,59,.25);
+    --serif:'Fraunces',Georgia,'Times New Roman',serif;
+    --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    --r:18px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.55;-webkit-font-smoothing:antialiased}
+  .serif{font-family:var(--serif)}
+  /* ---------- top bar ---------- */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .bar{max-width:1080px;margin:0 auto;padding:12px 22px;display:flex;align-items:center;gap:16px}
+  .logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:700;font-size:22px;color:var(--ink);letter-spacing:.2px}
+  .logo svg{display:block}
+  .logo small{display:block;font-family:var(--sans);font-size:10.5px;font-weight:600;letter-spacing:2.5px;color:var(--teal);text-transform:uppercase;margin-top:1px}
+  .badge{margin-left:6px;font-size:10.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#fff;background:linear-gradient(90deg,var(--blue),var(--teal));padding:5px 10px;border-radius:999px}
+  .spacer{flex:1}
+  .btn-notes{border:1px solid var(--line);background:#fff;color:var(--navy);font-family:var(--sans);font-weight:600;font-size:13px;padding:8px 14px;border-radius:999px;cursor:pointer;transition:.18s}
+  .btn-notes:hover{border-color:var(--blue);color:var(--blue)}
+  /* ---------- screen nav ---------- */
+  nav.steps{max-width:1080px;margin:0 auto;padding:0 22px 12px;display:flex;gap:8px;overflow-x:auto}
+  nav.steps button{flex:0 0 auto;border:1px solid var(--line);background:#fff;color:var(--muted);font-family:var(--sans);font-size:12.5px;font-weight:600;padding:7px 14px;border-radius:999px;cursor:pointer;white-space:nowrap;transition:.18s;display:flex;align-items:center;gap:7px}
+  nav.steps button .dot{width:7px;height:7px;border-radius:50%;background:var(--line);transition:.18s}
+  nav.steps button:hover{color:var(--navy);border-color:#cdd8e4}
+  nav.steps button.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+  nav.steps button.active .dot{background:var(--teal)}
+  /* ---------- layout ---------- */
+  main{max-width:1080px;margin:0 auto;padding:30px 22px 70px}
+  .screen{display:none;animation:rise .4s ease}
+  .screen.on{display:block}
+  @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .wrap{max-width:780px;margin:0 auto}
+  /* ---------- demo banner ---------- */
+  .demo-note{max-width:1080px;margin:14px auto 0;padding:0 22px}
+  .demo-note .inner{background:#fff7ed;border:1px solid #f3d8a8;color:#8a5a12;border-radius:12px;padding:11px 16px;font-size:13px;display:flex;gap:10px;align-items:center}
+  .demo-note b{color:#7a4d0c}
+  /* ---------- hero / welcome ---------- */
+  .hero{background:linear-gradient(135deg,#16293f 0%,#1e3a5f 55%,#235c8a 120%);border-radius:26px;color:#fff;padding:54px 46px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+  .hero:after{content:"";position:absolute;right:-80px;top:-80px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(13,138,125,.45),transparent 65%)}
+  .hero .eyebrow{font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#9fd6cd;margin-bottom:16px}
+  .hero h1{font-family:var(--serif);font-size:42px;font-weight:600;line-height:1.1;margin-bottom:14px;max-width:15ch}
+  .hero p{color:#d6e2f0;font-size:16.5px;max-width:48ch;margin-bottom:10px}
+  .hero .invite{margin-top:26px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:18px 20px;max-width:430px;backdrop-filter:blur(4px)}
+  .hero .invite label{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#9fd6cd;font-weight:700}
+  .hero .invite .email{font-size:16px;font-weight:600;margin:5px 0 14px;color:#fff}
+  .cta{display:inline-flex;align-items:center;gap:9px;background:var(--teal);color:#fff;border:none;font-family:var(--sans);font-weight:600;font-size:15px;padding:13px 24px;border-radius:12px;cursor:pointer;transition:.18s;box-shadow:0 10px 22px -10px rgba(13,138,125,.8)}
+  .cta:hover{background:var(--teal-d);transform:translateY(-1px)}
+  .cta.ghost{background:transparent;border:1px solid rgba(255,255,255,.4);box-shadow:none;color:#fff}
+  .cta.ghost:hover{background:rgba(255,255,255,.1)}
+  .hero small.fine{display:block;margin-top:14px;color:#92a6bf;font-size:12.5px}
+  .trio{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+  .trio .t{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 16px}
+  .trio .t .n{font-family:var(--serif);font-weight:600;color:var(--navy);font-size:15px;margin-bottom:3px}
+  .trio .t .d{font-size:12.5px;color:var(--muted)}
+  /* ---------- dashboard ---------- */
+  .greet{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:18px;margin-bottom:26px}
+  .greet h2{font-family:var(--serif);font-size:30px;font-weight:600;color:var(--ink)}
+  .greet p{color:var(--muted);margin-top:4px}
+  .ring{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px 18px;box-shadow:var(--shadow-sm)}
+  .ring .pct{font-family:var(--serif);font-size:24px;font-weight:700;color:var(--teal)}
+  .ring .lbl{font-size:12px;color:var(--muted);line-height:1.3}
+  .cards{display:grid;grid-template-columns:1fr;gap:16px}
+  .icard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px 24px;box-shadow:var(--shadow-sm);display:flex;gap:20px;align-items:center;transition:.2s;cursor:pointer}
+  .icard:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:#cfdae7}
+  .icard .num{flex:0 0 56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;font-size:24px;color:#fff}
+  .icard .meta{flex:1}
+  .icard .meta .step{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+  .icard .meta h3{font-family:var(--serif);font-size:21px;font-weight:600;color:var(--ink);margin:2px 0 4px}
+  .icard .meta p{font-size:14px;color:var(--muted)}
+  .icard .meta .tags{margin-top:9px;display:flex;gap:8px;flex-wrap:wrap}
+  .tag{font-size:11.5px;font-weight:600;color:var(--navy);background:var(--bg2);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+  .status{flex:0 0 auto;text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+  .pill{font-size:11.5px;font-weight:700;padding:5px 11px;border-radius:999px}
+  .pill.todo{background:#eef2f7;color:#64748b}
+  .pill.prog{background:#e7f2ff;color:#1e6fd0}
+  .pill.done{background:#e3f5f1;color:#0b6f64}
+  .go{border:none;background:var(--navy);color:#fff;font-family:var(--sans);font-weight:600;font-size:13.5px;padding:9px 18px;border-radius:10px;cursor:pointer;transition:.18s}
+  .go:hover{background:var(--ink)}
+  .dash-foot{margin-top:22px;background:#fff;border:1px dashed #cdd8e4;border-radius:14px;padding:16px 20px;font-size:13.5px;color:var(--muted)}
+  .dash-foot b{color:var(--navy)}
+  /* ---------- survey shell ---------- */
+  .sheet{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+  .sheet .top{padding:22px 30px 0}
+  .crumbs{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  .crumbs .which{font-size:12px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--teal)}
+  .crumbs .count{font-size:13px;color:var(--muted);font-weight:600}
+  .prog{height:7px;background:var(--line2);border-radius:999px;margin:14px 0 4px;overflow:hidden}
+  .prog span{display:block;height:100%;background:linear-gradient(90deg,var(--teal),#2bb3a3);border-radius:999px;transition:width .4s ease}
+  .sheet .body{padding:14px 30px 8px}
+  .sheet h2.q{font-family:var(--serif);font-size:25px;font-weight:600;color:var(--ink);margin:18px 0 6px;line-height:1.2}
+  .sheet .lead{color:var(--muted);font-size:14.5px;margin-bottom:8px}
+  .check{background:linear-gradient(180deg,#f3f9f8,#eef6f5);border:1px solid #cfe7e2;border-left:4px solid var(--teal);border-radius:12px;padding:13px 16px;margin:14px 0 20px;font-size:13.5px;color:#0b5a52}
+  .check b{color:var(--teal-d)}
+  /* statements + likert */
+  .stmt{padding:20px 0;border-top:1px solid var(--line2)}
+  .stmt:first-child{border-top:none}
+  .stmt .text{font-size:16px;font-weight:500;color:var(--text);margin-bottom:14px}
+  .likert{display:flex;gap:10px;align-items:center}
+  .likert .opt{flex:1;text-align:center}
+  .likert .opt input{position:absolute;opacity:0;pointer-events:none}
+  .likert .opt label{display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;user-select:none}
+  .likert .opt .bub{width:46px;height:46px;border-radius:50%;border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;color:var(--muted);transition:.16s;background:#fff}
+  .likert .opt label:hover .bub{border-color:var(--teal);color:var(--teal)}
+  .likert .opt input:checked + label .bub{background:var(--teal);border-color:var(--teal);color:#fff;transform:scale(1.06);box-shadow:0 8px 16px -8px rgba(13,138,125,.7)}
+  .anchors{display:flex;justify-content:space-between;margin-top:10px;font-size:12px;color:var(--muted);font-weight:600}
+  /* wellbeing */
+  .wb-el{border-top:1px solid var(--line2);padding:22px 0}
+  .wb-el:first-child{border-top:none}
+  .wb-el .h{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .wb-el .h .ix{width:30px;height:30px;border-radius:9px;background:var(--navy);color:#fff;font-family:var(--serif);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:15px}
+  .wb-el .h h3{font-family:var(--serif);font-size:19px;font-weight:600;color:var(--ink)}
+  .wb-opts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .wb-opt{position:relative;border:1.5px solid var(--line);border-radius:14px;padding:14px 14px 14px;cursor:pointer;transition:.16s;background:#fff}
+  .wb-opt:hover{border-color:#c7d3e0;transform:translateY(-2px)}
+  .wb-opt .cap{display:flex;align-items:center;gap:8px;font-weight:700;font-size:13.5px;margin-bottom:7px}
+  .wb-opt .cap .sw{width:11px;height:11px;border-radius:50%}
+  .wb-opt p{font-size:12.5px;color:var(--muted);line-height:1.45}
+  .wb-opt input{position:absolute;opacity:0}
+  .wb-opt.thr .cap{color:var(--thr)} .wb-opt.thr .sw{background:var(--thr)}
+  .wb-opt.str .cap{color:var(--str)} .wb-opt.str .sw{background:var(--str)}
+  .wb-opt.suf .cap{color:var(--suf)} .wb-opt.suf .sw{background:var(--suf)}
+  .wb-opt.sel{box-shadow:0 0 0 2px currentColor inset}
+  .wb-opt.thr.sel{border-color:var(--thr);background:#f1faf8}
+  .wb-opt.str.sel{border-color:var(--str);background:#fdf7ec}
+  .wb-opt.suf.sel{border-color:var(--suf);background:#fcf1f4}
+  .wb-opt .tick{position:absolute;top:10px;right:10px;width:18px;height:18px;border-radius:50%;display:none;align-items:center;justify-content:center;color:#fff;font-size:11px}
+  .wb-opt.sel .tick{display:flex}
+  .wb-opt.thr.sel .tick{background:var(--thr)} .wb-opt.str.sel .tick{background:var(--str)} .wb-opt.suf.sel .tick{background:var(--suf)}
+  /* deep dive */
+  .dd-q{border-top:1px solid var(--line2);padding:20px 0}
+  .dd-q:first-child{border-top:none}
+  .dd-q .qh{display:flex;gap:11px;margin-bottom:9px}
+  .dd-q .qh .qn{flex:0 0 26px;height:26px;border-radius:8px;background:var(--bg2);border:1px solid var(--line);color:var(--navy);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
+  .dd-q .qh .qt{font-size:15.5px;font-weight:500;color:var(--text);padding-top:2px}
+  .dd-q textarea{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font-family:var(--sans);font-size:14.5px;color:var(--text);resize:vertical;min-height:62px;transition:.16s;background:var(--bg2)}
+  .dd-q textarea:focus{outline:none;border-color:var(--teal);background:#fff;box-shadow:0 0 0 3px rgba(13,138,125,.12)}
+  .dd-q .row{display:flex;justify-content:space-between;align-items:center;margin-top:6px}
+  .dd-q .hint{font-size:12px;color:var(--muted)}
+  .dd-q .cnt{font-size:12px;font-weight:600;color:var(--muted)}
+  .dd-q .cnt.warn{color:var(--str)} .dd-q .cnt.full{color:var(--suf)}
+  /* footer nav */
+  .sheet .foot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 30px 24px;border-top:1px solid var(--line2);margin-top:8px;background:var(--bg2)}
+  .nav-btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-weight:600;font-size:14.5px;padding:12px 22px;border-radius:11px;cursor:pointer;transition:.18s;border:1px solid transparent}
+  .nav-btn.prev{background:#fff;border-color:var(--line);color:var(--navy)}
+  .nav-btn.prev:hover{border-color:#c7d3e0}
+  .nav-btn.next{background:var(--navy);color:#fff;border:none}
+  .nav-btn.next:hover{background:var(--ink)}
+  .nav-btn.next.fin{background:var(--teal)}
+  .nav-btn.next.fin:hover{background:var(--teal-d)}
+  .save{font-size:13px;color:var(--muted);text-decoration:none;font-weight:600}
+  .save:hover{color:var(--navy)}
+  /* complete */
+  .done-card{background:#fff;border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow);padding:50px 44px;text-align:center}
+  .done-card .seal{width:78px;height:78px;border-radius:50%;background:linear-gradient(135deg,var(--teal),#2bb3a3);display:flex;align-items:center;justify-content:center;margin:0 auto 22px;box-shadow:0 14px 28px -12px rgba(13,138,125,.8)}
+  .done-card h2{font-family:var(--serif);font-size:32px;font-weight:600;color:var(--ink);margin-bottom:10px}
+  .done-card p{color:var(--muted);max-width:46ch;margin:0 auto 8px;font-size:15.5px}
+  .recap{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:30px auto 8px;max-width:560px}
+  .recap .r{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:16px 12px}
+  .recap .r .ic{width:34px;height:34px;border-radius:50%;background:#e3f5f1;color:var(--teal-d);display:flex;align-items:center;justify-content:center;margin:0 auto 8px}
+  .recap .r .nm{font-weight:600;font-size:13.5px;color:var(--ink)}
+  .recap .r .st{font-size:11.5px;color:var(--teal-d);font-weight:600;margin-top:2px}
+  .done-card .next-note{margin-top:26px;background:#f3f9f8;border:1px solid #cfe7e2;border-radius:14px;padding:16px 18px;font-size:14px;color:#0b5a52;max-width:560px;margin-left:auto;margin-right:auto}
+  /* design notes drawer */
+  .drawer-bg{position:fixed;inset:0;background:rgba(20,35,59,.45);z-index:90;display:none;opacity:0;transition:.25s}
+  .drawer-bg.on{display:block;opacity:1}
+  .drawer{position:fixed;top:0;right:0;height:100%;width:430px;max-width:92vw;background:#fff;z-index:91;box-shadow:-20px 0 50px -20px rgba(20,35,59,.4);transform:translateX(100%);transition:.32s cubic-bezier(.4,0,.2,1);overflow-y:auto}
+  .drawer.on{transform:none}
+  .drawer .dh{padding:24px 26px 16px;border-bottom:1px solid var(--line);position:sticky;top:0;background:#fff}
+  .drawer .dh h3{font-family:var(--serif);font-size:21px;color:var(--ink);font-weight:600}
+  .drawer .dh p{font-size:13px;color:var(--muted);margin-top:4px}
+  .drawer .dc{padding:20px 26px 50px}
+  .drawer .dn{border-left:3px solid var(--teal);padding:4px 0 4px 14px;margin-bottom:20px}
+  .drawer .dn h4{font-size:14px;color:var(--navy);font-weight:700;margin-bottom:3px}
+  .drawer .dn p{font-size:13px;color:var(--muted);line-height:1.5}
+  .drawer .close{position:absolute;top:22px;right:22px;border:none;background:var(--bg2);width:32px;height:32px;border-radius:50%;cursor:pointer;color:var(--muted);font-size:18px}
+  .drawer .close:hover{background:var(--line)}
+  footer.fine{text-align:center;color:var(--muted);font-size:12.5px;padding:0 22px 50px;max-width:1080px;margin:0 auto}
+  footer.fine b{color:var(--navy)}
+  @media(max-width:720px){
+    .hero{padding:38px 26px}.hero h1{font-size:32px}
+    .trio,.recap{grid-template-columns:1fr}
+    .wb-opts{grid-template-columns:1fr}
+    .icard{flex-wrap:wrap}.status{width:100%;flex-direction:row;justify-content:space-between;align-items:center}
+    .sheet .top,.sheet .body,.sheet .foot{padding-left:18px;padding-right:18px}
+    .likert .opt .bub{width:40px;height:40px;font-size:15px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <div class="logo">
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M3 19 C8 6, 18 6, 23 19" stroke="#0d8a7d" stroke-width="2.6" stroke-linecap="round"/><circle cx="23" cy="19" r="2.6" fill="#1e3a5f"/></svg>
+      <div>Encore<small>Optimising Your Future</small></div>
+    </div>
+    <span class="badge">Design Mockup</span>
+    <div class="spacer"></div>
+    <button class="btn-notes" onclick="openDrawer()">Design notes</button>
+  </div>
+  <nav class="steps" id="stepNav"></nav>
+</header>
+
+<div class="demo-note"><div class="inner">
+  <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#b9802f" stroke-width="2"/><path d="M12 7v6M12 16.5v.5" stroke="#b9802f" stroke-width="2" stroke-linecap="round"/></svg>
+  <span><b>This is a non-functional design mockup</b> for review. Nothing is saved or sent — click around freely using the tabs above.</span>
+</div></div>
+
+<main>
+
+  <!-- WELCOME -->
+  <section class="screen on" id="s-welcome">
+    <div class="hero">
+      <div class="eyebrow">Your invitation · Baxter Warne</div>
+      <h1 class="serif">Welcome to Encore</h1>
+      <p>A guided, confidential space to translate your service into your next chapter — built around your strengths, your values and your wellbeing.</p>
+      <p>Encore is invitation-only. Your responses are private to you and your Next Chapter Mentor.</p>
+      <div class="invite">
+        <label>Signing in as</label>
+        <div class="email">alex.morgan@protonmail.com</div>
+        <button class="cta" onclick="go('dashboard')">Continue with secure link
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <small class="fine">No password to remember — we email you a single-use sign-in link.</small>
+      </div>
+    </div>
+    <div class="trio">
+      <div class="t"><div class="n">Private by design</div><div class="d">Encrypted, in-region, and seen only by your mentor.</div></div>
+      <div class="t"><div class="n">At your pace</div><div class="d">Save and return any time. Around 30–40 minutes in total.</div></div>
+      <div class="t"><div class="n">Three short steps</div><div class="d">Wellbeing, strengths, and a guided reflection.</div></div>
+    </div>
+  </section>
+
+  <!-- DASHBOARD -->
+  <section class="screen" id="s-dashboard">
+    <div class="greet">
+      <div>
+        <h2 class="serif">Good afternoon, Alex</h2>
+        <p>Three steps to prepare for your first mentoring session. We suggest completing them in order.</p>
+      </div>
+      <div class="ring"><div class="pct">0%</div><div class="lbl">Overall<br>progress</div></div>
+    </div>
+    <div class="cards" id="dashCards"></div>
+    <div class="dash-foot">
+      <b>What happens next.</b> When you finish, your Next Chapter Mentor uses your responses to prepare your Career &amp; Life Statements and your Unique Value Proposition — the basis of Session&nbsp;4.
+    </div>
+  </section>
+
+  <!-- WELLBEING -->
+  <section class="screen" id="s-wellbeing">
+    <div class="wrap"><div class="sheet">
+      <div class="top">
+        <div class="crumbs"><span class="which">Step 1 · Wellbeing Profile</span><span class="count">5 elements</span></div>
+        <div class="prog"><span style="width:20%"></span></div>
+      </div>
+      <div class="body">
+        <h2 class="q serif">Where do you sit right now?</h2>
+        <p class="lead">For each area of life, choose the description that feels closest to today. There are no wrong answers — this simply helps your mentor understand the whole picture.</p>
+        <div id="wbList"></div>
+      </div>
+      <div class="foot">
+        <button class="nav-btn prev" onclick="go('dashboard')">← Back</button>
+        <a class="save" onclick="go('dashboard')">Save &amp; exit</a>
+        <button class="nav-btn next" onclick="go('realme')">Continue to Strengths →</button>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- REAL ME -->
+  <section class="screen" id="s-realme">
+    <div class="wrap"><div class="sheet">
+      <div class="top">
+        <div class="crumbs"><span class="which">Step 2 · The Real Me</span><span class="count" id="rmCount"></span></div>
+        <div class="prog"><span id="rmBar"></span></div>
+      </div>
+      <div class="body" id="rmBody"></div>
+      <div class="foot">
+        <button class="nav-btn prev" id="rmPrev" onclick="rmBack()">← Back</button>
+        <a class="save" onclick="go('dashboard')">Save &amp; exit</a>
+        <button class="nav-btn next" id="rmNext" onclick="rmFwd()">Next →</button>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- DEEP DIVE -->
+  <section class="screen" id="s-deepdive">
+    <div class="wrap"><div class="sheet">
+      <div class="top">
+        <div class="crumbs"><span class="which">Step 3 · Deep Dive</span><span class="count" id="ddCount"></span></div>
+        <div class="prog"><span id="ddBar"></span></div>
+      </div>
+      <div class="body" id="ddBody"></div>
+      <div class="foot">
+        <button class="nav-btn prev" id="ddPrev" onclick="ddBack()">← Back</button>
+        <a class="save" onclick="go('dashboard')">Save &amp; exit</a>
+        <button class="nav-btn next" id="ddNext" onclick="ddFwd()">Next →</button>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- COMPLETE -->
+  <section class="screen" id="s-done">
+    <div class="wrap"><div class="done-card">
+      <div class="seal"><svg width="38" height="38" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-11" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <h2 class="serif">That's everything, Alex</h2>
+      <p>Thank you for taking the time to reflect. Many people find it helpful to set their answers aside and review them before their session.</p>
+      <div class="recap">
+        <div class="r"><div class="ic">✓</div><div class="nm">Wellbeing Profile</div><div class="st">Complete</div></div>
+        <div class="r"><div class="ic">✓</div><div class="nm">The Real Me</div><div class="st">Complete</div></div>
+        <div class="r"><div class="ic">✓</div><div class="nm">Deep Dive</div><div class="st">Complete</div></div>
+      </div>
+      <div class="next-note">Your Next Chapter Mentor will now prepare your <b>Career &amp; Life Statements</b> and your <b>Unique Value Proposition</b>, ready for Session&nbsp;4.</div>
+      <div style="margin-top:26px"><button class="cta" style="background:var(--navy);box-shadow:none" onclick="go('dashboard')">Back to your journey</button></div>
+    </div></div>
+  </section>
+
+</main>
+
+<footer class="fine">
+  <b>Encore — design mockup.</b> Prepared by Agility Ops Business Pty Ltd for Baxter Warne. Layout, content and flow are for review only and not a functioning system. Survey patterns shown: progressive single-section disclosure, 5-point Likert scales, in-context guidance, progress indication and character-limited reflection fields.
+</footer>
+
+<!-- DESIGN NOTES DRAWER -->
+<div class="drawer-bg" id="drawerBg" onclick="closeDrawer()"></div>
+<aside class="drawer" id="drawer">
+  <button class="close" onclick="closeDrawer()">×</button>
+  <div class="dh">
+    <h3 class="serif">Design notes</h3>
+    <p>Why the experience is built this way — for your review, Ian.</p>
+  </div>
+  <div class="dc">
+    <div class="dn"><h4>Progressive disclosure</h4><p>One section at a time with a clear progress bar (Typeform / Qualtrics pattern). Lowers cognitive load and lifts completion — important for a reflective, emotionally weighty task.</p></div>
+    <div class="dn"><h4>5-point Likert scale</h4><p>The Real Me uses a balanced 1–5 scale with labelled end-anchors, the industry standard for self-report enjoyment and agreement.</p></div>
+    <div class="dn"><h4>Guidance in context</h4><p>Each strengths block opens with its "enjoyment check" so the guidance is read at the moment of answering, not buried in instructions.</p></div>
+    <div class="dn"><h4>Continuum capture</h4><p>The Wellbeing Profile keeps your Thriving / Struggling / Suffering model, shown as three clear, colour-coded choices per life area.</p></div>
+    <div class="dn"><h4>Constrained reflection</h4><p>Deep Dive answers use a 200-character limit with a live counter and "principle-level" microcopy — keeping responses sharp and usable for the UVP.</p></div>
+    <div class="dn"><h4>Sequence &amp; save</h4><p>Wellbeing → Real Me → Deep Dive, mirroring the methodology, with "save &amp; return" on every screen.</p></div>
+    <div class="dn"><h4>Tone &amp; trust</h4><p>Calm, premium, reassuring — privacy stated up front, invitation-only framing, and a warm completion that hands over to the Next Chapter Mentor.</p></div>
+  </div>
+</aside>
+
+<script>
+/* ---------------- data ---------------- */
+const RM=[
+ {n:"Nature",c:"A 5 means you actively choose nature even when it is hot, cold, wet, uncomfortable or inconvenient. If you enjoy nature mainly when conditions are pleasant, 3–4 may be more accurate.",q:["I feel energised when I spend time outdoors or notice details in the natural world.","I enjoy challenges that involve adapting to the elements or the environment.","I feel renewed when I connect to something bigger than myself in nature."]},
+ {n:"Teaching",c:"A 5 means you enjoy the process of teaching even when progress is slow or people are resistant. If you enjoy it mainly when others respond well, consider 3–4.",q:["I naturally step in to explain or clarify when someone is unsure.","I feel satisfied when I see someone grow in confidence because of my input.","I like sharing knowledge and helping others understand something new."]},
+ {n:"Technology",c:"A 5 means you enjoy learning new systems and solving problems even when it is frustrating. If you mainly enjoy technology when it is familiar, a 3 may be more accurate.",q:["I get curious about how things work and enjoy experimenting with tools or systems.","I like improving processes or mechanisms to make them more effective.","I feel a sense of accomplishment when I find a clever technical solution."]},
+ {n:"Creativity",c:"A 5 means you enjoy the full creative process — including uncertainty, revision and feedback. If you enjoy ideas more than execution, 3–4 may fit better.",q:["I am good at coming up with original ideas and imagining possibilities.","I like rethinking how things could be done differently or better.","I frequently create something new that didn't exist before."]},
+ {n:"Order",c:"A 5 means you enjoy creating and maintaining order, not just benefiting from it. If structure mainly reduces stress rather than energising you, consider 3.",q:["I gain energy from organising things into a clear, structured system.","I feel uncomfortable when things are messy, disordered or unclear.","I enjoy bringing order and neatness to tasks or projects."]},
+ {n:"Leading",c:"A 5 means you enjoy responsibility even when decisions are hard and outcomes uncertain. If you enjoy leading mainly when things go well, 3–4 may be more accurate.",q:["I feel motivated when people turn to me for guidance or direction.","I gain energy from taking responsibility in group situations.","I enjoy bringing focus and calm when others feel uncertain."]},
+ {n:"Self-Expression",c:"A 5 means you enjoy expressing yourself even when exposed or misunderstood. If you are most comfortable in safe or familiar settings, consider 3.",q:["I feel frustrated if I can't express my opinions.","I enjoy situations where my personality or unique perspective can be seen.","I feel energised when others recognise and engage with my ideas."]},
+ {n:"Beauty",c:"A 5 means beauty actively energises and draws your attention. If beauty is pleasant but not something you seek out, 2–3 may be more accurate.",q:["I notice and care about details of design, aesthetics or harmony more than most.","I enjoy environments that are thoughtfully crafted or visually appealing.","I feel uplifted when surrounded by beauty in objects, places or experiences."]},
+ {n:"Independence",c:"A 5 means you enjoy autonomy even with uncertainty and responsibility. If independence feels best when support is nearby, 3–4 may be more accurate.",q:["I enjoy setting my own direction without being closely managed.","I feel good when I have freedom to decide how to approach a task.","I find solitude or independent work refreshing."]},
+ {n:"Helping",c:"A 5 means helping others consistently gives you energy. If helping becomes draining or enjoyable only when appreciated, a 3 may fit better.",q:["I am always seeking to ease other people's burdens.","I feel motivated when I see my actions make a difference for others.","I enjoy listening and offering support when people are struggling."]},
+ {n:"Understanding",c:"A 5 means you enjoy complexity and ambiguity, not just clear answers. If you prefer resolution over exploration, 3–4 may be more accurate.",q:["I like making sense of complex issues or discovering hidden patterns.","I enjoy asking deep questions and finding clear explanations.","I feel energised when I can bring clarity to confusing situations."]},
+ {n:"Money",c:"A 5 means you enjoy engaging with money, results and trade-offs themselves. If money mainly provides security rather than enjoyment, 2–3 may be more accurate.",q:["I get satisfaction from spotting opportunities that others overlook.","I feel energised by seeing tangible results from my insights and effort.","I enjoy applying discipline and judgement to achieve financial or practical success."]}
+];
+const WB=[
+ {n:"Career",t:"Engaged at work, using your strengths, learning and growing, feel valued and financially secure.",s:"Not fully engaged, performance dropping, stress rising, under-employed or financially constrained.",f:"Actively disengaged, unsure what's expected, high stress, unsupportive or micromanaging manager."},
+ {n:"Social",t:"Strong family bonds and friendships, family doing well, feel happy and laugh a lot.",s:"Fragile family bonds, living away from family, few close relationships, some loneliness.",f:"Family breaking down, divorce or loss, lack of friends, extremely lonely."},
+ {n:"Play",t:"Balanced lifestyle, regular exercise, fun time with family, hobbies and recreation you enjoy.",s:"Limited private time, little exercise, not enough family fun, few hobbies or holidays.",f:"No private time, too stressed to exercise, rarely enjoy time with others."},
+ {n:"Health",t:"Good health, enough energy and sleep, a healthy approach to food and drink.",s:"Manageable illness or injury, compromised sleep, higher alcohol, poorer diet.",f:"Poor health, burnout and stress, always tired, health affecting your ability to work."},
+ {n:"Community",t:"Love where you live, give back, feel connected, and willingly volunteer.",s:"Hard to connect locally, unlikely to volunteer, may not always feel safe.",f:"Don't feel part of the community, feel unsafe, can't wait to move."}
+];
+const DD=[
+ {t:"Career Perspective — what work means to me",q:["What does “work” mean to you, and why do you do it?","How does your work relate to you, others and society?","What role does money play in your definition of worthwhile work?","What does growth mean to you in a work context? When do you feel “in flow”?","What defines good or worthwhile work for you?","Describe a moment when you felt most alive or absorbed in work.","What types of work give you energy, and what depletes it?","If you could realistically change how you work, what would you change and why?"]},
+ {t:"Life Perspective — what life means to me",q:["What values do you hold most dear, and why?","What do you believe is the purpose or direction of your life?","Who or what matters most to you?","When do you feel most at peace, connected or joyful?","What would you never compromise, even under pressure?","Is there a higher power, guiding principle or philosophy that shapes your life?"]}
+];
+
+/* ---------------- state ---------------- */
+const state={rm:{},wb:{},dd:{},rmIdx:0,ddIdx:0};
+const SCREENS=[["welcome","Welcome"],["dashboard","Your journey"],["wellbeing","1 · Wellbeing"],["realme","2 · The Real Me"],["deepdive","3 · Deep Dive"],["done","Complete"]];
+let current="welcome";
+
+/* ---------------- nav ---------------- */
+const navEl=document.getElementById('stepNav');
+SCREENS.forEach(([id,label])=>{
+  const b=document.createElement('button');
+  b.innerHTML='<span class="dot"></span>'+label;
+  b.dataset.id=id; b.onclick=()=>go(id);
+  navEl.appendChild(b);
+});
+function go(id){
+  current=id;
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));
+  document.getElementById('s-'+id).classList.add('on');
+  navEl.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b.dataset.id===id));
+  if(id==='realme') renderRM();
+  if(id==='deepdive') renderDD();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ---------------- dashboard ---------------- */
+const DASH=[
+ {step:"Step 1",n:"Wellbeing Profile",d:"A quick read on how you're doing across five areas of life.",tags:["5 minutes","5 elements"],col:"linear-gradient(135deg,#0d8a7d,#13a596)",id:"wellbeing",status:"todo"},
+ {step:"Step 2",n:"The Real Me",d:"Discover what genuinely energises you — your enjoyment strengths.",tags:["12 minutes","36 questions"],col:"linear-gradient(135deg,#2563eb,#4f86f2)",id:"realme",status:"todo"},
+ {step:"Step 3",n:"Deep Dive",d:"A guided reflection on what gives your work and life meaning.",tags:["15 minutes","14 prompts"],col:"linear-gradient(135deg,#1e3a5f,#2f5680)",id:"deepdive",status:"todo"}
+];
+const dc=document.getElementById('dashCards');
+DASH.forEach((c,i)=>{
+  const el=document.createElement('div'); el.className='icard'; el.onclick=()=>go(c.id);
+  el.innerHTML=`<div class="num" style="background:${c.col}">${i+1}</div>
+   <div class="meta"><div class="step">${c.step}</div><h3 class="serif">${c.n}</h3><p>${c.d}</p>
+     <div class="tags">${c.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div></div>
+   <div class="status"><span class="pill ${c.status}">${c.status==='todo'?'Not started':c.status==='prog'?'In progress':'Done'}</span>
+     <button class="go" onclick="event.stopPropagation();go('${c.id}')">${i===0?'Begin':'Open'}</button></div>`;
+  dc.appendChild(el);
+});
+
+/* ---------------- wellbeing ---------------- */
+const wbList=document.getElementById('wbList');
+WB.forEach((e,i)=>{
+  const opts=[["thr","Thriving",e.t],["str","Struggling",e.s],["suf","Suffering",e.f]];
+  const block=document.createElement('div'); block.className='wb-el';
+  block.innerHTML=`<div class="h"><div class="ix">${i+1}</div><h3 class="serif">${e.n}</h3></div>
+    <div class="wb-opts">${opts.map(([k,lab,txt])=>`
+      <div class="wb-opt ${k}" data-el="${i}" data-k="${k}" onclick="pickWB(${i},'${k}',this)">
+        <div class="tick">✓</div>
+        <div class="cap"><span class="sw"></span>${lab}</div><p>${txt}</p></div>`).join('')}</div>`;
+  wbList.appendChild(block);
+});
+function pickWB(i,k,el){
+  state.wb[i]=k;
+  el.parentNode.querySelectorAll('.wb-opt').forEach(o=>o.classList.remove('sel'));
+  el.classList.add('sel');
+}
+
+/* ---------------- real me ---------------- */
+function renderRM(){
+  const d=RM[state.rmIdx];
+  document.getElementById('rmCount').textContent=`Section ${state.rmIdx+1} of ${RM.length}`;
+  document.getElementById('rmBar').style.width=((state.rmIdx)/(RM.length-1)*100)+'%';
+  let html=`<h2 class="q serif">${d.n}</h2>
+    <p class="lead">Rate how strongly each statement reflects you.</p>
+    <div class="check"><b>Before you rate.</b> ${d.c}</div>`;
+  d.q.forEach((q,qi)=>{
+    const key=state.rmIdx+'-'+qi; const cur=state.rm[key];
+    html+=`<div class="stmt"><div class="text">${q}</div><div class="likert" role="radiogroup">`;
+    for(let v=1;v<=5;v++){
+      const id=`rm${key}-${v}`;
+      html+=`<div class="opt"><input type="radio" name="rm${key}" id="${id}" ${cur==v?'checked':''} onchange="setRM('${key}',${v})"><label for="${id}"><span class="bub">${v}</span></label></div>`;
+    }
+    html+=`</div><div class="anchors"><span>1 · Not like me</span><span>5 · Very much like me</span></div></div>`;
+  });
+  document.getElementById('rmBody').innerHTML=html;
+  document.getElementById('rmNext').classList.toggle('fin',state.rmIdx===RM.length-1);
+  document.getElementById('rmNext').textContent=state.rmIdx===RM.length-1?'Finish strengths →':'Next →';
+}
+function setRM(k,v){ state.rm[k]=v; }
+function rmFwd(){ if(state.rmIdx<RM.length-1){state.rmIdx++;renderRM();window.scrollTo({top:0,behavior:'smooth'});} else {go('deepdive');} }
+function rmBack(){ if(state.rmIdx>0){state.rmIdx--;renderRM();window.scrollTo({top:0,behavior:'smooth'});} else {go('wellbeing');} }
+
+/* ---------------- deep dive ---------------- */
+function renderDD(){
+  const sec=DD[state.ddIdx];
+  document.getElementById('ddCount').textContent=`Part ${state.ddIdx+1} of ${DD.length}`;
+  document.getElementById('ddBar').style.width=((state.ddIdx+1)/DD.length*100)+'%';
+  let html=`<h2 class="q serif">${sec.t}</h2><p class="lead">Keep answers short and principle-level — what you believe and why. Up to 200 characters each.</p>`;
+  sec.q.forEach((q,qi)=>{
+    const key=state.ddIdx+'-'+qi; const cur=state.dd[key]||'';
+    html+=`<div class="dd-q"><div class="qh"><div class="qn">${qi+1}</div><div class="qt">${q}</div></div>
+      <textarea maxlength="200" oninput="ddType('${key}',this)" placeholder="Type your reflection…">${cur}</textarea>
+      <div class="row"><span class="hint">Principle-level — not a backstory.</span><span class="cnt" id="c${key}">${cur.length}/200</span></div></div>`;
+  });
+  document.getElementById('ddBody').innerHTML=html;
+  document.getElementById('ddNext').classList.toggle('fin',state.ddIdx===DD.length-1);
+  document.getElementById('ddNext').textContent=state.ddIdx===DD.length-1?'Submit reflection →':'Next part →';
+}
+function ddType(key,el){
+  state.dd[key]=el.value;
+  const c=document.getElementById('c'+key); c.textContent=el.value.length+'/200';
+  c.className='cnt'+(el.value.length>=200?' full':el.value.length>=170?' warn':'');
+}
+function ddFwd(){ if(state.ddIdx<DD.length-1){state.ddIdx++;renderDD();window.scrollTo({top:0,behavior:'smooth'});} else {go('done');} }
+function ddBack(){ if(state.ddIdx>0){state.ddIdx--;renderDD();window.scrollTo({top:0,behavior:'smooth'});} else {go('realme');} }
+
+/* ---------------- drawer ---------------- */
+function openDrawer(){document.getElementById('drawer').classList.add('on');document.getElementById('drawerBg').classList.add('on');}
+function closeDrawer(){document.getElementById('drawer').classList.remove('on');document.getElementById('drawerBg').classList.remove('on');}
+</script>
+</body>
+</html>
