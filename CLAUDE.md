@@ -1,155 +1,110 @@
 # FACT Website — Claude Code Project Intelligence
 
+> **Shared rules apply.** See `../.claude/rules/` for brand voice, git workflow, deployment, legal compliance, and API integration rules that govern all AOB repos. See `../CLAUDE.md` for the full AOB context, repo map, and Notion IDs.
+
 ## Project Identity
 
-Standalone marketing website for FACT — the training, coaching, facilitation, and AI advisory brand of Agility Ops Business Pty Ltd. FACT replaces the legacy "Fast Agile Coaching & Training" positioning and now encompasses Applied AI training, agile coaching, team building, facilitation, keynote speaking, AI Cognitive Governance advisory, and partnership programmes.
+Standalone marketing website for FACT — the training, coaching, facilitation, and AI advisory brand of AOB.
 
-**Owner:** Agility Ops Business Pty Ltd (AOB)
 **Domain:** https://fastact.com.au
-**GitHub:** https://github.com/G-AOBptyltd/fastact-website
-**Visibility:** Public repo
-**Hosting:** Netlify (auto-deploys from main branch)
+**GitHub:** https://github.com/G-AOBptyltd/fastact-website (public)
+**Hosting:** Netlify (auto-deploys from main)
 **Netlify subdomain:** https://fastact.netlify.app
-**Parent brand:** https://agilityops.com.au
 **DNS:** GoDaddy → A record @ → 75.2.60.5, CNAME www → fastact.netlify.app
-**SSL:** Let's Encrypt via Netlify (auto-provisioned)
+**Analytics:** Google Analytics G-XPLEWG5GR4
 **Status:** Live (deployed March 6, 2026)
 
 ## Brand Positioning
 
-FACT is the people capability arm of Agility Ops. While SprintINSite and PortfolioInSite are software products, FACT is the services brand.
+FACT is the people capability arm of Agility Ops — services, not software.
 
 **Six service offerings:**
-1. **Agile Training & Coaching** — Scrum, Kanban, SAFe, hands-on coaching
-2. **Team Building** — Gallup CliftonStrengths, psychometric tools, team dynamics
-3. **Facilitation** — Workshops, PI Planning, strategy sessions, leadership offsites
-4. **Speaker & Keynotes** — Conferences, executive offsites, industry events
-5. **AI Cognitive Governance & Context Saturation™** — Flagship advisory (formerly GSD Framework)
-6. **Partnership Programmes** — Gallup, AI partners, Atlassian ecosystem, conference co-delivery
+1. Agile Training & Coaching
+2. Team Building (Gallup CliftonStrengths)
+3. Facilitation (workshops, PI Planning, strategy sessions)
+4. Speaker & Keynotes
+5. AI Cognitive Governance & Context Saturation (flagship advisory — formerly GSD Framework)
+6. Partnership Programmes (Gallup, AI partners, Atlassian)
 
-**Three delivery models:**
-- Fully Virtual (available now)
-- In-House Training (available now)
-- Public Training (coming soon — waitlist)
+**Delivery models:** Fully Virtual, In-House Training (both live), Public Training (coming — waitlist)
 
 **Brand colour:** Purple/Violet (#a855f7 primary, #7c3aed deep)
 
-## GSD Framework — Rebranding Context
+## Page Standards (MANDATORY for ALL new pages)
 
-The GSD Framework ("The Human Operating System for the AI Age™") has been evolved into the **AI Cognitive Governance & Context Saturation™** advisory practice. The GSD name is retained with a "Previously known as" reference. The five pillars are:
-1. Cognitive Load Diagnostics
-2. Attention Architecture
-3. Demand Governance
-4. AI Guardrail Design
-5. Deep Work Protection
+Every new FACT page — playbooks, guides, landing pages, anything — MUST adopt the shared site chrome. No bespoke variants. End of story.
 
-## R&D Language Rules (MANDATORY)
+- **Footer:** use the canonical `.footer-mini` exactly. Markup:
+  `© 2026 Agility Ops Business Pty Ltd (ABN 37 650 141 950). All rights reserved.` on the left,
+  and on the right: Tools & Games (`/tools-games`) · Agility Ops · Privacy · Terms (the two legal links point to the
+  canonical pages on agilityops.com.au, `target="_blank" rel="noopener"`). Dark navy band (`--navy`). ABN is required.
+- **Sidebar:** use the canonical left `.sidebar` nav (logo "F" → FACT Training, "by Agility Ops", search w/ ⌘K,
+  nav-links with icons, active + `sidebar-bottom`). New top-level destinations get a nav-link here.
+- **Free tool playbooks** live under the **Launchpad** section (new). Sidebar item: 🚀 Launchpad. Playbook pages are
+  light-content within the dark FACT chrome; hero in FACT purple; section nav uses the "Jump to" pattern (label + icons + scroll-spy).
+- **Claude-ecosystem content** uses Anthropic clay/terracotta accents (`--clay #cc785c` on cream `--cream #f7f4ec`),
+  kept visually distinct from FACT purple. Hint at depth; never claim official Anthropic partnership/endorsement publicly.
 
-- **NEVER use:** "R&D-backed" (implies funding secured)
-- **ALWAYS use:** "Developed within our R&D program" or "Methodology under active R&D development"
-- R&D Tax Incentive application is in progress — not approved
+## GSD Framework Context
 
-## Notion CMS Integration (Live)
+The GSD Framework ("The Human Operating System for the AI Age") evolved into AI Cognitive Governance & Context Saturation. The GSD name is retained with a "Previously known as" reference. Five pillars: Cognitive Load Diagnostics, Attention Architecture, Demand Governance, AI Guardrail Design, Deep Work Protection.
 
-FACT is the first site using the AOB centralised CMS. Content is managed in Notion and rendered dynamically with static HTML fallback.
+**SprintINSite exception:** SprintINSite is a commercial product, NOT part of the R&D application. Do not reference R&D on SprintINSite content.
 
-**For full CMS/payment architecture details, see:** `../CLAUDE-aob-payment-platform.md`
+## CMS Integration
 
-- **Central API:** `https://api.agilityops.com.au/api/cms` (LIVE — Phase 1 complete)
 - **Site slug:** `fact`
-- **Frontend client:** `js/notion-cms.js` — fetches from central API, renders workshop/guide/course cards
-- **Content detail page:** `pages/content.html` — dynamic SPA-style page, reads slug from `/content/{slug}` URL
-- **Product detail page:** `pages/product.html` — dynamic SPA-style page, reads slug from `/product/{slug}` URL, fetches all active products (no brand filter) and pricing
-- **Serverless function:** `netlify/functions/notion-cms.js` — LEGACY, no longer used (functions config removed from netlify.toml). Netlify proxy redirects route `/api/cms` to central API instead.
-- **CMS setup docs:** `NOTION-CMS-SETUP.md`
-- **Netlify routing:** SPA-style redirects in `netlify.toml` — `/content/*` → `pages/content.html`, `/product/*` → `pages/product.html`
-- **API proxy:** `/api/cms` → `https://api.agilityops.com.au/api/cms` (backward-compatible passthrough)
+- **CMS client:** `js/notion-cms.js` (SITE_SLUG = 'fact')
+- **Content page:** `pages/content.html` — `/content/{slug}`
+- **Product page:** `pages/product.html` — `/product/{slug}`
+- **Legacy function:** `netlify/functions/notion-cms.js` — no longer deployed; proxy in netlify.toml handles it
+- **Setup docs:** `NOTION-CMS-SETUP.md`
 
 ## Tech Stack
 
-- **Framework:** Static HTML/CSS/JS (no build tools)
-- **Fonts:** Inter + Plus Jakarta Sans (Google Fonts) — matches all AOB properties
-- **Styling:** Custom CSS with CSS variables, responsive grid
-- **Hosting:** Netlify (auto-deploy from GitHub main branch)
-- **CMS:** Notion via AOB Central API (`api.agilityops.com.au`)
-- **SEO:** OG tags, Twitter cards, canonical URLs
+- Static HTML/CSS/JS (no build tools)
+- Fonts: Inter + Plus Jakarta Sans
+- Hosting: Netlify, CMS via Central API
 
 ## File Structure
 
 ```
 fastact-website/
-├── index.html              — Homepage (all services, advisory, delivery, partnerships)
-├── CLAUDE.md               — This file
-├── NOTION-CMS-SETUP.md     — CMS integration setup docs
-├── netlify.toml            — Netlify config (SPA redirects, API proxy, headers)
-├── css/
-│   └── styles.css          — Main stylesheet (purple brand theme)
+├── index.html              — Homepage (6 services, advisory, partnerships)
+├── NOTION-CMS-SETUP.md     — CMS setup docs
+├── netlify.toml            — SPA redirects, API proxy, headers
+├── css/styles.css
 ├── js/
-│   ├── main.js             — Mobile nav, scroll reveal, Netlify form handlers
-│   └── notion-cms.js       — CMS client v2 (fetches from central API, renders cards)
-├── netlify/
-│   └── functions/
-│       └── notion-cms.js   — LEGACY serverless function (no longer deployed)
-├── img/                    — Images (to be populated)
+│   ├── main.js             — Mobile nav, scroll reveal, form handlers
+│   └── notion-cms.js       — CMS client v2
+├── netlify/functions/
+│   └── notion-cms.js       — LEGACY (no longer deployed)
+├── img/
 └── pages/
-    ├── content.html        — Dynamic content detail page (workshops, guides, courses)
-    └── product.html        — Dynamic product detail page (apps, tools)
+    ├── content.html        — Dynamic content detail
+    └── product.html        — Dynamic product detail
 ```
 
 ## Netlify Forms
 
-- Waitlist form on `index.html` uses **Netlify Forms** with `data-netlify="true"` attribute
-- Form name: `fact-waitlist`
-- **Form detection:** Enabled in Netlify dashboard (March 6, 2026)
-- Form handler in `js/main.js` uses `fetch()` POST with `x-www-form-urlencoded` encoding
-- Also prepared for a `fact-contact` form for future contact page
-
-## Legal Pages
-
-- **Privacy Policy and Terms of Service** are served from the parent company site: `https://agilityops.com.au/pages/privacy.html` and `https://agilityops.com.au/pages/terms.html`
-- Footer links use `target="_blank"` to open in new tab
-- No local legal pages — all legal content centralised on agilityops.com.au
-
-## Related Repositories & CLAUDE.md Files
-
-| Repo / File | Purpose |
-|------|---------|
-| `aob-corporate-hub` | AOB corporate website (parent brand) |
-| `sprintinsite-website` | SprintINSite product website |
-| `portfolioinsite-website` | PortfolioInSite product website |
-| `aob-api` (planned) | Central API for CMS + payments |
-| `../CLAUDE-aob-payment-platform.md` | **Payment platform & CMS architecture** (use for cross-site work) |
-| `../CLAUDE-blog-content.md` | Blog content engine |
+- Waitlist form: `fact-waitlist` on `index.html`
+- Future: `fact-contact` form prepared
 
 ## Deployment History
 
-| Date | Change | Branch |
-|------|--------|--------|
-| 2026-03-06 | Initial site build — 6 services, 3 delivery models, waitlist form, purple brand | main |
-| 2026-03-06 | Netlify connected, DNS configured, SSL provisioned, form detection enabled | main |
-| 2026-04-15 | Central API integration — notion-cms.js v2, netlify.toml updated, API proxy | main |
-| 2026-04-15 | Content detail page (pages/content.html) — dynamic SPA-style landing pages | main |
-| 2026-04-15 | Product detail page (pages/product.html) — dynamic product landing pages | main |
-| 2026-04-16 | Product page — restored brand filter (each site shows only its own products). Template is reusable across all sites. | pending |
+| Date | Change |
+|------|--------|
+| 2026-03-06 | Initial build — 6 services, 3 delivery models, waitlist, DNS, SSL, forms |
+| 2026-04-15 | Central API integration — notion-cms.js v2, API proxy, content + product pages |
+| 2026-04-16 | Product page brand filter restored |
+| 2026-05-20 | SEO overhaul — dedicated GA4 G-XPLEWG5GR4, OG tags, JSON-LD, sitemap, og:image |
 
 ## Key Learnings
 
-- Site design matches AOB/PortfolioInSite look and feel: same fonts, layout patterns, card components
-- Body background is WHITE — all text must be dark colours (headings #1e293b, body #334155)
-- GSD Framework is retained as "Previously known as" — do not remove the reference entirely
-- All external links to AOB properties use full URLs with target="_blank"
-- FACT was formerly called "Fast Agile Coaching & Training" — the abbreviation FACT is retained but the full name is no longer used
-- DNS was previously set to forward fastact.com.au → agilityops.com.au — this forwarding was removed in GoDaddy to allow Netlify hosting
-- GoDaddy A records are locked when forwarding is active — must remove forwarding first to unlock DNS editing
-- Domain architecture document (v3) tracks all AOB brand domains, hosting, and email config
-- **CORS:** Sites database Domain field MUST include `https://` prefix (e.g., `https://fastact.com.au` not `fastact.com.au`). Browser `Origin` header includes the protocol.
-- **API cache:** Central API has 5-minute in-memory cache. After Notion data changes, wait up to 5 minutes for API to reflect updates.
-- **Product pages are brand-scoped:** product.html fetches products filtered by `brand={SITE_SLUG}` so each site only shows its own products. The template is reusable across all sites — just change `SITE_SLUG`.
-- **Content pages are site-specific:** content.html fetches content filtered by `site=fact` so only FACT-branded content appears.
-- **Cowork + Git:** Cowork sandbox cannot remove `.git/index.lock` files. If git operations fail in Cowork, do them from the Mac terminal instead.
-
-## Workflow Preferences
-
-- **Test branches:** ALWAYS create a test branch before making changes to `main`. Never commit directly to `main` — use a branch, verify, then merge.
-- **GitHub uploads:** If bulk file uploads or image uploads to GitHub are needed, ask the user to do it directly — provide the file list and instructions
-- **Deployment .txt files:** When GitHub connector isn't available, provide `<page>-PASTE-THIS.txt` files for manual paste into GitHub web editor
+- Body background is WHITE — all text must be dark colours
+- GSD Framework retained as "Previously known as" — don't remove reference
+- FACT was formerly "Fast Agile Coaching & Training" — abbreviation kept, full name retired
+- DNS was forwarding to agilityops.com.au — had to remove forwarding in GoDaddy before A records could be edited
+- **GA4:** fastact.com.au has its own property (G-XPLEWG5GR4) — do not revert to shared G-LLJ1KPTDMK
+- **og:image:** Generated via Python/Pillow from `agility_ops_logo_master.svg` at `img/og-image.png`
+- **Product pages are brand-scoped:** product.html fetches `brand=fact` so only FACT products appear
