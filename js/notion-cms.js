@@ -45,12 +45,36 @@ function renderWorkshops(workshops) {
   const row = document.querySelector('.workshops-row');
   if (!row || !workshops || workshops.length === 0) return;
 
-  row.innerHTML = workshops.map(w => `
+  row.innerHTML = workshops.map(w => {
+    // --- Booking state (seat bookings) ---
+    // Bookable = a Stripe Payment Link is present AND the session is Live.
+    // Sold out = Capacity is set and Seats Sold has reached it.
+    const seatsSold = w.seatsSold || 0;
+    const soldOut = w.capacity != null && seatsSold >= w.capacity;
+    const bookable = !!w.paymentLink && w.status === 'Live' && !soldOut;
+    const priceLabel = (w.bookingPrice != null) ? formatPrice(w.bookingPrice) : '';
+
+    let cta;
+    if (soldOut) {
+      cta = `<span class="btn btn-sm btn-disabled" aria-disabled="true">Sold out</span>
+             <a href="#waitlist" class="btn btn-outline btn-sm">Join waitlist</a>`;
+    } else if (bookable) {
+      cta = `<a href="${escapeAttr(w.paymentLink)}" class="btn btn-purple btn-sm" target="_blank" rel="noopener noreferrer">Book here</a>`;
+    } else if (w.slug) {
+      cta = `<a href="/content/${escapeAttr(w.slug)}" class="btn btn-purple btn-sm">View Details</a>`;
+    } else {
+      cta = `<a href="#waitlist" class="btn btn-purple btn-sm">Register Interest</a>`;
+    }
+
+    const tagClass = bookable ? 'tag-bookable' : 'tag-coming-soon';
+    const tagText = bookable ? 'BOOK NOW' : (w.status || 'COMING SOON');
+
+    return `
     <div class="workshop-card">
       <div class="workshop-thumb" style="${getThumbGradient(w.level)}">
         ${w.emoji || '📅'}
-        <div class="workshop-tag tag-coming-soon">${w.status || 'COMING SOON'}</div>
-        <div class="workshop-date">${w.date || 'Dates TBA'}</div>
+        <div class="workshop-tag ${tagClass}">${escapeHtml(tagText)}</div>
+        <div class="workshop-date">${escapeHtml(w.date || 'Dates TBA')}</div>
       </div>
       <div class="workshop-body">
         <div class="workshop-title">${escapeHtml(w.title)}</div>
@@ -59,15 +83,14 @@ function renderWorkshops(workshops) {
           Taught by Greg
         </div>
         <div class="workshop-level ${getLevelClass(w.level)}">${w.level || 'Beginner'}</div>
+        ${priceLabel ? `<div class="workshop-price">${escapeHtml(priceLabel)}</div>` : ''}
         <div class="workshop-actions">
-          ${w.slug
-            ? `<a href="/content/${w.slug}" class="btn btn-purple btn-sm">View Details</a>`
-            : `<a href="#waitlist" class="btn btn-purple btn-sm">Register Interest</a>`
-          }
+          ${cta}
         </div>
       </div>
     </div>
-  `).join('');
+  `;
+  }).join('');
 }
 
 /**
@@ -163,6 +186,18 @@ async function resolveInstructors() {
 function escapeHtml(str) {
   if (!str) return '';
   return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+// Escape a value for use inside an HTML attribute (href, etc.)
+function escapeAttr(str) {
+  if (!str) return '';
+  return String(str).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+// Format an AUD price for display. Charge of record is the Stripe Payment Link.
+function formatPrice(n) {
+  if (n == null || isNaN(n)) return '';
+  return `$${Number(n).toLocaleString('en-AU')} inc GST`;
 }
 
 function getLevelClass(level) {

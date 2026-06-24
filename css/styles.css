@@ -654,6 +654,28 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--navy);
 }
 
+.tag-bookable {
+  background: var(--green);
+  color: white;
+}
+
+.btn-disabled {
+  background: var(--navy-light);
+  color: #94a3b8;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--purple);
+  border: 1.5px solid var(--purple);
+}
+
+.btn-outline:hover {
+  background: var(--purple-glow);
+}
+
 .workshop-date {
   position: absolute;
   bottom: 12px;
@@ -686,6 +708,13 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 16px;
   font-size: 0.82rem;
   color: var(--gray-400);
+}
+
+.workshop-price {
+  margin: 4px 0 12px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--purple-light);
 }
 
 .instructor-avatar {
