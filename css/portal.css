@@ -493,3 +493,7 @@ a { color: var(--clay-deep); }
 .aob-foot-soc a:hover { color: var(--clay-deep); border-color: var(--clay); }
 @media (max-width: 980px) { .aob-foot { margin: 40px 20px 0; } .aob-foot-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 460px) { .aob-foot-grid { grid-template-columns: 1fr; } }
+
+/* Wordplay device: AI inside trAIning */
+.ai-mark { color: var(--clay); font-weight: 800; }
+.hero-badge .ai-mark { text-transform: none; }
