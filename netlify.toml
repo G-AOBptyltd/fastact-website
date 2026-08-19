@@ -14,6 +14,17 @@
   to = "/pages/product.html"
   status = 200
 
+# --- Friendly playbook routes → Claude launchpad ---
+[[redirects]]
+  from = "/claude-playbooks"
+  to = "/launchpad/claude"
+  status = 301
+
+[[redirects]]
+  from = "/playbooks"
+  to = "/launchpad/claude"
+  status = 301
+
 # --- Legacy /api/cms proxy → Central API ---
 # Keeps backward compat if anything still calls /api/cms locally
 [[redirects]]
@@ -35,7 +46,7 @@
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.agilityops.com.au"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.agilityops.com.au https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com"
 
 # --- Tools & Games hub route ---
 [[redirects]]
