@@ -1,0 +1,18 @@
+{
+  "project": "FACT / Agility Ops Academy website",
+  "product_code": "FCT-WEB",
+  "suite": "AOB web estate",
+  "company": "Agility Ops Business Pty Ltd",
+  "abn": "[redacted — held in Notion RDTI log, never committed]",
+  "financial_year": "FY27",
+  "fy_start": "2026-07-01",
+  "fy_end": "2027-06-30",
+  "note": "FACT / the Academy is COMMERCIAL TRAINING — per standing decision it is NOT part of the product RDTI program (course content and marketing-site work = 0 eligible hours by default). This log exists for honest 0-hour records and for any future exception (e.g. a genuinely novel learning-platform build such as TrainingInSite would be assessed on its own merits before any claim).",
+  "cost_rates": { "_note": "Cost rates are NOT stored here — held in Notion RDTI log only. Never commit rates to this repo." },
+  "activity_codes": {
+    "RD-CORE": { "description": "Core R&D — systematic experimentation to resolve technical uncertainty", "rdti_eligible": true },
+    "RD-SUPP": { "description": "Supporting R&D — directly supports Core R&D", "rdti_eligible": true },
+    "DEV": { "description": "Standard Development — not R&D eligible", "rdti_eligible": false },
+    "ADMIN": { "description": "Administrative / docs / marketing — not eligible", "rdti_eligible": false }
+  }
+}

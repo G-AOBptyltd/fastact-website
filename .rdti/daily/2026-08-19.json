@@ -1,0 +1,13 @@
+{
+  "date": "2026-08-19",
+  "program": "FACT / Agility Ops Academy website",
+  "financial_year": "FY27",
+  "status": "logged",
+  "method": "session close-out (/AOBclose)",
+  "experiments_today": [],
+  "eligible_hours_net_new": 0,
+  "outputs_site_revamp": { "tag": "DEV", "summary": "Full portal-aligned revamp shipped live: Agility Ops Academy rebrand, clay/cream theme (portal.css), roadmap section (18 Sep workshop dated), suite footer + AO mark, page sweeps (launchpad, tools-games, launchpad-claude, antigravity, content/product templates), GA CSP fix, redirects. Standard web development — no technical uncertainty." },
+  "outputs_audit_review": { "tag": "ADMIN", "summary": "Site/brand/portal-alignment audit (v4), comparable-company research, course-content review, GA4 coverage plan, brand strategy (APMG ATO heritage; fresh-RTO path; TrainingInSite naming + domain sweep)." },
+  "outputs_course_fix": { "tag": "ADMIN", "summary": "Module 6 price ladder corrected to current models (Sonnet 5 $2/$10 permanent) with as-at datestamp." },
+  "note": "FACT = commercial training: 0 eligible hours by standing decision. Nothing in today's work involved genuine R&D uncertainty."
+}
