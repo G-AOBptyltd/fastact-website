@@ -454,3 +454,8 @@ a { color: var(--clay-deep); }
 .lane-label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
 .flow-step.later { opacity: .6; }
 .roadmap-note { font-size: .8rem; color: var(--gray-400); margin-top: 14px; }
+
+/* Academy lockup */
+.sidebar-logo { line-height: 1.15; }
+.logo-academy { font-weight: 600; font-size: .82em; letter-spacing: .12em; text-transform: uppercase; opacity: .92; }
+.sidebar-brand strong { color: #fff; opacity: .95; }
