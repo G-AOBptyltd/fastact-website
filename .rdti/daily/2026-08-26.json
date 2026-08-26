@@ -1,0 +1,12 @@
+{
+  "date": "2026-08-26",
+  "program": "FACT / Agility Ops Academy website",
+  "financial_year": "FY27",
+  "status": "logged",
+  "method": "session close-out (/AOBclose)",
+  "experiments_today": [],
+  "eligible_hours_net_new": 0,
+  "outputs_course_authoring": { "tag": "ADMIN", "summary": "Folded six official Anthropic/MCP doc lessons into the 'AI Productivity Systems with Claude' workshop content (Module 4/5/6 markdown), voice-matched to the course spine: M4 gained 'Choosing the Right Tool' (Skills vs CLAUDE.md vs subagents vs hooks vs MCP), 'Sharing What You've Built' (repo/plugin/enterprise distribution + subagent skills-frontmatter), and 'When Skills Misbehave' (troubleshooting playbook); M5 gained a 'What Is MCP' USB-C primer + optional Part C 'Build Your Own MCP Server' (Python weather-server walkthrough); M6 gained 'Scaling to Many Tools' (progressive tool discovery + programmatic tool calling/code mode). Curriculum content-writing — no technical uncertainty." },
+  "outputs_outline_sync": { "tag": "ADMIN", "summary": "Updated FACT-Course-Outline-AI-Productivity-Systems.md Module 4/5/6 status lines to describe the new sections." },
+  "note": "FACT = commercial training: 0 eligible hours by standing decision. Session was pure course-content authoring (adapting published Anthropic/modelcontextprotocol.io docs into workshop lessons) — no genuine R&D uncertainty. Content lives in the docs vault (~/AgilityOpsBizAI/AOB/fact/courses/, not a git repo); logged here under the FACT/Academy product per /AOBclose convention. Interactive Deluxe HTML mockups NOT yet updated to match (pending Greg's go-ahead)."
+}
