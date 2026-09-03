@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>SprintINSite — Stop guessing your sprint. Start forecasting it.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#faf9fb;
+    --ink:#2a222b;
+    --grey:#655d67;
+    --grey-2:#837a85;
+    --border:#d4d1d5;
+    --lav:#f3e4fb;
+    --blue:#e2f0fe;
+    --mint:#cbf5dd;
+    --accent:#ff4f00;
+    --green:#10b981;
+    --serif:'Fraunces',Georgia,serif;
+    --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    --ease:cubic-bezier(.2,.8,.2,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    background:var(--bg);
+    color:var(--ink);
+    font-size:18px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  .wrap{max-width:1280px;margin:0 auto;padding:0 32px}
+
+  /* ---------- Type ---------- */
+  h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.02em;line-height:1.02}
+  h1{font-size:clamp(44px,7vw,80px);letter-spacing:-2px;max-width:14ch}
+  h2{font-size:clamp(34px,4.4vw,48px);letter-spacing:-1.4px;max-width:16ch}
+  .eyebrow{font-family:var(--sans);font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--grey-2)}
+  .lead{font-size:19px;color:var(--grey);max-width:52ch}
+  .accent-underline{position:relative;white-space:nowrap}
+  .accent-underline svg{position:absolute;left:0;bottom:-.18em;width:100%;height:.28em;overflow:visible}
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;gap:.5em;
+    font-family:var(--sans);font-size:16px;font-weight:500;
+    border-radius:999px;padding:0 26px;height:52px;
+    cursor:pointer;border:1px solid transparent;text-decoration:none;
+    transition:transform .3s var(--ease),background .3s var(--ease),box-shadow .3s var(--ease);
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--ink);color:#faf9fb}
+  .btn-primary:hover{background:#1b141c;transform:translateY(-2px);box-shadow:0 12px 28px -12px rgba(42,34,43,.55)}
+  .btn-outline{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+  .btn-outline:hover{transform:translateY(-2px);background:rgba(42,34,43,.04)}
+  .btn-sm{height:44px;font-size:15px;padding:0 22px}
+
+  /* ---------- Nav ---------- */
+  .promo{background:var(--ink);color:#faf9fb;text-align:center;font-size:13.5px;letter-spacing:.01em;padding:9px 16px;font-weight:400}
+  .promo strong{font-weight:600}
+  header{position:sticky;top:0;z-index:50;background:rgba(250,249,251,.82);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid rgba(212,209,213,.7)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:600;font-size:22px;letter-spacing:-.02em;color:var(--ink);text-decoration:none}
+  .brand .dot{width:26px;height:26px;border-radius:8px;background:var(--green);display:inline-flex;align-items:center;justify-content:center}
+  .brand .dot svg{width:15px;height:15px}
+  .nav-links{display:flex;align-items:center;gap:30px}
+  .nav-links a{color:var(--ink);text-decoration:none;font-size:15px;font-weight:500;transition:opacity .2s}
+  .nav-links a:hover{opacity:.6}
+  .nav-cta{display:flex;align-items:center;gap:18px}
+  @media(max-width:760px){.nav-links{display:none}}
+
+  /* ---------- Sections ---------- */
+  section{padding:120px 0}
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- Hero ---------- */
+  .hero{padding-top:96px;padding-bottom:0}
+  .hero .lead{margin-top:24px}
+  .hero-cta{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap}
+  .hero-note{margin-top:20px;font-size:14px;color:var(--grey-2)}
+
+  /* app window frame */
+  .frame-stage{margin-top:80px;background:var(--lav);border-radius:40px;padding:56px 56px 0;overflow:hidden}
+  .appwin{background:#fff;border-radius:24px;border:1px solid var(--border);box-shadow:0 40px 80px -40px rgba(42,34,43,.35);overflow:hidden;max-width:920px;margin:0 auto}
+  .appwin-bar{display:flex;align-items:center;gap:8px;padding:15px 18px;border-bottom:1px solid #eee;background:#fbfbfc}
+  .appwin-bar .d{width:11px;height:11px;border-radius:50%}
+  .appwin-bar .d1{background:#ff5f57}.appwin-bar .d2{background:#febc2e}.appwin-bar .d3{background:#28c840}
+  .appwin-bar .tab{margin-left:14px;font-size:12.5px;color:var(--grey-2);font-weight:500}
+  .appwin-body{padding:30px 34px 38px}
+  .appwin-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:6px}
+  .appwin-head .t{font-family:var(--serif);font-weight:600;font-size:20px}
+  .appwin-head .k{font-size:13px;color:var(--grey-2)}
+  .metric-row{display:flex;gap:34px;margin:18px 0 26px}
+  .metric .n{font-family:var(--serif);font-size:30px;font-weight:600;letter-spacing:-.02em}
+  .metric .l{font-size:12.5px;color:var(--grey-2);text-transform:uppercase;letter-spacing:.08em}
+  .metric .n .pm{font-size:16px;color:var(--grey-2)}
+  @media(max-width:640px){.frame-stage{padding:26px 20px 0;border-radius:28px}.appwin-body{padding:22px 20px 26px}.metric-row{gap:22px}}
+
+  /* ---------- Feature grid ---------- */
+  .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:60px}
+  .fcard{background:#fff;border:1px solid var(--border);border-radius:22px;padding:34px 30px;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+  .fcard:hover{transform:translateY(-4px);box-shadow:0 24px 48px -28px rgba(42,34,43,.3)}
+  .fcard .ico{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:22px}
+  .fcard .ico svg{width:26px;height:26px;stroke-width:1.6}
+  .fcard h3{font-size:23px;margin-bottom:10px}
+  .fcard p{font-size:16px;color:var(--grey)}
+  @media(max-width:860px){.feature-grid{grid-template-columns:1fr}}
+
+  /* ---------- Alternating rows ---------- */
+  .arow{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+  .arow.flip .atext{order:2}
+  .arow + .arow{margin-top:130px}
+  .atext h2{margin:14px 0 18px}
+  .atext .lead{margin-bottom:24px}
+  .amedia{border-radius:32px;padding:44px;min-height:340px;display:flex;align-items:center;justify-content:center}
+  .amedia.lav{background:var(--lav)}
+  .amedia.blue{background:var(--blue)}
+  .checklist{list-style:none;margin-top:8px}
+  .checklist li{display:flex;gap:12px;align-items:flex-start;margin-bottom:12px;font-size:16px;color:var(--grey)}
+  .checklist svg{flex-shrink:0;margin-top:3px;width:20px;height:20px}
+  @media(max-width:860px){.arow{grid-template-columns:1fr;gap:40px}.arow.flip .atext{order:0}}
+
+  /* mini chart card inside media */
+  .chartcard{background:#fff;border:1px solid var(--border);border-radius:20px;padding:26px 24px;width:100%;box-shadow:0 30px 60px -34px rgba(42,34,43,.32)}
+  .chartcard .ch-t{font-size:13px;color:var(--grey-2);text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px}
+  .bars{display:flex;align-items:flex-end;gap:14px;height:150px}
+  .bar{flex:1;border-radius:8px 8px 0 0;background:linear-gradient(to top,#10b981,#5fd6ad);position:relative}
+  .bar span{position:absolute;top:-22px;left:0;right:0;text-align:center;font-size:12px;font-weight:600;color:var(--grey)}
+  .bar.forecast{background:repeating-linear-gradient(-45deg,#cbf5dd,#cbf5dd 6px,#e6faf0 6px,#e6faf0 12px);border:1.5px dashed var(--green)}
+  .barlabels{display:flex;gap:14px;margin-top:10px}
+  .barlabels span{flex:1;text-align:center;font-size:11.5px;color:var(--grey-2)}
+
+  /* ---------- Demo (signature) ---------- */
+  .demo-shell{background:var(--mint);border-radius:40px;padding:0;overflow:hidden}
+  .demo-head{padding:56px 56px 0;text-align:center}
+  .demo-head .eyebrow{color:#2a222b;opacity:.55}
+  .demo-head h2{margin:14px auto 0}
+  .demo-card{background:#fff;border-radius:28px;margin:44px 56px 56px;min-height:440px;position:relative;box-shadow:0 40px 90px -50px rgba(42,34,43,.45);overflow:hidden;display:flex;flex-direction:column}
+  .progress{height:5px;background:#eef0ef}
+  .progress i{display:block;height:100%;width:0;background:var(--ink);transition:width .5s var(--ease)}
+  .demo-inner{flex:1;padding:56px 64px;display:flex;flex-direction:column;justify-content:center;position:relative}
+  .qstep{position:absolute;inset:56px 64px;display:flex;flex-direction:column;justify-content:center;opacity:0;transform:translateY(24px);pointer-events:none;transition:opacity .45s var(--ease),transform .45s var(--ease)}
+  .qstep.active{opacity:1;transform:none;pointer-events:auto}
+  .qnum{font-size:14px;font-weight:600;color:var(--grey-2);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .qnum svg{width:15px;height:15px}
+  .qtext{font-family:var(--serif);font-weight:500;font-size:clamp(26px,3.6vw,40px);letter-spacing:-1px;line-height:1.08;max-width:18ch;margin-bottom:26px}
+  .qfield{display:flex;align-items:center;gap:14px;max-width:420px}
+  .qfield input{
+    font-family:var(--serif);font-size:34px;font-weight:500;letter-spacing:-.5px;color:var(--ink);
+    border:none;border-bottom:2px solid var(--border);background:transparent;padding:6px 2px;width:180px;outline:none;
+    transition:border-color .3s var(--ease);
+  }
+  .qfield input:focus{border-color:var(--ink)}
+  .qfield .unit{font-family:var(--serif);font-size:26px;color:var(--grey-2)}
+  .chips{display:flex;flex-wrap:wrap;gap:12px;max-width:520px}
+  .chip{
+    font-family:var(--sans);font-size:16px;font-weight:500;padding:12px 20px;border-radius:999px;
+    border:1px solid var(--border);background:#fff;cursor:pointer;color:var(--ink);
+    transition:all .25s var(--ease);display:flex;align-items:center;gap:10px;
+  }
+  .chip .key{font-size:12px;font-weight:600;width:20px;height:20px;border-radius:6px;background:var(--bg);border:1px solid var(--border);display:inline-flex;align-items:center;justify-content:center;color:var(--grey-2)}
+  .chip:hover{border-color:var(--ink);transform:translateY(-2px)}
+  .chip.sel{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .chip.sel .key{background:rgba(255,255,255,.16);border-color:transparent;color:#fff}
+  .qfoot{display:flex;align-items:center;gap:16px;margin-top:34px}
+  .qhint{font-size:13.5px;color:var(--grey-2)}
+  .qhint kbd{font-family:var(--sans);font-size:11px;font-weight:600;background:var(--bg);border:1px solid var(--border);border-radius:5px;padding:2px 7px;color:var(--grey)}
+  .qerr{font-size:13.5px;color:var(--accent);margin-top:12px;min-height:18px;opacity:0;transition:opacity .2s}
+  .qerr.show{opacity:1}
+
+  /* result step */
+  .result{text-align:center;align-items:center}
+  .result .eyebrow{color:var(--green)}
+  .result .big{font-family:var(--serif);font-weight:600;font-size:clamp(56px,9vw,104px);letter-spacing:-3px;line-height:1;margin:10px 0}
+  .result .big .pm{font-size:.4em;color:var(--grey-2);font-weight:500}
+  .result .rsub{font-size:18px;color:var(--grey);max-width:40ch;margin:0 auto 8px}
+  .result .rdetail{font-size:14px;color:var(--grey-2);max-width:44ch;margin:0 auto 28px}
+  .result .rrow{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  @media(max-width:640px){
+    .demo-head{padding:34px 22px 0}.demo-card{margin:30px 18px 30px}
+    .demo-inner{padding:40px 26px}.qstep{inset:40px 26px}
+    .qfield input{width:130px;font-size:28px}
+  }
+
+  /* ---------- Dark CTA ---------- */
+  .darkband{background:var(--ink);color:#faf9fb;border-radius:0;text-align:center}
+  .darkband h2{color:#faf9fb;margin:0 auto 20px}
+  .darkband .lead{color:#c8bfca;margin:0 auto 34px}
+  .darkband .btn-outline{color:#faf9fb;border-color:#faf9fb}
+  .darkband .btn-outline:hover{background:rgba(255,255,255,.08)}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--bg);border-top:1px solid var(--border);padding:80px 0 44px}
+  .fgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
+  .fbrand .brand{margin-bottom:16px}
+  .fbrand p{font-size:15px;color:var(--grey);max-width:34ch}
+  .fcol h4{font-family:var(--sans);font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--grey-2);margin-bottom:16px}
+  .fcol a{display:block;color:var(--ink);text-decoration:none;font-size:15px;margin-bottom:11px;transition:opacity .2s}
+  .fcol a:hover{opacity:.6}
+  .fbot{margin-top:56px;padding-top:26px;border-top:1px solid var(--border);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:13.5px;color:var(--grey-2)}
+  .fbot .exp{color:var(--grey-2);font-style:italic}
+  @media(max-width:860px){.fgrid{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.fgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="promo">Public training waitlist now open — <strong>reserve your spot for the next SprintINSite cohort.</strong></div>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="brand">
+      <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 15 10 9 14 13 20 6"/></svg></span>
+      SprintINSite
+    </a>
+    <nav class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#demo">Demo</a>
+      <a href="#">Log in</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#demo" class="btn btn-primary btn-sm">Start free</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow reveal">Predictive sprint analytics for Jira</p>
+    <h1 class="reveal" style="margin-top:20px">Stop guessing your sprint. Start <span class="accent-underline">forecasting<svg viewBox="0 0 200 12" preserveAspectRatio="none"><path d="M2 8 C 50 2, 150 2, 198 7" stroke="#ff4f00" stroke-width="3" fill="none" stroke-linecap="round"/></svg></span> it.</h1>
+    <p class="lead reveal">SprintINSite turns your team's real delivery history into a clear, defensible forecast — so planning meetings end with a number everyone trusts, not a hunch.</p>
+    <div class="hero-cta reveal">
+      <a href="#demo" class="btn btn-primary">Start free</a>
+      <a href="#demo" class="btn btn-outline">Try the 30-second demo</a>
+    </div>
+    <p class="hero-note reveal">Works inside Jira. No spreadsheets. No credit card to start.</p>
+
+    <div class="frame-stage reveal">
+      <div class="appwin">
+        <div class="appwin-bar">
+          <span class="d d1"></span><span class="d d2"></span><span class="d d3"></span>
+          <span class="tab">SprintINSite · Team Aurora · Velocity forecast</span>
+        </div>
+        <div class="appwin-body">
+          <div class="appwin-head">
+            <span class="t">Next sprint forecast</span>
+            <span class="k">Based on last 6 sprints · illustrative</span>
+          </div>
+          <div class="metric-row">
+            <div class="metric"><div class="n">34<span class="pm"> pts</span></div><div class="l">Forecast</div></div>
+            <div class="metric"><div class="n"><span class="pm">±</span>5</div><div class="l">Confidence band</div></div>
+            <div class="metric"><div class="n">31.2</div><div class="l">Avg velocity</div></div>
+          </div>
+          <div class="chartcard" style="box-shadow:none;border:none;padding:0">
+            <div class="bars">
+              <div class="bar" style="height:62%"><span>29</span></div>
+              <div class="bar" style="height:70%"><span>33</span></div>
+              <div class="bar" style="height:60%"><span>28</span></div>
+              <div class="bar" style="height:74%"><span>35</span></div>
+              <div class="bar" style="height:66%"><span>31</span></div>
+              <div class="bar" style="height:68%"><span>32</span></div>
+              <div class="bar forecast" style="height:72%"><span style="color:#10b981">34</span></div>
+            </div>
+            <div class="barlabels">
+              <span>S1</span><span>S2</span><span>S3</span><span>S4</span><span>S5</span><span>S6</span><span>Next</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="wrap">
+    <p class="eyebrow reveal">Why teams choose it</p>
+    <h2 class="reveal" style="margin-top:14px">Three jobs, done quietly in the background.</h2>
+    <div class="feature-grid">
+      <div class="fcard reveal">
+        <div class="ico" style="background:var(--lav)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-5 3 3 5-7"/></svg>
+        </div>
+        <h3>Predict</h3>
+        <p>A transparent velocity calculation projects your next sprint's likely range from real completed work — no black box, just maths you can explain to a steering committee.</p>
+      </div>
+      <div class="fcard reveal">
+        <div class="ico" style="background:var(--blue)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        </div>
+        <h3>Detect</h3>
+        <p>Spot the drift early — over-commitment, slipping throughput and unstable cycle time surface before they cost you a release, not after the retro.</p>
+      </div>
+      <div class="fcard reveal">
+        <div class="ico" style="background:var(--mint)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 14v3M12 9v8M16 12v5"/></svg>
+        </div>
+        <h3>Report</h3>
+        <p>Board-ready snapshots in a click. Share a clean forecast and delivery trend with stakeholders who never open Jira — and keep everyone on the same number.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALTERNATING ROW 1 -->
+<section style="padding-top:20px">
+  <div class="wrap">
+    <div class="arow reveal">
+      <div class="atext">
+        <p class="eyebrow">Planning that holds up</p>
+        <h2>A forecast you can defend in the room.</h2>
+        <p class="lead">Commitments made on gut feel fall apart under scrutiny. SprintINSite grounds every forecast in your own delivery history, so when someone asks "how confident are we?", you have an answer with a number attached.</p>
+        <ul class="checklist">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Confidence bands, not single-point guesses</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Excludes carry-over and noise automatically</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Every calculation is fully traceable</li>
+        </ul>
+      </div>
+      <div class="amedia lav">
+        <div class="chartcard">
+          <div class="ch-t">Velocity · last six sprints</div>
+          <div class="bars">
+            <div class="bar" style="height:55%"></div>
+            <div class="bar" style="height:72%"></div>
+            <div class="bar" style="height:64%"></div>
+            <div class="bar" style="height:80%"></div>
+            <div class="bar" style="height:68%"></div>
+            <div class="bar forecast" style="height:74%"></div>
+          </div>
+          <div class="barlabels"><span>S1</span><span>S2</span><span>S3</span><span>S4</span><span>S5</span><span>Next</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALTERNATING ROW 2 -->
+<section>
+  <div class="wrap">
+    <div class="arow flip reveal">
+      <div class="atext">
+        <p class="eyebrow">Zero busywork</p>
+        <h2>It reads Jira, so you don't have to.</h2>
+        <p class="lead">SprintINSite works from the data your team already produces. There's nothing new to fill in, no parallel spreadsheet to maintain, and no report to assemble by hand the night before a review.</p>
+        <ul class="checklist">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Reads completed work straight from your board</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Refreshes as each sprint closes</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Export a stakeholder snapshot in one click</li>
+        </ul>
+      </div>
+      <div class="amedia blue">
+        <div class="chartcard">
+          <div class="ch-t">Sprint snapshot · illustrative</div>
+          <div class="metric-row" style="margin:6px 0 20px">
+            <div class="metric"><div class="n">92<span class="pm">%</span></div><div class="l">Commit met</div></div>
+            <div class="metric"><div class="n">4.1<span class="pm">d</span></div><div class="l">Cycle time</div></div>
+          </div>
+          <div class="bars" style="height:96px">
+            <div class="bar" style="height:50%;background:linear-gradient(to top,#2563eb,#7cb0ff)"></div>
+            <div class="bar" style="height:70%;background:linear-gradient(to top,#2563eb,#7cb0ff)"></div>
+            <div class="bar" style="height:60%;background:linear-gradient(to top,#2563eb,#7cb0ff)"></div>
+            <div class="bar" style="height:85%;background:linear-gradient(to top,#2563eb,#7cb0ff)"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNATURE DEMO -->
+<section id="demo">
+  <div class="wrap">
+    <div class="demo-shell reveal">
+      <div class="demo-head">
+        <p class="eyebrow">Try it — 30 seconds</p>
+        <h2>Answer four questions. See your forecast.</h2>
+      </div>
+      <div class="demo-card">
+        <div class="progress"><i id="prog"></i></div>
+        <div class="demo-inner" id="demoInner">
+
+          <!-- Q1 -->
+          <div class="qstep active" data-step="0" data-type="number">
+            <div class="qnum"><svg viewBox="0 0 24 24" fill="none" stroke="#655d67" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg> Question 1</div>
+            <div class="qtext">How many developers are on the team?</div>
+            <div class="qfield">
+              <input type="number" min="1" max="200" inputmode="numeric" data-key="devs" placeholder="6" autocomplete="off">
+              <span class="unit">people</span>
+            </div>
+            <div class="qerr"></div>
+            <div class="qfoot">
+              <button class="btn btn-primary btn-sm" data-next>OK <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:2px"><path d="M20 6L9 17l-5-5"/></svg></button>
+              <span class="qhint">press <kbd>Enter</kbd></span>
+            </div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="qstep" data-step="1" data-type="number">
+            <div class="qnum"><svg viewBox="0 0 24 24" fill="none" stroke="#655d67" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg> Question 2</div>
+            <div class="qtext">How long is a sprint, in weeks?</div>
+            <div class="qfield">
+              <input type="number" min="1" max="6" inputmode="numeric" data-key="weeks" placeholder="2" autocomplete="off">
+              <span class="unit">weeks</span>
+            </div>
+            <div class="qerr"></div>
+            <div class="qfoot">
+              <button class="btn btn-primary btn-sm" data-next>OK <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:2px"><path d="M20 6L9 17l-5-5"/></svg></button>
+              <span class="qhint">press <kbd>Enter</kbd></span>
+            </div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="qstep" data-step="2" data-type="number">
+            <div class="qnum"><svg viewBox="0 0 24 24" fill="none" stroke="#655d67" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg> Question 3</div>
+            <div class="qtext">Roughly how many story points do you finish per sprint?</div>
+            <div class="qfield">
+              <input type="number" min="1" max="500" inputmode="numeric" data-key="points" placeholder="32" autocomplete="off">
+              <span class="unit">points</span>
+            </div>
+            <div class="qerr"></div>
+            <div class="qfoot">
+              <button class="btn btn-primary btn-sm" data-next>OK <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:2px"><path d="M20 6L9 17l-5-5"/></svg></button>
+              <span class="qhint">press <kbd>Enter</kbd></span>
+            </div>
+          </div>
+
+          <!-- Q4 chips -->
+          <div class="qstep" data-step="3" data-type="choice">
+            <div class="qnum"><svg viewBox="0 0 24 24" fill="none" stroke="#655d67" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg> Question 4</div>
+            <div class="qtext">What's your biggest planning pain?</div>
+            <div class="chips" data-key="pain">
+              <button class="chip" data-val="Over-committing"><span class="key">A</span>Over-committing every sprint</button>
+              <button class="chip" data-val="Unpredictable velocity"><span class="key">B</span>Velocity swings wildly</button>
+              <button class="chip" data-val="Stakeholder trust"><span class="key">C</span>Stakeholders don't trust the plan</button>
+              <button class="chip" data-val="Carry-over"><span class="key">D</span>Constant carry-over</button>
+            </div>
+            <div class="qerr"></div>
+            <div class="qfoot">
+              <span class="qhint">pick one — or press <kbd>A</kbd> <kbd>B</kbd> <kbd>C</kbd> <kbd>D</kbd></span>
+            </div>
+          </div>
+
+          <!-- RESULT -->
+          <div class="qstep result" data-step="4" data-type="result">
+            <p class="eyebrow">Your illustrative forecast</p>
+            <div class="big"><span id="rPoints">34</span><span class="pm"> ±<span id="rBand">5</span></span></div>
+            <p class="rsub">SprintINSite would forecast your next sprint at around <strong><span id="rPoints2">34</span> points</strong>, with a confidence band of <strong>±<span id="rBand2">5</span></strong>.</p>
+            <p class="rdetail" id="rNote">Based on your answers · calculated from a simple velocity model. Real forecasts read your actual sprint history in Jira.</p>
+            <div class="rrow">
+              <a href="#" class="btn btn-primary">Start free with your real data</a>
+              <button class="btn btn-outline" id="restart">Run it again</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DARK CTA -->
+<section class="darkband">
+  <div class="wrap">
+    <p class="eyebrow reveal" style="color:#a99cab">Ready when you are</p>
+    <h2 class="reveal" style="margin-top:14px">Give your next planning meeting a number it can trust.</h2>
+    <p class="lead reveal">Connect SprintINSite to your board and see your first forecast in minutes.</p>
+    <div class="reveal" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a href="#demo" class="btn btn-primary" style="background:#faf9fb;color:#2a222b">Start free</a>
+      <a href="#pricing" class="btn btn-outline">See pricing</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="pricing">
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fbrand">
+        <a href="#" class="brand">
+          <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 15 10 9 14 13 20 6"/></svg></span>
+          SprintINSite
+        </a>
+        <p>Predictive sprint analytics for Jira — grounded in your team's real delivery history. An Agility Ops product.</p>
+      </div>
+      <div class="fcol">
+        <h4>Product</h4>
+        <a href="#features">Features</a>
+        <a href="#demo">Live demo</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#">Changelog</a>
+      </div>
+      <div class="fcol">
+        <h4>Company</h4>
+        <a href="#">About Agility Ops</a>
+        <a href="#">Blog</a>
+        <a href="#">Contact</a>
+        <a href="#">Support</a>
+      </div>
+      <div class="fcol">
+        <h4>Legal</h4>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Security</a>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>&copy; 2026 Agility Ops Business Pty Ltd (ABN 37 650 141 950). All rights reserved.</span>
+      <span class="exp">Internal design experiment — not a live page.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* ---------- Scroll reveal ---------- */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.12, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  /* ---------- Conversational demo ---------- */
+  var steps = Array.prototype.slice.call(document.querySelectorAll('.qstep'));
+  var prog  = document.getElementById('prog');
+  var answers = {};
+  var current = 0;
+  var TOTAL_Q = 4; // 4 questions before result
+
+  function setProgress(){
+    var pct = Math.min(current, TOTAL_Q) / TOTAL_Q * 100;
+    prog.style.width = pct + '%';
+  }
+
+  function show(idx){
+    steps.forEach(function(s){ s.classList.remove('active'); });
+    var el = steps[idx];
+    el.classList.add('active');
+    current = idx;
+    setProgress();
+    // focus the input, if any
+    var input = el.querySelector('input');
+    if(input){ setTimeout(function(){ input.focus(); }, 380); }
+  }
+
+  function showErr(step, msg){
+    var err = step.querySelector('.qerr');
+    if(!err) return;
+    err.textContent = msg;
+    err.classList.add('show');
+  }
+  function clearErr(step){
+    var err = step.querySelector('.qerr');
+    if(err){ err.classList.remove('show'); }
+  }
+
+  function advanceFrom(idx){
+    var step = steps[idx];
+    var type = step.getAttribute('data-type');
+
+    if(type === 'number'){
+      var input = step.querySelector('input');
+      var key = input.getAttribute('data-key');
+      var val = parseFloat(input.value);
+      if(isNaN(val) || val <= 0){
+        showErr(step, 'Pop in a number to keep going.');
+        input.focus();
+        return;
+      }
+      var max = parseFloat(input.getAttribute('max')) || Infinity;
+      if(val > max){
+        showErr(step, 'That seems high — try up to ' + max + '.');
+        return;
+      }
+      clearErr(step);
+      answers[key] = val;
+      show(idx + 1);
+    }
+  }
+
+  /* Next buttons */
+  document.querySelectorAll('[data-next]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var step = btn.closest('.qstep');
+      advanceFrom(steps.indexOf(step));
+    });
+  });
+
+  /* Enter to advance on number steps */
+  document.querySelectorAll('.qstep[data-type="number"] input').forEach(function(input){
+    input.addEventListener('keydown', function(e){
+      if(e.key === 'Enter'){ e.preventDefault(); advanceFrom(steps.indexOf(input.closest('.qstep'))); }
+    });
+    input.addEventListener('input', function(){ clearErr(input.closest('.qstep')); });
+  });
+
+  /* Chip choice */
+  var chipStep = document.querySelector('.qstep[data-type="choice"]');
+  var chipWrap = chipStep.querySelector('.chips');
+  var chipKey = chipWrap.getAttribute('data-key');
+  function chooseChip(chip){
+    chipWrap.querySelectorAll('.chip').forEach(function(c){ c.classList.remove('sel'); });
+    chip.classList.add('sel');
+    answers[chipKey] = chip.getAttribute('data-val');
+    setTimeout(compute, 340);
+  }
+  chipWrap.querySelectorAll('.chip').forEach(function(chip){
+    chip.addEventListener('click', function(){ chooseChip(chip); });
+  });
+  /* keyboard A/B/C/D on chip step */
+  document.addEventListener('keydown', function(e){
+    if(!chipStep.classList.contains('active')) return;
+    var map = {a:0,b:1,c:2,d:3};
+    var k = e.key.toLowerCase();
+    if(map[k] !== undefined){
+      var chips = chipWrap.querySelectorAll('.chip');
+      if(chips[map[k]]) chooseChip(chips[map[k]]);
+    }
+  });
+
+  /* ---------- Compute a friendly mock forecast ---------- */
+  function compute(){
+    var pts   = answers.points || 30;
+    var devs  = answers.devs   || 5;
+    var weeks = answers.weeks  || 2;
+
+    // Illustrative model: anchor on stated points, nudge gently by team size / sprint length.
+    // Not machine learning — a simple deterministic velocity estimate.
+    var perDevWeek = pts / (devs * weeks);           // implied throughput
+    var forecast = Math.round(perDevWeek * devs * weeks); // recompose (≈ pts, keeps it grounded)
+    // small, sensible smoothing so it never looks random
+    forecast = Math.round((forecast + pts) / 2);
+    if(forecast < 1) forecast = pts;
+
+    // Confidence band widens with less data / bigger teams; keep it tidy 3..12
+    var band = Math.max(3, Math.min(12, Math.round(forecast * 0.14) + (devs > 8 ? 2 : 0)));
+
+    document.getElementById('rPoints').textContent  = forecast;
+    document.getElementById('rPoints2').textContent = forecast;
+    document.getElementById('rBand').textContent    = band;
+    document.getElementById('rBand2').textContent   = band;
+
+    var painNotes = {
+      'Over-committing':'You flagged over-committing — the confidence band is the number to plan to, not the top of the range.',
+      'Unpredictable velocity':'You flagged swinging velocity — SprintINSite widens the band when history is noisy, so plans stay honest.',
+      'Stakeholder trust':'You flagged stakeholder trust — a traceable forecast with a band is far easier to defend than a single guess.',
+      'Carry-over':'You flagged carry-over — real forecasts exclude unfinished work so the number reflects what you actually ship.'
+    };
+    var note = painNotes[answers.pain] || 'Calculated from a simple velocity model.';
+    document.getElementById('rNote').textContent = note + ' Real forecasts read your actual sprint history in Jira · illustrative only.';
+
+    show(4); // result step
+    prog.style.width = '100%';
+  }
+
+  /* Restart */
+  document.getElementById('restart').addEventListener('click', function(){
+    answers = {};
+    chipWrap.querySelectorAll('.chip').forEach(function(c){ c.classList.remove('sel'); });
+    steps.forEach(function(s){ var i = s.querySelector('input'); if(i) i.value=''; clearErr(s); });
+    show(0);
+  });
+
+  setProgress();
+})();
+</script>
+</body>
+</html>

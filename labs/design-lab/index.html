@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>AOB Design Lab — Experiment 01: High-End Landing Patterns</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16161a; --paper:#f6f4ef; --muted:#6b6860; --line:#e3dfd6;
+    --card:#ffffff; --accent:#cc785c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px}
+  header.lab{padding:96px 0 64px}
+  .kicker{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+  h1{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(40px,6vw,68px);line-height:1.05;letter-spacing:-.01em;max-width:16ch}
+  .lede{margin-top:28px;font-size:19px;color:var(--muted);max-width:60ch}
+  .lede strong{color:var(--ink);font-weight:600}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;padding:24px 0 48px}
+  a.card{display:block;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:32px 28px;text-decoration:none;color:inherit;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s cubic-bezier(.2,.8,.2,1)}
+  a.card:hover{transform:translateY(-4px);box-shadow:0 20px 40px -18px rgba(22,22,26,.22)}
+  .chip{display:inline-block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;border-radius:99px;margin-bottom:18px}
+  .chip.tf{background:#262627;color:#f4efe9}
+  .chip.ty{background:#eef2ff;color:#4353ff}
+  .chip.ik{background:#0058a3;color:#ffdb00}
+  .card h2{font-family:'Fraunces',serif;font-weight:500;font-size:26px;margin-bottom:10px}
+  .card p{font-size:15px;color:var(--muted)}
+  .card .go{display:inline-block;margin-top:22px;font-size:14px;font-weight:600;color:var(--accent)}
+  .notes{border-top:1px solid var(--line);padding:56px 0 40px}
+  .notes h3{font-family:'Fraunces',serif;font-weight:500;font-size:24px;margin-bottom:16px}
+  .notes ul{list-style:none;max-width:70ch}
+  .notes li{padding:10px 0 10px 26px;position:relative;color:#3d3b35;font-size:15px}
+  .notes li::before{content:"";position:absolute;left:0;top:19px;width:12px;height:2px;background:var(--accent)}
+  footer{border-top:1px solid var(--line);padding:32px 0 48px;font-size:13px;color:var(--muted)}
+  footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="lab">
+    <div class="kicker">AOB Design Lab · Experiment 01 · Internal — not linked from any live nav</div>
+    <h1>What makes a landing page feel expensive?</h1>
+    <p class="lede">Three studies of the same product — <strong>SprintINSite, predictive sprint analytics for Jira</strong> — each rebuilt in the design language of a site we admire. Same content, three philosophies. The goal: extract transferable patterns for the InSite suite, then fold the winners into our shared chrome. Nothing here ships as-is.</p>
+  </header>
+
+  <div class="grid">
+    <a class="card" href="conversational.html">
+      <span class="chip tf">Study A · Typeform</span>
+      <h2>Conversational editorial</h2>
+      <p>Huge serif type on warm cream, one idea per screen, cinematic scroll pacing, a one-question-at-a-time interactive demo.</p>
+      <span class="go">Open study →</span>
+    </a>
+    <a class="card" href="minimal.html">
+      <span class="chip ty">Study B · Tally</span>
+      <h2>Radical simplicity</h2>
+      <p>Product-first minimalism: plain background, friendly voice, the tool itself as the hero, almost no decoration — restraint as luxury.</p>
+      <span class="go">Open study →</span>
+    </a>
+    <a class="card" href="bold.html">
+      <span class="chip ik">Study C · IKEA</span>
+      <h2>Confident catalogue</h2>
+      <p>Unapologetic brand colour, dense modular grids, functional density done beautifully — systems design at retail scale.</p>
+      <span class="go">Open study →</span>
+    </a>
+  </div>
+
+  <section class="notes">
+    <h3>How to read these studies</h3>
+    <ul>
+      <li>Each page is deliberately self-contained and bespoke — the point is to feel each language at full strength, not to match our current chrome.</li>
+      <li>Judge on: first-impression weight, typographic confidence, scroll rhythm, and whether the product feels premium before you read a word.</li>
+      <li>All pages are noindex and unlinked. Anything we adopt gets rebuilt properly into the shared InSite chrome — no page ships from this lab.</li>
+      <li>Copy rules still apply here: SprintINSite is predictive analytics (not "AI-powered"), Australian English, no unverifiable claims.</li>
+    </ul>
+  </section>
+
+  <footer>
+    © 2026 Agility Ops Business Pty Ltd (ABN 37 650 141 950). All rights reserved. · Internal design experiment.
+  </footer>
+</div>
+</body>
+</html>
