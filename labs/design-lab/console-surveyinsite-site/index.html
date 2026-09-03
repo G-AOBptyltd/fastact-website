@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>SurveyInSite — Real research. Local data.</title>
+  <meta name="description" content="An Australian-hosted survey platform. Real-time live results, AU data residency, unlimited responses. Real research. Local data.">
+
+  <!-- Fonts (OSS via Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/styles.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body class="page page--home">
+
+  <!-- ============================ SHARED HEADER ============================ -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="SurveyInSite home">
+        <span class="brand__mark">Si</span>
+        <span class="brand__name">SurveyInSite</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="index.html" aria-current="page">Home</a></li>
+          <li><a class="site-nav__link" href="features.html">Features</a></li>
+          <li><a class="site-nav__link" href="pricing.html">Pricing</a></li>
+          <li><a class="site-nav__link" href="contact.html">Contact</a></li>
+          <li><a class="byline" href="https://agilityops.com.au" target="_blank" rel="noopener">by Agility Ops ↗</a></li>
+          <li><a class="btn btn--primary btn--sm" href="#">Create a survey</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ================================ HERO ================================ -->
+    <section class="hero">
+      <div class="container hero__grid">
+        <div data-reveal>
+          <p class="eyebrow">Australian survey platform</p>
+          <h1>Real research.<br>Local data.</h1>
+          <p class="lede">SurveyInSite is an Australian-hosted survey platform for teams that need honest answers without sending respondent data offshore. Eleven research instruments, unlimited responses, and a live results dashboard that updates as people reply.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#">Create a survey</a>
+            <a class="btn btn--secondary" href="features.html">See the instruments →</a>
+          </div>
+          <div class="hero__meta">
+            <span class="chip chip--mint">AU data residency</span>
+            <span class="chip chip--lilac">Real-time results</span>
+            <span class="chip">Unlimited responses</span>
+          </div>
+        </div>
+
+        <!-- ===================== SIGNATURE DASHBOARD ===================== -->
+        <div data-reveal>
+          <div class="dash" id="liveDash">
+            <div class="dash__bar">
+              <span><span class="dash__dot"></span>Live results</span>
+              <span>Q3 · Community engagement</span>
+            </div>
+            <div class="dash__body">
+              <div class="dash__counter">
+                <span class="dash__count">0</span>
+                <span class="dash__count-label">responses collected</span>
+              </div>
+
+              <div class="likert" aria-hidden="true">
+                <div class="likert__row">
+                  <span class="likert__key">Str. disagree</span>
+                  <span class="likert__track"><span class="likert__fill"></span></span>
+                  <span class="likert__val">0%</span>
+                </div>
+                <div class="likert__row">
+                  <span class="likert__key">Disagree</span>
+                  <span class="likert__track"><span class="likert__fill"></span></span>
+                  <span class="likert__val">0%</span>
+                </div>
+                <div class="likert__row">
+                  <span class="likert__key">Neutral</span>
+                  <span class="likert__track"><span class="likert__fill"></span></span>
+                  <span class="likert__val">0%</span>
+                </div>
+                <div class="likert__row">
+                  <span class="likert__key">Agree</span>
+                  <span class="likert__track"><span class="likert__fill likert__fill--mint"></span></span>
+                  <span class="likert__val">0%</span>
+                </div>
+                <div class="likert__row">
+                  <span class="likert__key">Str. agree</span>
+                  <span class="likert__track"><span class="likert__fill likert__fill--lilac"></span></span>
+                  <span class="likert__val">0%</span>
+                </div>
+              </div>
+
+              <div class="spark">
+                <p class="spark__label">Responses over time</p>
+                <svg viewBox="0 0 320 46" preserveAspectRatio="none" role="img" aria-label="Responses trending upward over time">
+                  <polyline class="spark__line" points="0,42 26,40 52,38 78,33 104,34 130,28 156,24 182,25 208,18 234,15 260,12 286,8 320,4"></polyline>
+                </svg>
+              </div>
+            </div>
+            <p class="dash__caption">Sample data — for illustration only.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="hairline">
+
+    <!-- =========================== WHY LOCAL =========================== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">Why it matters</p>
+          <h2>Your respondents' data stays in Australia.</h2>
+          <p class="lede">Everything runs in AWS Sydney with row-level isolation between surveys and encryption in transit. No offshore respondent data, no third-party panel resale — just the answers you collected.</p>
+        </div>
+        <div class="grid grid--3">
+          <div class="feature card" data-reveal>
+            <p class="feature__num">01 / RESIDENCY</p>
+            <h3>AU data residency</h3>
+            <p>Hosted in AWS Sydney. Respondent data never leaves the region.</p>
+          </div>
+          <div class="feature card" data-reveal>
+            <p class="feature__num">02 / ISOLATION</p>
+            <h3>Row-level isolation</h3>
+            <p>Each survey's responses are isolated at the row level, with encryption in transit.</p>
+          </div>
+          <div class="feature card" data-reveal>
+            <p class="feature__num">03 / ACCESS</p>
+            <h3>Anonymous access</h3>
+            <p>Respondents can answer anonymously. Export clean results to CSV at any time.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="hairline">
+
+    <!-- ========================= INSTRUMENTS ========================= -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">Eleven instruments</p>
+          <h2>The right question type for the job.</h2>
+          <p class="lede">From a quick poll to a conjoint preference study — build the instrument the research actually calls for.</p>
+        </div>
+        <ul class="inst-list" data-reveal>
+          <li><span>01</span> Quick Poll</li>
+          <li><span>02</span> Likert Agreement</li>
+          <li><span>03</span> Star / Rating</li>
+          <li><span>04</span> Open Feedback</li>
+          <li><span>05</span> Demographic</li>
+          <li><span>06</span> Ranked Choice</li>
+          <li><span>07</span> Budget Allocation</li>
+          <li><span>08</span> Importance vs Performance</li>
+          <li><span>09</span> Annual Satisfaction</li>
+          <li><span>10</span> Priority Ranking (MaxDiff)</li>
+          <li><span>11</span> Design Option Preference (Conjoint)</li>
+        </ul>
+      </div>
+    </section>
+
+    <hr class="hairline">
+
+    <!-- ========================= WHO IT'S FOR ========================= -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">Who it's for</p>
+          <h2>Built for teams that answer to real people.</h2>
+        </div>
+        <div class="grid grid--2" data-reveal>
+          <div class="card">
+            <p class="card__label">Councils & community engagement</p>
+            <h3>Consult your community with confidence</h3>
+            <p>Run engagement surveys knowing residents' data is held in Australia. Anonymous access lowers the barrier to honest feedback.</p>
+          </div>
+          <div class="card">
+            <p class="card__label">Product & research teams</p>
+            <h3>Prioritise with real evidence</h3>
+            <p>MaxDiff, conjoint, and importance-vs-performance instruments turn opinions into decisions you can defend.</p>
+          </div>
+          <div class="card">
+            <p class="card__label">Australian businesses</p>
+            <h3>Measure what changes year on year</h3>
+            <p>Annual satisfaction and rating instruments track sentiment over time with unlimited responses.</p>
+          </div>
+          <div class="card">
+            <p class="card__label">Community leaders</p>
+            <h3>Ship decisions the group backs</h3>
+            <p>Budget allocation and ranked-choice instruments make shared priorities visible fast.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="hairline">
+
+    <!-- ========================= PRICING TEASE ========================= -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">Simple pricing</p>
+          <h2>Pay per survey, or subscribe.</h2>
+        </div>
+        <div class="grid grid--3" data-reveal>
+          <div class="card price">
+            <p class="card__label">Pay per survey</p>
+            <p class="price__amount">A$49</p>
+            <p class="price__unit">per survey · unlimited responses</p>
+          </div>
+          <div class="card price">
+            <p class="card__label">Credit packs</p>
+            <p class="price__amount">from A$29.90</p>
+            <p class="price__unit">per survey · buy in advance</p>
+          </div>
+          <div class="card price">
+            <p class="card__label">Subscription</p>
+            <p class="price__amount">A$89</p>
+            <p class="price__unit">per month · up to 30 surveys</p>
+          </div>
+        </div>
+        <div class="hero__actions" data-reveal>
+          <a class="btn btn--primary" href="pricing.html">Compare pricing →</a>
+          <a class="btn btn--ghost" href="contact.html">Talk to us</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================ SHARED FOOTER ============================ -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <p class="site-footer__legal">© 2026 Agility Ops Business Pty Ltd (ABN 37 650 141 950). All rights reserved.</p>
+      <div class="site-footer__links">
+        <a href="https://agilityops.com.au/pages/privacy.html" target="_blank" rel="noopener">Privacy</a>
+        <a href="https://agilityops.com.au/pages/terms.html" target="_blank" rel="noopener">Terms</a>
+      </div>
+      <p class="site-footer__note">Internal design experiment — not a live page.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

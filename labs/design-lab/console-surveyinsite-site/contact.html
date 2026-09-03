@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>SurveyInSite — Contact us</title>
+  <meta name="description" content="Talk to us about your research. SurveyInSite is an Australian-hosted survey platform — respondent data never leaves Australia.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script src="assets/app.js" defer></script>
+
+  <!-- Page-level CSS: FORM FIELDS ONLY (styles.css has no form controls). No nav/footer CSS here. -->
+  <style>
+    .form-grid { display: grid; gap: var(--s-5); }
+    .field { display: grid; gap: var(--s-2); }
+    .field__label {
+      font-family: var(--font-mono);
+      font-size: var(--fs-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ink-muted);
+    }
+    .field__input,
+    .field__select,
+    .field__textarea {
+      width: 100%;
+      font-family: var(--font-body);
+      font-size: var(--fs-base);
+      color: var(--ink);
+      background: var(--surface);
+      border: 1px solid var(--hairline-strong);
+      border-radius: var(--r-2);
+      padding: 10px 12px;
+      line-height: 1.5;
+    }
+    .field__input::placeholder,
+    .field__textarea::placeholder { color: var(--ink-muted); }
+    .field__input:focus,
+    .field__select:focus,
+    .field__textarea:focus {
+      outline: none;
+      border-color: var(--lilac-line);
+      box-shadow: 0 0 0 3px var(--lilac);
+    }
+    .field__textarea { resize: vertical; min-height: 128px; }
+    .field__select {
+      appearance: none;
+      background-image: linear-gradient(45deg, transparent 50%, var(--ink-muted) 50%),
+                        linear-gradient(135deg, var(--ink-muted) 50%, transparent 50%);
+      background-position: calc(100% - 18px) 50%, calc(100% - 13px) 50%;
+      background-size: 5px 5px, 5px 5px;
+      background-repeat: no-repeat;
+      padding-right: 36px;
+    }
+    .field__note {
+      font-family: var(--font-mono);
+      font-size: var(--fs-xs);
+      color: var(--ink-muted);
+      letter-spacing: 0.02em;
+      margin: 0;
+    }
+    .contact-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(var(--s-6), 5vw, var(--s-8)); align-items: start; }
+    @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
+    .detail-list { display: grid; gap: var(--s-4); margin: var(--s-5) 0; }
+    .detail-list li { display: flex; align-items: baseline; gap: var(--s-3); }
+    .detail-list li b { font-family: var(--font-display); font-weight: 600; color: var(--ink); }
+    .contact-motif { margin-bottom: var(--s-5); }
+    .contact-motif svg { width: 56px; height: 56px; }
+  </style>
+</head>
+<body class="page page--contact">
+
+  <!-- ============================ SHARED HEADER ============================ -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="SurveyInSite home">
+        <span class="brand__mark">Si</span>
+        <span class="brand__name">SurveyInSite</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="index.html">Home</a></li>
+          <li><a class="site-nav__link" href="features.html">Features</a></li>
+          <li><a class="site-nav__link" href="pricing.html">Pricing</a></li>
+          <li><a class="site-nav__link" href="contact.html" aria-current="page">Contact</a></li>
+          <li><a class="byline" href="https://agilityops.com.au" target="_blank" rel="noopener">by Agility Ops ↗</a></li>
+          <li><a class="btn btn--primary btn--sm" href="#">Create a survey</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ================================ HERO ================================ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">Contact</p>
+          <h1>Talk to us about your research.</h1>
+          <p class="lede">Tell us what you're trying to learn and who you need to hear from. We'll help you pick the right instruments and get a survey live — with respondent data held in Australia.</p>
+        </div>
+
+        <div class="contact-grid">
+
+          <!-- =============================== FORM =============================== -->
+          <div data-reveal>
+            <p class="eyebrow">Send an enquiry</p>
+            <form class="form-grid" method="post" action="#" novalidate>
+              <div class="field">
+                <label class="field__label" for="name">Name</label>
+                <input class="field__input" type="text" id="name" name="name" placeholder="Your full name" autocomplete="name">
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="email">Email</label>
+                <input class="field__input" type="email" id="email" name="email" placeholder="you@organisation.com.au" autocomplete="email">
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="organisation">Organisation</label>
+                <input class="field__input" type="text" id="organisation" name="organisation" placeholder="Council, team, or business" autocomplete="organization">
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="enquiry">Enquiry type</label>
+                <select class="field__select" id="enquiry" name="enquiry">
+                  <option value="general">General enquiry</option>
+                  <option value="pricing">Pricing</option>
+                  <option value="engagement">Council or community engagement</option>
+                  <option value="partnership">Partnership</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="message">Message</label>
+                <textarea class="field__textarea" id="message" name="message" placeholder="What are you trying to learn, and by when?"></textarea>
+              </div>
+
+              <div class="hero__actions">
+                <button class="btn btn--primary" type="submit">Send enquiry</button>
+              </div>
+
+              <p class="field__note">Demo form — this is an internal design study, so the form does not submit or store anything.</p>
+            </form>
+          </div>
+
+          <!-- ============================ DIRECT DETAILS ============================ -->
+          <div class="card" data-reveal>
+            <div class="contact-motif" aria-hidden="true">
+              <svg viewBox="0 0 56 56" role="img" aria-label="Envelope">
+                <rect x="4" y="12" width="48" height="32" rx="4" fill="var(--surface)" stroke="var(--ink)" stroke-width="1.5"></rect>
+                <path d="M6 15 L28 32 L50 15" fill="none" stroke="var(--lilac-line)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M6 41 L23 27" fill="none" stroke="var(--hairline-strong)" stroke-width="1.5" stroke-linecap="round"></path>
+                <path d="M50 41 L33 27" fill="none" stroke="var(--hairline-strong)" stroke-width="1.5" stroke-linecap="round"></path>
+              </svg>
+            </div>
+
+            <p class="card__label">Direct details</p>
+            <h3>Australian-hosted, Australian-held</h3>
+            <p>SurveyInSite runs in AWS Sydney. Respondent data never leaves Australia — no offshore hosting and no third-party panel resale.</p>
+
+            <ul class="detail-list">
+              <li><span class="chip chip--mint">Hosting</span> <b>AWS Sydney (AU)</b></li>
+              <li><span class="chip chip--lilac">Data</span> <b>Stays in Australia</b></li>
+            </ul>
+
+            <p class="card__label">Who usually gets in touch</p>
+            <p>Councils and community engagement teams, product managers, community group leaders, and businesses running annual or one-off research.</p>
+
+            <p class="field__note">For company and legal details, see the parent site: <a href="https://agilityops.com.au" target="_blank" rel="noopener">Agility Ops ↗</a></p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <hr class="hairline">
+
+    <!-- ========================= CLOSING REASSURANCE ========================= -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">Before you write</p>
+          <h2>Not sure which instrument you need? Ask us.</h2>
+          <p class="lede">We'd rather help you scope the right study up front than have you pay for one that doesn't answer the question. Practitioner-led, no obligation.</p>
+        </div>
+        <div class="hero__actions" data-reveal>
+          <a class="btn btn--secondary" href="pricing.html">See pricing →</a>
+          <a class="btn btn--ghost" href="features.html">Explore features →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================ SHARED FOOTER ============================ -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <p class="site-footer__legal">© 2026 Agility Ops Business Pty Ltd (ABN 37 650 141 950). All rights reserved.</p>
+      <div class="site-footer__links">
+        <a href="https://agilityops.com.au/pages/privacy.html" target="_blank" rel="noopener">Privacy</a>
+        <a href="https://agilityops.com.au/pages/terms.html" target="_blank" rel="noopener">Terms</a>
+      </div>
+      <p class="site-footer__note">Internal design experiment — not a live page.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
