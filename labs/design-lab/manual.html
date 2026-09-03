@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Agility Ops Academy — A Practitioner's Manual for Applied AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     AGILITY OPS ACADEMY — "MANUAL" DESIGN STUDY
+     Making Software design language, recoloured in Anthropic clay.
+     Internal design experiment — not a live page.
+     ============================================================ */
+
+  :root{
+    --cream:      #f7f4ec;
+    --cream-alt:  #faf9f5;
+    --ink:        #1a1a17;
+    --ink-60:     rgba(26,26,23,0.60);
+    --ink-50:     rgba(26,26,23,0.50);
+    --ink-40:     rgba(26,26,23,0.40);
+    --clay:       #cc785c;
+    --clay-deep:  #b8654d;
+    --clay-15:    rgba(204,120,92,0.15);
+    --clay-30:    rgba(204,120,92,0.30);
+    --hairline:   #e3ddd0;
+    --serif: "Fraunces", "EB Garamond", Georgia, serif;
+    --mono:  "Space Mono", "IBM Plex Mono", ui-monospace, monospace;
+    --measure: 1180px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:var(--serif);
+    font-size:16px;
+    line-height:1.8;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+
+  /* faint paper-grid, extremely low contrast */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background-image:
+      linear-gradient(to right, rgba(26,26,23,0.025) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(26,26,23,0.025) 1px, transparent 1px);
+    background-size:32px 32px;
+    pointer-events:none;
+    z-index:0;
+  }
+
+  .wrap{
+    position:relative;
+    z-index:1;
+    max-width:var(--measure);
+    margin:0 auto;
+    padding:0 40px;
+  }
+
+  /* ---- reveal ---- */
+  .reveal{ opacity:0; transform:translateY(14px); transition:opacity .8s ease, transform .8s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+
+  /* ---- mono helpers ---- */
+  .mono{ font-family:var(--mono); }
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.28em;
+    text-transform:uppercase;
+    color:var(--clay);
+    margin:0 0 18px;
+  }
+  .figlabel{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--clay);
+  }
+
+  /* ---- dashed section rule ---- */
+  .rule{
+    border:0;
+    border-top:1px dashed var(--clay-30);
+    margin:0;
+  }
+
+  /* ============ MASTHEAD ============ */
+  header.masthead{
+    padding:26px 0 20px;
+    border-bottom:1px dashed var(--clay-30);
+  }
+  .masthead-row{
+    display:flex; justify-content:space-between; align-items:baseline;
+    font-family:var(--mono); font-size:11px; letter-spacing:0.16em;
+    text-transform:uppercase; color:var(--ink-60);
+    flex-wrap:wrap; gap:8px;
+  }
+  .masthead-row .clay{ color:var(--clay); }
+
+  /* giant pixel/mono wordmark */
+  .wordmark{
+    font-family:var(--mono);
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.02em;
+    line-height:0.92;
+    margin:34px 0 10px;
+    font-size:clamp(30px, 7.6vw, 104px);
+    color:var(--ink);
+  }
+  .wordmark .clay{ color:var(--clay); }
+  .subwordmark{
+    font-family:var(--mono);
+    font-size:clamp(11px,1.4vw,14px);
+    letter-spacing:0.24em;
+    text-transform:uppercase;
+    color:var(--ink-50);
+    margin:0 0 34px;
+  }
+
+  /* ============ HERO / OPENING SPREAD ============ */
+  .spread{
+    display:grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap:56px;
+    padding:52px 0 60px;
+    align-items:start;
+  }
+  @media (max-width:900px){ .spread{ grid-template-columns:1fr; gap:40px; } }
+
+  .col-text{ }
+  .lede-tag{
+    font-family:var(--mono); font-size:11px; letter-spacing:0.22em;
+    text-transform:uppercase; color:var(--clay); margin-bottom:20px;
+  }
+  .h-title{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:clamp(26px,3.4vw,40px);
+    line-height:1.14;
+    margin:0 0 26px;
+    letter-spacing:-0.01em;
+  }
+  .h-title em{ font-style:italic; color:var(--clay-deep); }
+
+  /* justified two-col body with drop cap */
+  .bodycols{
+    column-count:2;
+    column-gap:34px;
+    text-align:justify;
+    hyphens:auto;
+    font-size:16px;
+    line-height:1.8;
+    color:var(--ink);
+  }
+  @media (max-width:600px){ .bodycols{ column-count:1; } }
+  .bodycols p{ margin:0 0 16px; }
+  .bodycols p:first-of-type::first-letter{
+    font-family:var(--serif);
+    font-weight:600;
+    float:left;
+    font-size:3.4em;
+    line-height:0.78;
+    padding:6px 10px 0 0;
+    color:var(--clay);
+  }
+
+  .cta-row{ margin-top:30px; display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
+  .btn{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    text-decoration:none;
+    padding:13px 22px;
+    border:1px solid var(--clay);
+    color:var(--clay-deep);
+    background:transparent;
+    transition:background .2s ease, color .2s ease;
+    display:inline-block;
+  }
+  .btn:hover{ background:var(--clay); color:var(--cream); }
+  .btn.solid{ background:var(--clay); color:var(--cream); }
+  .btn.solid:hover{ background:var(--clay-deep); border-color:var(--clay-deep); }
+
+  /* ============ FIGURE FRAME ============ */
+  .figure{
+    border:1px solid var(--clay);
+    background:var(--cream-alt);
+    padding:0;
+    position:relative;
+  }
+  .figure-head{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:12px 16px;
+    border-bottom:1px dashed var(--clay-30);
+    font-family:var(--mono); font-size:11px; letter-spacing:0.16em;
+    text-transform:uppercase; color:var(--clay);
+  }
+  .figure-head .no{ color:var(--ink-60); }
+  .figure-body{ padding:8px 10px 4px; }
+  .figure-cap{
+    padding:10px 16px 14px;
+    border-top:1px dashed var(--clay-30);
+    font-family:var(--mono); font-size:10.5px; letter-spacing:0.06em;
+    color:var(--ink-60); line-height:1.6; text-transform:uppercase;
+  }
+  svg{ display:block; width:100%; height:auto; }
+
+  /* svg reveal draw */
+  .draw{
+    stroke-dasharray:1400;
+    stroke-dashoffset:1400;
+    transition:stroke-dashoffset 1.6s ease;
+  }
+  .in .draw{ stroke-dashoffset:0; }
+
+  /* ============ TABLE OF CONTENTS ============ */
+  .toc{
+    padding:56px 0;
+    border-top:1px dashed var(--clay-30);
+    border-bottom:1px dashed var(--clay-30);
+  }
+  .toc-grid{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:0 60px;
+  }
+  @media (max-width:700px){ .toc-grid{ grid-template-columns:1fr; } }
+  .toc-item{
+    display:flex; gap:16px; align-items:baseline;
+    padding:15px 0;
+    border-bottom:1px dashed var(--clay-30);
+    text-decoration:none; color:var(--ink);
+  }
+  .toc-item:hover .toc-title{ color:var(--clay-deep); }
+  .toc-no{ font-family:var(--mono); font-size:13px; color:var(--clay); min-width:42px; }
+  .toc-title{ font-family:var(--serif); font-size:19px; font-weight:500; transition:color .2s; flex:1; }
+  .toc-dots{ flex:1; border-bottom:1px dotted var(--ink-40); transform:translateY(-4px); min-width:20px; }
+  .toc-pg{ font-family:var(--mono); font-size:12px; color:var(--ink-50); }
+
+  /* ============ CHAPTER SECTIONS ============ */
+  section.chapter{ padding:64px 0; border-bottom:1px dashed var(--clay-30); }
+  .chapter-head{
+    display:flex; align-items:baseline; gap:22px; margin-bottom:34px; flex-wrap:wrap;
+  }
+  .chapter-no{
+    font-family:var(--mono); font-size:13px; letter-spacing:0.2em;
+    text-transform:uppercase; color:var(--clay);
+  }
+  .chapter-title{
+    font-family:var(--serif); font-weight:500; font-size:clamp(24px,3vw,34px);
+    margin:0; letter-spacing:-0.01em;
+  }
+
+  .two-up{
+    display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start;
+  }
+  @media (max-width:900px){ .two-up{ grid-template-columns:1fr; gap:40px; } }
+
+  .prose{ text-align:justify; hyphens:auto; }
+  .prose p{ margin:0 0 16px; }
+  .prose .dropcap::first-letter{
+    font-family:var(--serif); font-weight:600; float:left;
+    font-size:3.2em; line-height:0.8; padding:6px 9px 0 0; color:var(--clay);
+  }
+
+  /* module list */
+  .mod-list{ list-style:none; margin:0; padding:0; }
+  .mod-list li{
+    display:flex; gap:18px; align-items:baseline;
+    padding:16px 0; border-bottom:1px dashed var(--clay-30);
+  }
+  .mod-list li:first-child{ border-top:1px dashed var(--clay-30); }
+  .mod-k{ font-family:var(--mono); font-size:12px; color:var(--clay); min-width:80px; letter-spacing:0.08em; }
+  .mod-name{ font-family:var(--serif); font-size:18px; font-weight:500; min-width:130px; }
+  .mod-desc{ font-size:15px; color:var(--ink-60); flex:1; text-align:left; }
+
+  /* offerings grid */
+  .offer-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:var(--clay-30); border:1px solid var(--clay-30);
+  }
+  @media (max-width:820px){ .offer-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:520px){ .offer-grid{ grid-template-columns:1fr; } }
+  .offer{
+    background:var(--cream-alt); padding:26px 22px;
+  }
+  .offer .num{ font-family:var(--mono); font-size:11px; letter-spacing:0.2em; color:var(--clay); }
+  .offer h4{ font-family:var(--serif); font-weight:600; font-size:19px; margin:12px 0 8px; }
+  .offer p{ font-size:14.5px; line-height:1.65; color:var(--ink-60); margin:0; text-align:left; }
+
+  /* pull callout */
+  .callout{
+    border-left:3px solid var(--clay);
+    padding:6px 0 6px 22px;
+    margin:30px 0;
+    font-family:var(--serif); font-style:italic; font-size:21px; line-height:1.5;
+    color:var(--ink);
+  }
+  .callout .attr{ display:block; font-family:var(--mono); font-style:normal; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--clay); margin-top:12px; }
+
+  /* margin note */
+  .marginnote{
+    font-family:var(--mono); font-size:11px; line-height:1.7;
+    letter-spacing:0.03em; color:var(--ink-50);
+    border-top:1px dashed var(--clay-30);
+    padding-top:12px; margin-top:8px;
+  }
+
+  /* ============ SUBSCRIBE BLOCK ============ */
+  .subscribe{
+    border:1px solid var(--clay);
+    background:var(--cream-alt);
+    padding:44px 40px;
+    margin:0 0 8px;
+  }
+  .subscribe .figure-head{ margin:-44px -40px 30px; }
+  .sub-grid{ display:grid; grid-template-columns:1.2fr 1fr; gap:44px; align-items:start; }
+  @media (max-width:760px){ .sub-grid{ grid-template-columns:1fr; gap:28px; } }
+  .sub-grid h3{ font-family:var(--serif); font-weight:500; font-size:27px; margin:0 0 14px; letter-spacing:-0.01em; }
+  .sub-grid p{ color:var(--ink-60); font-size:15.5px; margin:0; text-align:justify; }
+  .sub-form label{ font-family:var(--mono); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--clay); display:block; margin-bottom:8px; }
+  .sub-form input{
+    width:100%; padding:13px 14px; margin-bottom:16px;
+    background:var(--cream); border:1px solid var(--hairline);
+    font-family:var(--mono); font-size:13px; color:var(--ink);
+  }
+  .sub-form input:focus{ outline:none; border-color:var(--clay); }
+  .sub-form .note{ font-family:var(--mono); font-size:10.5px; color:var(--ink-50); letter-spacing:0.04em; margin-top:6px; }
+  .sub-msg{ font-family:var(--mono); font-size:12px; color:var(--clay-deep); margin-top:14px; min-height:16px; }
+
+  /* ============ COLOPHON / FOOTER ============ */
+  footer.colophon{
+    padding:48px 0 60px;
+    font-family:var(--mono);
+  }
+  .colophon-row{
+    display:flex; justify-content:space-between; gap:24px; flex-wrap:wrap;
+    font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-60);
+  }
+  .colophon-row a{ color:var(--clay); text-decoration:none; }
+  .colophon-row a:hover{ text-decoration:underline; }
+  .colophon-legal{
+    margin-top:26px; padding-top:18px; border-top:1px dashed var(--clay-30);
+    font-size:11px; letter-spacing:0.06em; color:var(--ink-50); line-height:1.9;
+  }
+  .experiment-tag{ color:var(--clay); }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- ============ MASTHEAD ============ -->
+  <header class="masthead reveal">
+    <div class="masthead-row">
+      <span>Agility Ops Academy &nbsp;·&nbsp; <span class="clay">Delivered by FACT</span></span>
+      <span>Edition&nbsp;MMXXVI &nbsp;·&nbsp; Sydney, Australia</span>
+      <span class="clay">A Practitioner's Manual</span>
+    </div>
+    <h1 class="wordmark">AGILITY&nbsp;OPS<br><span class="clay">ACADEMY</span></h1>
+    <p class="subwordmark">Applied&nbsp;AI&nbsp;Training &nbsp;/&nbsp; Practitioner-Led &nbsp;/&nbsp; Grounded&nbsp;in&nbsp;Production&nbsp;Work</p>
+  </header>
+
+  <!-- ============ OPENING SPREAD ============ -->
+  <div class="spread">
+    <div class="col-text reveal">
+      <p class="lede-tag">Front Matter — Preface</p>
+      <h2 class="h-title">AI is redrawing the map.<br><em>We're the compass.</em></h2>
+      <div class="bodycols">
+        <p>This is a manual for teams who would rather build capability than buy a subscription and hope for the best. Agility Ops Academy is the training arm of Agility Ops, and it is written the way a good technical reference is written — precisely, from the workbench, with nothing that has not first survived contact with real delivery.</p>
+        <p>Career relevance is the new job security. The teams that will hold their ground over the coming decade are the ones that learn to work alongside capable AI systems deliberately, not accidentally. That is a craft, and craft is taught by practitioners, not by slideware.</p>
+        <p>What follows is organised as chapters. Read the learning path, study the method schematics, then subscribe to the field notes. Every claim here is one we are prepared to demonstrate in a room with your team, on your work, with the tools running.</p>
+      </div>
+      <div class="cta-row">
+        <a href="#toc" class="btn solid">Read the manual</a>
+        <a href="#subscribe" class="btn">Subscribe to updates</a>
+      </div>
+    </div>
+
+    <!-- FIG.001 — six-module exploded learning path -->
+    <div class="col-text reveal" id="fig-path">
+      <figure class="figure">
+        <div class="figure-head">
+          <span class="figlabel">The Learning Path</span>
+          <span class="no">FIG.&nbsp;001</span>
+        </div>
+        <div class="figure-body">
+          <svg viewBox="0 0 520 560" role="img" aria-label="Exploded isometric diagram of the six-module learning path">
+            <defs>
+              <marker id="dot" markerWidth="6" markerHeight="6" refX="3" refY="3">
+                <circle cx="3" cy="3" r="2.4" fill="#cc785c"/>
+              </marker>
+            </defs>
+            <!-- six stacked isometric slabs, exploded vertically -->
+            <!-- helper: each slab is a parallelogram top + two sides -->
+            <!-- MODULE 06 PRODUCT (top) -->
+            <g>
+              <polygon class="draw" points="200,70 320,30 420,70 300,110" fill="rgba(204,120,92,0.06)" stroke="#cc785c" stroke-width="1.4"/>
+              <path class="draw" d="M200,70 L200,90 L300,130 L300,110 Z" fill="rgba(204,120,92,0.10)" stroke="#cc785c" stroke-width="1.4"/>
+              <path class="draw" d="M300,110 L300,130 L420,90 L420,70 Z" fill="rgba(204,120,92,0.03)" stroke="#cc785c" stroke-width="1.4"/>
+              <line x1="420" y1="70" x2="500" y2="52" stroke="#cc785c" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#dot)"/>
+            </g>
+            <!-- MODULE 05 CONNECTION -->
+            <g>
+              <polygon class="draw" points="200,150 320,110 420,150 300,190" fill="rgba(204,120,92,0.06)" stroke="#cc785c" stroke-width="1.4"/>
+              <path class="draw" d="M200,150 L200,170 L300,210 L300,190 Z" fill="rgba(204,120,92,0.10)" stroke="#cc785c" stroke-width="1.4"/>
+              <path class="draw" d="M300,190 L300,210 L420,170 L420,150 Z" fill="rgba(204,120,92,0.03)" stroke="#cc785c" stroke-width="1.4"/>
+              <line x1="200" y1="160" x2="120" y2="142" stroke="#cc785c" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#dot)"/>
+            </g>
+            <!-- MODULE 04 SYSTEM -->
+            <g>
+              <polygon class="draw" points="200,230 320,190 420,230 300,270" fill="rgba(204,120,92,0.06)" stroke="#cc785c" stroke-width="1.4"/>
+              <path class="draw" d="M200,230 L200,250 L300,290 L300,270 Z" fill="rgba(204,120,92,0.10)" stroke="#cc785c" stroke-width="1.4"/>
+              <path class="draw" d="M300,270 L300,290 L420,250 L420,230 Z" fill="rgba(204,120,92,0.03)" stroke="#cc785c" stroke-width="1.4"/>
+              <line x1="420" y1="230" x2="500" y2="212" stroke="#cc785c" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#dot)"/>
+            </g>
+            <!-- MODULE 03 RHYTHM -->
+            <g>
+              <polygon class="draw" points="200,310 320,270 420,310 300,350" fill="rgba(204,120,92,0.06)" stroke="#cc785c" stroke-width="1.4"/>
+              <path class="draw" d="M200,310 L200,330 L300,370 L300,350 Z" fill="rgba(204,120,92,0.10)" stroke="#cc785c" stroke-width="1.4"/>
+              <path class="draw" d="M300,350 L300,370 L420,330 L420,310 Z" fill="rgba(204,120,92,0.03)" stroke="#cc785c" stroke-width="1.4"/>
+              <line x1="200" y1="320" x2="120" y2="302" stroke="#cc785c" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#dot)"/>
+            </g>
+            <!-- MODULE 02 TRUST -->
+            <g>
+              <polygon class="draw" points="200,390 320,350 420,390 300,430" fill="rgba(204,120,92,0.06)" stroke="#cc785c" stroke-width="1.4"/>
+              <path class="draw" d="M200,390 L200,410 L300,450 L300,430 Z" fill="rgba(204,120,92,0.10)" stroke="#cc785c" stroke-width="1.4"/>
+              <path class="draw" d="M300,430 L300,450 L420,410 L420,390 Z" fill="rgba(204,120,92,0.03)" stroke="#cc785c" stroke-width="1.4"/>
+              <line x1="420" y1="390" x2="500" y2="372" stroke="#cc785c" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#dot)"/>
+            </g>
+            <!-- MODULE 01 CONTEXT (base) -->
+            <g>
+              <polygon class="draw" points="200,470 320,430 420,470 300,510" fill="rgba(204,120,92,0.12)" stroke="#cc785c" stroke-width="1.6"/>
+              <path class="draw" d="M200,470 L200,492 L300,532 L300,510 Z" fill="rgba(204,120,92,0.16)" stroke="#cc785c" stroke-width="1.6"/>
+              <path class="draw" d="M300,510 L300,532 L420,492 L420,470 Z" fill="rgba(204,120,92,0.06)" stroke="#cc785c" stroke-width="1.6"/>
+              <line x1="200" y1="480" x2="120" y2="498" stroke="#cc785c" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#dot)"/>
+            </g>
+            <!-- callout labels (mono) -->
+            <g font-family="'Space Mono', monospace" font-size="10" fill="#cc785c" letter-spacing="0.5">
+              <text x="504" y="50" text-anchor="end">MOD 06 · PRODUCT</text>
+              <text x="116" y="140" text-anchor="start">MOD 05 · CONNECTION</text>
+              <text x="504" y="210" text-anchor="end">MOD 04 · SYSTEM</text>
+              <text x="116" y="300" text-anchor="start">MOD 03 · RHYTHM</text>
+              <text x="504" y="370" text-anchor="end">MOD 02 · TRUST</text>
+              <text x="116" y="512" text-anchor="start">MOD 01 · CONTEXT</text>
+            </g>
+          </svg>
+        </div>
+        <figcaption class="figure-cap">Exploded view — the six-module live cohort, ascending from Context to Product. Each layer builds on the one beneath it.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- ============ TABLE OF CONTENTS ============ -->
+  <nav class="toc reveal" id="toc">
+    <p class="eyebrow">Contents</p>
+    <div class="toc-grid">
+      <a class="toc-item" href="#ch1"><span class="toc-no">01</span><span class="toc-title">The Learning Path</span><span class="toc-dots"></span><span class="toc-pg">p.03</span></a>
+      <a class="toc-item" href="#ch2"><span class="toc-no">02</span><span class="toc-title">What We Offer</span><span class="toc-dots"></span><span class="toc-pg">p.07</span></a>
+      <a class="toc-item" href="#ch3"><span class="toc-no">03</span><span class="toc-title">The Governance Method</span><span class="toc-dots"></span><span class="toc-pg">p.11</span></a>
+      <a class="toc-item" href="#ch4"><span class="toc-no">04</span><span class="toc-title">Why Practitioners</span><span class="toc-dots"></span><span class="toc-pg">p.15</span></a>
+      <a class="toc-item" href="#subscribe"><span class="toc-no">05</span><span class="toc-title">Field Notes &amp; Updates</span><span class="toc-dots"></span><span class="toc-pg">p.19</span></a>
+      <a class="toc-item" href="#colophon"><span class="toc-no">06</span><span class="toc-title">Colophon</span><span class="toc-dots"></span><span class="toc-pg">p.23</span></a>
+    </div>
+  </nav>
+
+  <!-- ============ CHAPTER 01 — LEARNING PATH ============ -->
+  <section class="chapter reveal" id="ch1">
+    <div class="chapter-head">
+      <span class="chapter-no">Chapter&nbsp;01</span>
+      <h3 class="chapter-title">The Learning Path</h3>
+    </div>
+    <div class="two-up">
+      <div class="prose">
+        <p class="dropcap">Our flagship programme is <em>AI Productivity Systems with Claude</em> — a six-module live cohort learning path. It is not a video library you never finish. It runs as a facilitated cohort, so each module is worked through together, applied to your own tools, and defended in front of peers who will notice when a claim does not hold.</p>
+        <p>The path is deliberately sequenced. You cannot govern what you cannot trust, and you cannot trust what you have not first given proper context. So we begin at the base — Context — and build upward through Trust, Rhythm, System, Connection and finally Product, where the whole thing becomes a repeatable way of working rather than a set of tricks.</p>
+        <p>The curriculum is practitioner-led training, developed within our R&amp;D program and refined against live delivery on real backlogs — including work with Atlassian and Jira-using teams. It is methodology under active R&amp;D development, revised each cohort as the tools and the craft move.</p>
+        <ul class="mod-list">
+          <li><span class="mod-k">MOD 01</span><span class="mod-name">Context</span><span class="mod-desc">Giving AI the situation it needs before asking for output.</span></li>
+          <li><span class="mod-k">MOD 02</span><span class="mod-name">Trust</span><span class="mod-desc">Knowing when to rely on a result — and how to verify it.</span></li>
+          <li><span class="mod-k">MOD 03</span><span class="mod-name">Rhythm</span><span class="mod-desc">Folding AI into the cadence of real delivery work.</span></li>
+          <li><span class="mod-k">MOD 04</span><span class="mod-name">System</span><span class="mod-desc">Turning individual habits into team-level practice.</span></li>
+          <li><span class="mod-k">MOD 05</span><span class="mod-name">Connection</span><span class="mod-desc">Wiring AI into the tools your team already lives in.</span></li>
+          <li><span class="mod-k">MOD 06</span><span class="mod-name">Product</span><span class="mod-desc">Shipping outcomes, not experiments — a durable way of working.</span></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="callout">
+          Depth over commodity. A cohort learns craft; a course library sells access.
+          <span class="attr">— The Academy position</span>
+        </div>
+        <p class="marginnote">
+          NOTE — Figures in this manual are illustrative schematics of method, not
+          benchmark data. Any numbers shown elsewhere on Agility Ops materials are framed
+          as illustrative unless explicitly sourced.
+        </p>
+        <p class="marginote marginote" style="font-family:var(--mono); font-size:11px; line-height:1.7; letter-spacing:0.03em; color:var(--ink-50); border-top:1px dashed var(--clay-30); padding-top:12px; margin-top:20px;">
+          FORMAT — Live cohort. Facilitated. Applied to your own tools and backlog.
+          Delivered fully virtual or in-house. Public cohorts open by waitlist.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER 02 — OFFERINGS ============ -->
+  <section class="chapter reveal" id="ch2">
+    <div class="chapter-head">
+      <span class="chapter-no">Chapter&nbsp;02</span>
+      <h3 class="chapter-title">What We Offer</h3>
+    </div>
+    <div class="offer-grid">
+      <div class="offer">
+        <span class="num">01</span>
+        <h4>Learning Path</h4>
+        <p>AI Productivity Systems with Claude — the six-module live cohort described in Chapter 01.</p>
+      </div>
+      <div class="offer">
+        <span class="num">02</span>
+        <h4>Practitioner Guides</h4>
+        <p>Free resources on sprint retrospectives, cognitive load and agile practices — written from the workbench.</p>
+      </div>
+      <div class="offer">
+        <span class="num">03</span>
+        <h4>Workshops</h4>
+        <p>Prompt engineering, AI governance introductions, context saturation labs and agile fundamentals.</p>
+      </div>
+      <div class="offer">
+        <span class="num">04</span>
+        <h4>Advisory</h4>
+        <p>AI Cognitive Governance &amp; Context Saturation engagements for teams ready to operationalise the method.</p>
+      </div>
+      <div class="offer">
+        <span class="num">05</span>
+        <h4>Claude Playbooks</h4>
+        <p>An ecosystem series — practical patterns for getting durable value from the Claude toolchain.</p>
+      </div>
+      <div class="offer">
+        <span class="num">06</span>
+        <h4>Tools &amp; Games</h4>
+        <p>An interactive learning playground — capability practised, not just watched.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER 03 — GOVERNANCE METHOD ============ -->
+  <section class="chapter reveal" id="ch3">
+    <div class="chapter-head">
+      <span class="chapter-no">Chapter&nbsp;03</span>
+      <h3 class="chapter-title">The Governance Method</h3>
+    </div>
+    <div class="two-up">
+      <!-- FIG.002 — AI Cognitive Governance schematic -->
+      <div id="fig-gov">
+        <figure class="figure">
+          <div class="figure-head">
+            <span class="figlabel">AI Cognitive Governance</span>
+            <span class="no">FIG.&nbsp;002</span>
+          </div>
+          <div class="figure-body">
+            <svg viewBox="0 0 520 460" role="img" aria-label="Schematic of the AI Cognitive Governance method with labelled subsystems">
+              <defs>
+                <marker id="dot2" markerWidth="6" markerHeight="6" refX="3" refY="3">
+                  <circle cx="3" cy="3" r="2.4" fill="#cc785c"/>
+                </marker>
+              </defs>
+              <!-- central hub -->
+              <circle class="draw" cx="260" cy="230" r="66" fill="rgba(204,120,92,0.06)" stroke="#cc785c" stroke-width="1.6"/>
+              <circle class="draw" cx="260" cy="230" r="42" fill="none" stroke="#cc785c" stroke-width="1" stroke-dasharray="4 4"/>
+              <text x="260" y="226" text-anchor="middle" font-family="'Space Mono', monospace" font-size="10" fill="#cc785c" letter-spacing="0.5">COGNITIVE</text>
+              <text x="260" y="240" text-anchor="middle" font-family="'Space Mono', monospace" font-size="10" fill="#cc785c" letter-spacing="0.5">GOVERNANCE</text>
+
+              <!-- five spokes to pillar nodes -->
+              <!-- top-left: cognitive load -->
+              <line class="draw" x1="215" y1="185" x2="120" y2="90" stroke="#cc785c" stroke-width="1.2"/>
+              <rect class="draw" x="30" y="60" width="130" height="46" fill="rgba(204,120,92,0.06)" stroke="#cc785c" stroke-width="1.2"/>
+              <text x="95" y="80" text-anchor="middle" font-family="'Space Mono', monospace" font-size="9" fill="#cc785c">COGNITIVE</text>
+              <text x="95" y="93" text-anchor="middle" font-family="'Space Mono', monospace" font-size="9" fill="#cc785c">LOAD</text>
+
+              <!-- top-right: attention architecture -->
+              <line class="draw" x1="305" y1="185" x2="400" y2="90" stroke="#cc785c" stroke-width="1.2"/>
+              <rect class="draw" x="360" y="60" width="140" height="46" fill="rgba(204,120,92,0.06)" stroke="#cc785c" stroke-width="1.2"/>
+              <text x="430" y="80" text-anchor="middle" font-family="'Space Mono', monospace" font-size="9" fill="#cc785c">ATTENTION</text>
+              <text x="430" y="93" text-anchor="middle" font-family="'Space Mono', monospace" font-size="9" fill="#cc785c">ARCHITECTURE</text>
+
+              <!-- right: demand governance -->
+              <line class="draw" x1="326" y1="230" x2="430" y2="230" stroke="#cc785c" stroke-width="1.2"/>
+              <rect class="draw" x="365" y="207" width="135" height="46" fill="rgba(204,120,92,0.06)" stroke="#cc785c" stroke-width="1.2"/>
+              <text x="432" y="227" text-anchor="middle" font-family="'Space Mono', monospace" font-size="9" fill="#cc785c">DEMAND</text>
+              <text x="432" y="240" text-anchor="middle" font-family="'Space Mono', monospace" font-size="9" fill="#cc785c">GOVERNANCE</text>
+
+              <!-- bottom-left: guardrail design -->
+              <line class="draw" x1="215" y1="275" x2="120" y2="370" stroke="#cc785c" stroke-width="1.2"/>
+              <rect class="draw" x="30" y="354" width="130" height="46" fill="rgba(204,120,92,0.06)" stroke="#cc785c" stroke-width="1.2"/>
+              <text x="95" y="374" text-anchor="middle" font-family="'Space Mono', monospace" font-size="9" fill="#cc785c">GUARDRAIL</text>
+              <text x="95" y="387" text-anchor="middle" font-family="'Space Mono', monospace" font-size="9" fill="#cc785c">DESIGN</text>
+
+              <!-- bottom-right: deep work protection -->
+              <line class="draw" x1="305" y1="275" x2="400" y2="370" stroke="#cc785c" stroke-width="1.2"/>
+              <rect class="draw" x="360" y="354" width="140" height="46" fill="rgba(204,120,92,0.06)" stroke="#cc785c" stroke-width="1.2"/>
+              <text x="430" y="374" text-anchor="middle" font-family="'Space Mono', monospace" font-size="9" fill="#cc785c">DEEP WORK</text>
+              <text x="430" y="387" text-anchor="middle" font-family="'Space Mono', monospace" font-size="9" fill="#cc785c">PROTECTION</text>
+
+              <!-- node markers -->
+              <circle cx="215" cy="185" r="3" fill="#cc785c"/>
+              <circle cx="305" cy="185" r="3" fill="#cc785c"/>
+              <circle cx="326" cy="230" r="3" fill="#cc785c"/>
+              <circle cx="215" cy="275" r="3" fill="#cc785c"/>
+              <circle cx="305" cy="275" r="3" fill="#cc785c"/>
+            </svg>
+          </div>
+          <figcaption class="figure-cap">Schematic — five pillars of AI Cognitive Governance &amp; Context Saturation. Previously known as the GSD Framework.</figcaption>
+        </figure>
+      </div>
+
+      <div class="prose">
+        <p class="dropcap">The flagship advisory offering is <em>AI Cognitive Governance &amp; Context Saturation</em> — previously known as the GSD Framework, "the human operating system for the AI age". It treats attention and cognitive load as the scarce resources they actually are, and designs a team's working environment around protecting them.</p>
+        <p>Five pillars carry the method. <strong>Cognitive Load Diagnostics</strong> measures where the team is drowning. <strong>Attention Architecture</strong> redesigns the day around focus. <strong>Demand Governance</strong> controls what work is allowed in. <strong>AI Guardrail Design</strong> sets the boundaries within which AI can be trusted to act. And <strong>Deep Work Protection</strong> defends the conditions under which the best work is actually done.</p>
+        <p>Context saturation is the connective idea: an AI system is only as useful as the situation it has been given, and a team is only as effective as the context it can hold without breaking. The engagements make both explicit, then govern them deliberately.</p>
+        <div class="callout">
+          Attention is the scarce resource. Governance is how you defend it.
+          <span class="attr">— On the method</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER 04 — WHY PRACTITIONERS ============ -->
+  <section class="chapter reveal" id="ch4">
+    <div class="chapter-head">
+      <span class="chapter-no">Chapter&nbsp;04</span>
+      <h3 class="chapter-title">Why Practitioners</h3>
+    </div>
+    <div class="two-up">
+      <div class="prose">
+        <p class="dropcap">Most AI training is written by people who have not shipped anything with the tools they teach. Ours is not. The Academy is backed by seventeen-plus years of agile and lean delivery expertise, combined with live AI capability building — and, unusually, by working software.</p>
+        <p>Agility Ops builds and runs its own products: the InSite analytics suite and a set of Jira apps used inside real delivery teams. That means the training is not theory dressed as practice. When we teach how to wire AI into the tools a team lives in, we are teaching from software we maintain, on the same platform — Atlassian and Jira — that our audience already works in.</p>
+        <p>The result is depth over commodity. Anyone can resell a generic online course. Very few can teach applied AI from the position of also having to ship it, support it, and stand behind it. That is the difference this manual is written to make legible.</p>
+      </div>
+      <div>
+        <div class="callout">
+          Training grounded in production work, not slideware. If we teach it, we have shipped it.
+          <span class="attr">— The differentiator</span>
+        </div>
+        <p class="marginnote">
+          HERITAGE — FACT (formerly Fast Agile Coaching &amp; Training) is the delivery brand.
+          The Academy is its training arm within Agility Ops Business Pty Ltd, Sydney.
+        </p>
+        <p style="font-family:var(--mono); font-size:11px; line-height:1.7; letter-spacing:0.03em; color:var(--ink-50); border-top:1px dashed var(--clay-30); padding-top:12px; margin-top:20px;">
+          AUDIENCE — Delivery teams, agile practitioners and technology leaders in
+          Atlassian and Jira-using organisations who want capability, not a subscription.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SUBSCRIBE / FIELD NOTES ============ -->
+  <section class="chapter reveal" id="subscribe" style="border-bottom:none;">
+    <div class="chapter-head">
+      <span class="chapter-no">Chapter&nbsp;05</span>
+      <h3 class="chapter-title">Field Notes &amp; Updates</h3>
+    </div>
+    <div class="subscribe">
+      <div class="figure-head">
+        <span class="figlabel">Subscribe to Updates</span>
+        <span class="no">FORM&nbsp;01</span>
+      </div>
+      <div class="sub-grid">
+        <div>
+          <h3>Join the waitlist for the next public cohort.</h3>
+          <p>We send occasional field notes — new guides, workshop dates and openings for the live cohort. No noise. Leave your details and we will let you know when the next public intake opens. In-house and fully virtual delivery are available now on request.</p>
+        </div>
+        <form class="sub-form" id="subForm" onsubmit="return handleSub(event)">
+          <label for="sub-name">Name</label>
+          <input id="sub-name" type="text" placeholder="Your name" autocomplete="name">
+          <label for="sub-email">Email address</label>
+          <input id="sub-email" type="email" placeholder="you@organisation.com.au" autocomplete="email" required>
+          <button type="submit" class="btn solid" style="width:100%; cursor:pointer;">Add me to the field notes</button>
+          <p class="note">Design experiment — this form does not submit anywhere.</p>
+          <p class="sub-msg" id="subMsg"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COLOPHON / FOOTER ============ -->
+  <footer class="colophon" id="colophon">
+    <hr class="rule" style="margin-bottom:32px;">
+    <div class="colophon-row">
+      <span>Agility Ops Academy — Delivered by FACT</span>
+      <span><a href="https://fastact.com.au">fastact.com.au</a> · <a href="https://agilityops.com.au">agilityops.com.au</a></span>
+      <span>Set in Fraunces &amp; Space Mono</span>
+    </div>
+    <div class="colophon-legal">
+      © 2026 Agility Ops Business Pty Ltd (ABN 37 650 141 950). All rights reserved.<br>
+      <span class="experiment-tag">Internal design experiment — not a live page.</span>
+      A study rendering the Academy in the design language of a technical reference manual.
+      Any figures shown are illustrative. Applied AI training is developed within our R&amp;D program;
+      methodology under active R&amp;D development.
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  /* ---- scroll reveal + svg draw ---- */
+  (function(){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold:0.12 });
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+    /* also watch figures for the draw animation regardless of .reveal wrapper */
+    document.querySelectorAll('#fig-path, #fig-gov').forEach(function(el){ io.observe(el); });
+    /* kick the masthead immediately */
+    setTimeout(function(){
+      document.querySelector('.masthead') && document.querySelector('.masthead').classList.add('in');
+    }, 60);
+  })();
+
+  /* ---- subscribe (no-op demo) ---- */
+  function handleSub(e){
+    e.preventDefault();
+    var email = document.getElementById('sub-email').value.trim();
+    var msg = document.getElementById('subMsg');
+    if(email){
+      msg.textContent = '> Recorded (demo only) — thank you, ' + (document.getElementById('sub-name').value.trim() || 'practitioner') + '.';
+      document.getElementById('subForm').reset();
+    }
+    return false;
+  }
+</script>
+</body>
+</html>

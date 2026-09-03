@@ -28,9 +28,19 @@
   .chip.tf{background:#262627;color:#f4efe9}
   .chip.ty{background:#eef2ff;color:#4353ff}
   .chip.ik{background:#0058a3;color:#ffdb00}
+  .chip.th{background:#241f23;color:#beffcb}
+  .chip.we{background:#0e0e13;color:#f7ff9e}
+  .chip.ms{background:#f7f4ec;color:#cc785c;border:1px solid #e3ddd0}
+  .chip.gr{background:#cc785c;color:#faf9f2}
   .card h2{font-family:'Fraunces',serif;font-weight:500;font-size:26px;margin-bottom:10px}
   .card p{font-size:15px;color:var(--muted)}
-  .card .go{display:inline-block;margin-top:22px;font-size:14px;font-weight:600;color:var(--accent)}
+  .card .subj{display:block;margin-top:14px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#9a9488}
+  .card .go{display:inline-block;margin-top:16px;font-size:14px;font-weight:600;color:var(--accent)}
+  .round{margin-top:8px}
+  .round-head{border-top:1px solid var(--line);padding-top:40px;margin-top:24px}
+  .round-head .rk{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .round-head h2{font-family:'Fraunces',serif;font-weight:500;font-size:30px;margin:8px 0 6px;letter-spacing:-.01em}
+  .round-head p{font-size:16px;color:var(--muted);max-width:64ch}
   .notes{border-top:1px solid var(--line);padding:56px 0 40px}
   .notes h3{font-family:'Fraunces',serif;font-weight:500;font-size:24px;margin-bottom:16px}
   .notes ul{list-style:none;max-width:70ch}
@@ -45,28 +55,76 @@
   <header class="lab">
     <div class="kicker">AOB Design Lab · Experiment 01 · Internal — not linked from any live nav</div>
     <h1>What makes a landing page feel expensive?</h1>
-    <p class="lede">Three studies of the same product — <strong>SprintINSite, predictive sprint analytics for Jira</strong> — each rebuilt in the design language of a site we admire. Same content, three philosophies. The goal: extract transferable patterns for the InSite suite, then fold the winners into our shared chrome. Nothing here ships as-is.</p>
+    <p class="lede">Seven studies across three of our products — each page takes one product and rebuilds it in the design language of a site we admire. Same content, radically different philosophies. The goal: extract transferable patterns, then fold the winners into our shared InSite chrome. <strong>Nothing here ships as-is.</strong></p>
   </header>
 
-  <div class="grid">
-    <a class="card" href="conversational.html">
-      <span class="chip tf">Study A · Typeform</span>
-      <h2>Conversational editorial</h2>
-      <p>Huge serif type on warm cream, one idea per screen, cinematic scroll pacing, a one-question-at-a-time interactive demo.</p>
-      <span class="go">Open study →</span>
-    </a>
-    <a class="card" href="minimal.html">
-      <span class="chip ty">Study B · Tally</span>
-      <h2>Radical simplicity</h2>
-      <p>Product-first minimalism: plain background, friendly voice, the tool itself as the hero, almost no decoration — restraint as luxury.</p>
-      <span class="go">Open study →</span>
-    </a>
-    <a class="card" href="bold.html">
-      <span class="chip ik">Study C · IKEA</span>
-      <h2>Confident catalogue</h2>
-      <p>Unapologetic brand colour, dense modular grids, functional density done beautifully — systems design at retail scale.</p>
-      <span class="go">Open study →</span>
-    </a>
+  <div class="round">
+    <div class="round-head">
+      <div class="rk">Round 1 · Subject: SprintINSite — predictive sprint analytics for Jira</div>
+      <h2>Three philosophies, one Jira tool</h2>
+      <p>The first pass: how differently the same analytics product can present depending on whose design language it borrows.</p>
+    </div>
+    <div class="grid">
+      <a class="card" href="conversational.html">
+        <span class="chip tf">Typeform</span>
+        <h2>Conversational editorial</h2>
+        <p>Huge serif type on warm cream, one idea per screen, cinematic scroll pacing, a one-question-at-a-time interactive demo.</p>
+        <span class="subj">SprintINSite</span>
+        <span class="go">Open study →</span>
+      </a>
+      <a class="card" href="minimal.html">
+        <span class="chip ty">Tally</span>
+        <h2>Radical simplicity</h2>
+        <p>Product-first minimalism: plain background, friendly voice, the tool itself as the hero, almost no decoration — restraint as luxury.</p>
+        <span class="subj">SprintINSite</span>
+        <span class="go">Open study →</span>
+      </a>
+      <a class="card" href="bold.html">
+        <span class="chip ik">IKEA</span>
+        <h2>Confident catalogue</h2>
+        <p>Unapologetic brand colour, dense modular grids, functional density done beautifully — systems design at retail scale.</p>
+        <span class="subj">SprintINSite</span>
+        <span class="go">Open study →</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="round">
+    <div class="round-head">
+      <div class="rk">Round 2 · Subjects: SurveyInSite &amp; Agility Ops Academy (FACT)</div>
+      <h2>Award-style languages, two more products</h2>
+      <p>Four design-forward, SiteInspire-featured sites applied to two live brands. The two Academy studies are kept in the Anthropic clay/cream palette to sit alongside our existing Claude-ecosystem work; the SurveyInSite studies use each source's native palette.</p>
+    </div>
+    <div class="grid">
+      <a class="card" href="console.html">
+        <span class="chip th">Throxy</span>
+        <h2>Operator console</h2>
+        <p>Warm off-white, monospace micro-labels, and a self-playing live-results dashboard that fills in as you watch — sell the outcome by animating the artifact.</p>
+        <span class="subj">SurveyInSite</span>
+        <span class="go">Open study →</span>
+      </a>
+      <a class="card" href="canvas.html">
+        <span class="chip we">Figma Weave</span>
+        <h2>Node canvas</h2>
+        <p>The product's own metaphor as the hero: survey branching logic drawn as a node graph with animated SVG connector wires, acid-chartreuse CTA, blueprint grid.</p>
+        <span class="subj">SurveyInSite</span>
+        <span class="go">Open study →</span>
+      </a>
+      <a class="card" href="manual.html">
+        <span class="chip ms">Making Software · clay</span>
+        <h2>Technical manual</h2>
+        <p>A justified serif book with a pixel-mono wordmark and exploded blueprint diagrams of the curriculum — editorial authority with a hacker wink, recoloured to clay.</p>
+        <span class="subj">Agility Ops Academy</span>
+        <span class="go">Open study →</span>
+      </a>
+      <a class="card" href="editorial.html">
+        <span class="chip gr">Groth Studio · clay</span>
+        <h2>Magazine editorial</h2>
+        <p>Enormous tightly-tracked hero type, a blush band, duotone image blocks, a sticky terracotta programme rail and live dual clocks — design-studio luxury.</p>
+        <span class="subj">Agility Ops Academy</span>
+        <span class="go">Open study →</span>
+      </a>
+    </div>
   </div>
 
   <section class="notes">
@@ -74,8 +132,8 @@
     <ul>
       <li>Each page is deliberately self-contained and bespoke — the point is to feel each language at full strength, not to match our current chrome.</li>
       <li>Judge on: first-impression weight, typographic confidence, scroll rhythm, and whether the product feels premium before you read a word.</li>
-      <li>All pages are noindex and unlinked. Anything we adopt gets rebuilt properly into the shared InSite chrome — no page ships from this lab.</li>
-      <li>Copy rules still apply here: SprintINSite is predictive analytics (not "AI-powered"), Australian English, no unverifiable claims.</li>
+      <li>All pages are noindex and unlinked. Anything we adopt gets rebuilt properly into the shared chrome for that site — no page ships from this lab.</li>
+      <li>Copy rules still apply here: SprintINSite and SurveyInSite are predictive/survey analytics (not "AI-powered"), the Academy uses in-progress R&D language, Australian English throughout, no unverifiable claims.</li>
     </ul>
   </section>
 

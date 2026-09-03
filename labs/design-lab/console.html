@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>SurveyInSite — Real research. Local data.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --canvas:#f8f4f0;
+  --ink:#241f23;
+  --ink-2:#352d33;
+  --grey:#8a827f;
+  --grey-2:#b6ada7;
+  --mint:#beffcb;
+  --lilac:#d1beff;
+  --blue:#0000ee;
+  --line:rgba(36,31,35,0.14);
+  --line-strong:rgba(36,31,35,0.28);
+  --card:#fffdfb;
+  --display:'Space Grotesk',system-ui,sans-serif;
+  --body:'Inter',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--canvas);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:13.5px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+a{color:inherit;text-decoration:none}
+.mono{font-family:var(--mono)}
+.eyebrow{
+  font-family:var(--mono);
+  font-size:10.5px;
+  text-transform:uppercase;
+  letter-spacing:.09em;
+  color:var(--grey);
+  font-weight:500;
+}
+.hr{height:1px;background:var(--line);border:0;width:100%}
+
+/* ---------- NAV ---------- */
+nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(248,244,240,0.82);
+  backdrop-filter:saturate(1.4) blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-family:var(--display);font-weight:600;font-size:16px;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+.logo .dot{width:9px;height:9px;border-radius:50%;background:var(--ink);display:inline-block}
+.nav-links{display:flex;gap:28px}
+.nav-links a{font-size:12.5px;color:var(--ink-2);transition:opacity .2s}
+.nav-links a:hover{opacity:.55}
+.pill-cta{
+  font-family:var(--body);font-size:12.5px;font-weight:500;
+  background:var(--ink);color:var(--canvas);
+  padding:9px 16px;border-radius:100px;border:0;cursor:pointer;
+  transition:transform .15s ease, background .2s;
+}
+.pill-cta:hover{background:#000;transform:translateY(-1px)}
+@media(max-width:820px){.nav-links{display:none}}
+
+/* ---------- BUTTONS ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:7px;
+  font-family:var(--body);font-size:13px;font-weight:500;
+  padding:10px 16px;border-radius:4px;cursor:pointer;border:1px solid transparent;
+  transition:transform .15s ease, background .2s;
+}
+.btn:hover{transform:translateY(-1px)}
+.btn-dark{background:var(--ink);color:var(--canvas)}
+.btn-dark:hover{background:#000}
+.btn-lilac{background:var(--lilac);color:var(--ink);border-color:rgba(36,31,35,0.12)}
+.btn-lilac:hover{background:#c4adff}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line-strong)}
+.btn-ghost:hover{background:rgba(36,31,35,0.04)}
+
+/* ---------- HERO ---------- */
+.hero{padding:76px 0 60px}
+.hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:56px;align-items:center}
+.hero h1{
+  font-family:var(--display);font-weight:500;
+  font-size:clamp(40px,5vw,52px);
+  letter-spacing:-1.4px;line-height:1.05;margin:16px 0 20px;
+}
+.hero .lede{font-size:15px;color:var(--ink-2);max-width:460px;margin-bottom:26px}
+.hero .lede .link{color:var(--blue);border-bottom:1px solid rgba(0,0,238,.3)}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.hero-note{font-family:var(--mono);font-size:10.5px;color:var(--grey);margin-top:22px;letter-spacing:.02em}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:40px}}
+
+/* ---------- PILL CHIPS ---------- */
+.chip{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--mono);font-size:11px;
+  padding:5px 11px;border:1px solid var(--line-strong);border-radius:100px;
+  color:var(--ink-2);background:transparent;letter-spacing:.01em;white-space:nowrap;
+}
+.chip .m{width:5px;height:5px;border-radius:50%;background:var(--mint)}
+.chip .l{width:5px;height:5px;border-radius:50%;background:var(--lilac)}
+
+/* ---------- DASHBOARD WIDGET ---------- */
+.dash{
+  background:var(--card);border:1px solid var(--line);border-radius:10px;
+  box-shadow:0 30px 60px -30px rgba(36,31,35,0.28), 0 2px 6px -2px rgba(36,31,35,0.10);
+  overflow:hidden;
+}
+.dash-top{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--line)}
+.dash-top .dots{display:flex;gap:6px}
+.dash-top .dots i{width:9px;height:9px;border-radius:50%;background:var(--line-strong);display:inline-block}
+.dash-top .tag{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--grey)}
+.dash-live{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;color:var(--ink-2)}
+.dash-live .blip{width:7px;height:7px;border-radius:50%;background:#2ec26a;box-shadow:0 0 0 0 rgba(46,194,106,.5);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(46,194,106,.5)}70%{box-shadow:0 0 0 7px rgba(46,194,106,0)}100%{box-shadow:0 0 0 0 rgba(46,194,106,0)}}
+.dash-body{padding:18px 18px 20px}
+.dash-q{font-family:var(--display);font-weight:500;font-size:15px;letter-spacing:-.02em;margin-bottom:2px}
+.dash-sub{font-family:var(--mono);font-size:10px;color:var(--grey);text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px}
+.bar-row{display:grid;grid-template-columns:24px 1fr 46px;gap:10px;align-items:center;margin-bottom:9px}
+.bar-lab{font-family:var(--mono);font-size:11px;color:var(--ink-2);text-align:center}
+.bar-track{height:20px;background:rgba(36,31,35,0.05);border-radius:3px;overflow:hidden;position:relative}
+.bar-fill{height:100%;width:0;border-radius:3px;transition:width 1.1s cubic-bezier(.22,1,.36,1);background:rgba(36,31,35,0.16)}
+.bar-fill.good{background:var(--mint)}
+.bar-fill.top{background:var(--lilac)}
+.bar-pct{font-family:var(--mono);font-size:11px;color:var(--ink-2);text-align:right;font-variant-numeric:tabular-nums}
+.dash-foot{display:flex;align-items:center;justify-content:space-between;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.counter{font-family:var(--display);font-weight:600;font-size:24px;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.counter-lab{font-family:var(--mono);font-size:9.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--grey);margin-top:1px}
+.spark-wrap{width:150px}
+.spark-lab{font-family:var(--mono);font-size:9.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--grey);margin-bottom:4px;text-align:right}
+.illus{font-family:var(--mono);font-size:9px;color:var(--grey-2);letter-spacing:.04em;margin-top:12px;text-align:right}
+
+/* ---------- SECTIONS ---------- */
+section{padding:64px 0}
+.sec-head{max-width:640px;margin-bottom:36px}
+.sec-head h2{font-family:var(--display);font-weight:500;font-size:clamp(26px,3.4vw,34px);letter-spacing:-1px;line-height:1.1;margin:12px 0 10px}
+.sec-head p{font-size:14px;color:var(--ink-2)}
+
+/* trust strip */
+.trust{padding:26px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.trust-inner{display:flex;align-items:center;gap:34px;flex-wrap:wrap;justify-content:center}
+.trust-inner .lab{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.09em;color:var(--grey)}
+.trust-inner .who{font-family:var(--display);font-weight:500;font-size:14px;color:var(--ink-2);letter-spacing:-.01em;opacity:.72}
+
+/* instruments grid */
+.chip-grid{display:flex;flex-wrap:wrap;gap:10px;max-width:840px}
+.chip.big{padding:9px 14px;font-size:12px;cursor:default;transition:background .2s,transform .15s}
+.chip.big:hover{background:rgba(209,190,255,.22);transform:translateY(-1px)}
+
+/* residency */
+.resid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--card)}
+.resid-l{padding:38px 36px}
+.resid-l h3{font-family:var(--display);font-weight:500;font-size:24px;letter-spacing:-.02em;margin:10px 0 12px;line-height:1.12}
+.resid-l p{font-size:13.5px;color:var(--ink-2);max-width:420px}
+.resid-r{background:var(--ink);color:var(--canvas);padding:38px 36px;display:flex;flex-direction:column;justify-content:center;gap:18px}
+.resid-r .stat{border-bottom:1px solid rgba(248,244,240,.14);padding-bottom:14px}
+.resid-r .stat:last-child{border-bottom:0;padding-bottom:0}
+.resid-r .stat .k{font-family:var(--display);font-weight:600;font-size:22px;letter-spacing:-.02em}
+.resid-r .stat .v{font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--grey-2);margin-top:2px}
+@media(max-width:760px){.resid{grid-template-columns:1fr}}
+
+/* capabilities */
+.cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.cap{background:var(--card);padding:24px 22px}
+.cap .n{font-family:var(--mono);font-size:10px;color:var(--grey-2);letter-spacing:.05em}
+.cap h4{font-family:var(--display);font-weight:500;font-size:15px;letter-spacing:-.01em;margin:10px 0 7px}
+.cap p{font-size:12.5px;color:var(--ink-2)}
+@media(max-width:760px){.cap-grid{grid-template-columns:1fr}}
+
+/* pricing */
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.price{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:26px 24px;display:flex;flex-direction:column}
+.price.feat{border-color:var(--line-strong);box-shadow:0 20px 40px -26px rgba(36,31,35,0.28)}
+.price .tier{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--grey)}
+.price .amt{font-family:var(--display);font-weight:600;font-size:34px;letter-spacing:-.03em;margin:12px 0 2px}
+.price .amt span{font-size:14px;font-weight:400;color:var(--grey)}
+.price .desc{font-size:12.5px;color:var(--ink-2);margin:8px 0 20px;min-height:38px}
+.price .btn{width:100%;justify-content:center;margin-top:auto}
+.badge-feat{align-self:flex-start;font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.08em;background:var(--lilac);color:var(--ink);padding:3px 8px;border-radius:100px;margin-bottom:10px}
+@media(max-width:760px){.price-grid{grid-template-columns:1fr}}
+
+/* cta band */
+.cta-band{background:var(--ink);color:var(--canvas);border-radius:14px;padding:56px 44px;text-align:center;margin:8px 0}
+.cta-band h2{font-family:var(--display);font-weight:500;font-size:clamp(28px,4vw,40px);letter-spacing:-1.2px;line-height:1.08;margin-bottom:14px}
+.cta-band p{font-size:14px;color:var(--grey-2);max-width:440px;margin:0 auto 26px}
+.cta-band .btn-lilac{color:var(--ink)}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:40px 0 48px}
+.foot-top{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap;margin-bottom:28px}
+.foot-links{display:flex;gap:22px;flex-wrap:wrap}
+.foot-links a{font-size:12.5px;color:var(--ink-2)}
+.foot-links a:hover{color:var(--blue)}
+.foot-legal{font-family:var(--mono);font-size:10.5px;color:var(--grey);line-height:1.7}
+.foot-exp{font-family:var(--mono);font-size:10px;color:var(--grey-2);margin-top:6px}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s cubic-bezier(.22,1,.36,1)}
+.reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a href="#" class="logo"><span class="dot"></span>SurveyInSite</a>
+    <div class="nav-links">
+      <a href="#instruments">Instruments</a>
+      <a href="#residency">Data residency</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#pricing">Pricing</a>
+    </div>
+    <button class="pill-cta">Create a survey</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div class="reveal in">
+      <span class="eyebrow">Australian-hosted survey platform</span>
+      <h1>Real research.<br>Local data.</h1>
+      <p class="lede">Run serious research — Likert, MaxDiff, conjoint, budget allocation — without sending a single respondent's answer offshore. Everything stays in <span class="link">AWS Sydney</span>. Watch results land in real time.</p>
+      <div class="hero-cta">
+        <button class="btn btn-dark">Create a survey</button>
+        <button class="btn btn-lilac">See live results <span>&rarr;</span></button>
+      </div>
+      <div style="display:flex;gap:9px;flex-wrap:wrap;margin-top:24px">
+        <span class="chip"><span class="m"></span>Unlimited responses</span>
+        <span class="chip"><span class="l"></span>Row-level isolation</span>
+        <span class="chip">Encrypted in transit</span>
+      </div>
+      <p class="hero-note">// illustrative dashboard — sample data, self-playing</p>
+    </div>
+
+    <!-- LIVE DASHBOARD WIDGET -->
+    <div class="reveal in dash" id="dash">
+      <div class="dash-top">
+        <div class="dots"><i></i><i></i><i></i></div>
+        <span class="tag">Live results</span>
+        <span class="dash-live"><span class="blip"></span>Recording</span>
+      </div>
+      <div class="dash-body">
+        <div class="dash-q">How likely are you to recommend us?</div>
+        <div class="dash-sub">Likert 1–5 · sample survey #SI-2049</div>
+
+        <div id="bars"></div>
+
+        <div class="dash-foot">
+          <div>
+            <div class="counter" id="counter">0</div>
+            <div class="counter-lab">Responses collected</div>
+          </div>
+          <div class="spark-wrap">
+            <div class="spark-lab">Responses / hour</div>
+            <svg id="spark" width="150" height="42" viewBox="0 0 150 42" preserveAspectRatio="none">
+              <polyline id="spark-line" fill="none" stroke="#241f23" stroke-width="1.6" points=""/>
+              <polygon id="spark-area" fill="rgba(190,255,203,0.35)" points=""/>
+            </svg>
+          </div>
+        </div>
+        <div class="illus">Sample data — for illustration only</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- TRUST STRIP -->
+<div class="trust">
+  <div class="wrap trust-inner">
+    <span class="lab">Built for</span>
+    <span class="who">Councils</span>
+    <span class="who">Product teams</span>
+    <span class="who">Community groups</span>
+    <span class="who">Australian business</span>
+    <span class="who">Engagement teams</span>
+  </div>
+</div>
+
+<!-- INSTRUMENTS -->
+<section id="instruments">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Survey instruments</span>
+      <h2>Eleven ready-made instruments</h2>
+      <p>From a thirty-second pulse to a full conjoint study — pick an instrument, configure it, and share a link. No statistician required.</p>
+    </div>
+    <div class="chip-grid reveal">
+      <span class="chip big">Quick Poll</span>
+      <span class="chip big">Likert Agreement</span>
+      <span class="chip big">Star / Rating</span>
+      <span class="chip big">Open Feedback</span>
+      <span class="chip big">Demographic</span>
+      <span class="chip big">Ranked Choice</span>
+      <span class="chip big">Budget Allocation</span>
+      <span class="chip big">Importance vs Performance</span>
+      <span class="chip big">Annual Satisfaction</span>
+      <span class="chip big">Priority Ranking (MaxDiff)</span>
+      <span class="chip big">Design Option Preference (Conjoint)</span>
+    </div>
+  </div>
+</section>
+
+<!-- DATA RESIDENCY -->
+<section id="residency" style="padding-top:0">
+  <div class="wrap">
+    <div class="resid reveal">
+      <div class="resid-l">
+        <span class="eyebrow">Data residency</span>
+        <h3>Your respondents' data never leaves Australia.</h3>
+        <p>SurveyInSite is hosted entirely in AWS Sydney. Row-level data isolation keeps each survey's responses separate, and everything is encrypted in transit. Anonymous respondent access means people can answer without an account — while their data stays onshore.</p>
+      </div>
+      <div class="resid-r">
+        <div class="stat"><div class="k">AWS Sydney</div><div class="v">Region · ap-southeast-2</div></div>
+        <div class="stat"><div class="k">Row-level</div><div class="v">Per-survey data isolation</div></div>
+        <div class="stat"><div class="k">In transit</div><div class="v">Encryption enforced</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section id="capabilities" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Platform capabilities</span>
+      <h2>Everything you need to run and read a study</h2>
+    </div>
+    <div class="cap-grid reveal">
+      <div class="cap"><div class="n">01</div><h4>Unlimited responses</h4><p>No per-response caps. Run a poll for five people or a census for fifty thousand — same price.</p></div>
+      <div class="cap"><div class="n">02</div><h4>Live results dashboard</h4><p>Watch answers land in real time, with charts that update as each response arrives.</p></div>
+      <div class="cap"><div class="n">03</div><h4>CSV export</h4><p>Take your raw data anywhere. Clean, analysis-ready CSV whenever you need it.</p></div>
+      <div class="cap"><div class="n">04</div><h4>Anonymous access</h4><p>Respondents answer via a link — no sign-up, no friction, no account to manage.</p></div>
+      <div class="cap"><div class="n">05</div><h4>Row-level isolation</h4><p>Each survey's data is walled off from every other, so studies never bleed into one another.</p></div>
+      <div class="cap"><div class="n">06</div><h4>Encrypted in transit</h4><p>Responses are encrypted end to end between respondent and the Sydney region.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Pricing</span>
+      <h2>Pay per survey, or subscribe</h2>
+      <p>Start with a single survey. Scale into credit packs or a monthly plan as your research programme grows.</p>
+    </div>
+    <div class="price-grid reveal">
+      <div class="price">
+        <span class="tier">Pay per survey</span>
+        <div class="amt">A$49<span> / survey</span></div>
+        <p class="desc">One survey, unlimited responses. Perfect for a one-off study.</p>
+        <button class="btn btn-ghost">Start a survey</button>
+      </div>
+      <div class="price feat">
+        <span class="badge-feat">Best value per survey</span>
+        <span class="tier">Credit packs</span>
+        <div class="amt">A$29.90<span> / survey</span></div>
+        <p class="desc">Buy credits up front and bring the cost of each survey right down.</p>
+        <button class="btn btn-dark">Buy credits</button>
+      </div>
+      <div class="price">
+        <span class="tier">Subscription</span>
+        <div class="amt">A$89<span> / month</span></div>
+        <p class="desc">Up to thirty surveys a month for teams running research continuously.</p>
+        <button class="btn btn-ghost">Subscribe</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <span class="eyebrow" style="color:var(--grey-2)">Real research. Local data.</span>
+      <h2>Ask better questions.<br>Keep the answers here.</h2>
+      <p>Spin up your first survey in minutes — with data that never leaves Australia.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <button class="btn btn-lilac">Create a survey <span>&rarr;</span></button>
+        <button class="btn btn-ghost" style="border-color:rgba(248,244,240,.3);color:var(--canvas)">View instruments</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <a href="#" class="logo"><span class="dot"></span>SurveyInSite</a>
+      <div class="foot-links">
+        <a href="#instruments">Instruments</a>
+        <a href="#residency">Data residency</a>
+        <a href="#capabilities">Capabilities</a>
+        <a href="#pricing">Pricing</a>
+      </div>
+    </div>
+    <hr class="hr">
+    <div style="margin-top:20px">
+      <div class="foot-legal">&copy; 2026 Agility Ops Business Pty Ltd (ABN 37 650 141 950). All rights reserved.</div>
+      <div class="foot-exp">Internal design experiment — not a live page.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // ---- Likert bars config (sample/illustrative) ----
+  var rows = [
+    {lab:'1', target:4,  cls:''},
+    {lab:'2', target:7,  cls:''},
+    {lab:'3', target:18, cls:''},
+    {lab:'4', target:33, cls:'good'},
+    {lab:'5', target:38, cls:'top'}
+  ];
+  var barsEl = document.getElementById('bars');
+  var fills = [], pcts = [];
+  rows.forEach(function(r){
+    var row = document.createElement('div'); row.className='bar-row';
+    var lab = document.createElement('div'); lab.className='bar-lab'; lab.textContent=r.lab;
+    var track = document.createElement('div'); track.className='bar-track';
+    var fill = document.createElement('div'); fill.className='bar-fill '+r.cls; fill.style.width='0%';
+    track.appendChild(fill);
+    var pct = document.createElement('div'); pct.className='bar-pct'; pct.textContent='0%';
+    row.appendChild(lab); row.appendChild(track); row.appendChild(pct);
+    barsEl.appendChild(row);
+    fills.push(fill); pcts.push(pct);
+  });
+
+  var counterEl = document.getElementById('counter');
+  var started = false;
+
+  function easeOutQuad(t){return t*(2-t);}
+
+  function runCycle(){
+    // animate bars to target
+    rows.forEach(function(r,i){
+      fills[i].style.width = r.target + '%';
+      // count pct up
+      animateNum(pcts[i], 0, r.target, 1100, function(v){ return v+'%'; });
+    });
+    // count responses up
+    animateNum(counterEl, 0, 2148, 1700, function(v){ return v.toLocaleString('en-AU'); });
+  }
+
+  function animateNum(el, from, to, dur, fmt){
+    var start = performance.now();
+    function step(now){
+      var t = Math.min((now-start)/dur, 1);
+      var v = Math.round(from + (to-from)*easeOutQuad(t));
+      el.textContent = fmt(v);
+      if(t<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  function resetBars(){
+    rows.forEach(function(r,i){ fills[i].style.width='0%'; pcts[i].textContent='0%'; });
+  }
+
+  // subtle loop: after settle, small live jitter of the top bars + counter tick
+  var liveTicks;
+  function startLiveJitter(){
+    var current = 2148;
+    liveTicks = setInterval(function(){
+      current += Math.floor(Math.random()*4)+1;
+      counterEl.textContent = current.toLocaleString('en-AU');
+      // nudge a random bar slightly to feel alive
+      var i = 3 + Math.floor(Math.random()*2); // bar 4 or 5
+      var base = rows[i].target;
+      var jitter = base + (Math.random()*1.4-0.4);
+      fills[i].style.width = jitter.toFixed(1)+'%';
+      pushSpark();
+    }, 1400);
+  }
+
+  // ---- sparkline ----
+  var sparkData = [];
+  var lineEl = document.getElementById('spark-line');
+  var areaEl = document.getElementById('spark-area');
+  var W=150, H=42, MAXPTS=26;
+  function seedSpark(){
+    var v=14;
+    for(var i=0;i<MAXPTS;i++){ v += (Math.random()*8-3.4); v=Math.max(4,Math.min(38,v)); sparkData.push(v); }
+    drawSpark();
+  }
+  function pushSpark(){
+    var last = sparkData[sparkData.length-1]||18;
+    var v = Math.max(4, Math.min(40, last + (Math.random()*10-4.6)));
+    sparkData.push(v); if(sparkData.length>MAXPTS) sparkData.shift();
+    drawSpark();
+  }
+  function drawSpark(){
+    var max=Math.max.apply(null,sparkData), min=Math.min.apply(null,sparkData);
+    var rng=(max-min)||1;
+    var pts = sparkData.map(function(d,i){
+      var x=(i/(MAXPTS-1))*W;
+      var y=H-4-((d-min)/rng)*(H-10);
+      return x.toFixed(1)+','+y.toFixed(1);
+    });
+    lineEl.setAttribute('points', pts.join(' '));
+    areaEl.setAttribute('points', '0,'+H+' '+pts.join(' ')+' '+W+','+H);
+  }
+
+  // ---- kick off when dash in view ----
+  var dash = document.getElementById('dash');
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting && !started){
+        started = true;
+        seedSpark();
+        setTimeout(runCycle, 350);
+        setTimeout(startLiveJitter, 2200);
+        io.unobserve(dash);
+      }
+    });
+  }, {threshold:0.35});
+  io.observe(dash);
+
+  // ---- scroll reveal ----
+  var revs = document.querySelectorAll('.reveal:not(.in)');
+  var rio = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); rio.unobserve(e.target);} });
+  }, {threshold:0.12});
+  revs.forEach(function(el){ rio.observe(el); });
+})();
+</script>
+</body>
+</html>
