@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Agility Ops Academy — Applied AI training, delivered by practitioners</title>
+<meta name="description" content="AI is redrawing the map. We're the compass. Practitioner-led applied AI training grounded in production work — delivered by FACT. Australian-made, Sydney-based.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/app.js" defer></script>
+</head>
+<body>
+
+<!-- ============ STANDARD HEADER (paste verbatim on every page) ============ -->
+<header class="site-header">
+  <div class="container">
+    <div class="bar">
+      <a class="lockup" href="index.html" aria-label="Agility Ops Academy home">
+        <span class="mono">Ac</span>
+        <span class="words">
+          <span class="wordmark">Agility Ops Academy</span>
+          <span class="byline">delivered by FACT</span>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <div class="links">
+          <a href="index.html" class="on">Home</a>
+          <a href="learning-path.html">Learning Path</a>
+          <a href="workshops.html">Workshops</a>
+          <a href="advisory.html">Advisory</a>
+          <button class="drawer-toggle" data-drawer-open aria-expanded="false" aria-controls="productsDrawer" aria-haspopup="dialog">
+            Our Products <span class="caret" aria-hidden="true">▾</span>
+          </button>
+        </div>
+        <a class="btn btn-primary btn-sm" href="#waitlist">Register interest</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </nav>
+    </div>
+    <!-- mobile sheet -->
+    <div class="mobile-nav" id="mobileNav">
+      <a href="index.html">Home</a>
+      <a href="learning-path.html">Learning Path</a>
+      <a href="workshops.html">Workshops</a>
+      <a href="advisory.html">Advisory</a>
+      <button data-drawer-open aria-controls="productsDrawer">Our Products ▾</button>
+      <a class="btn btn-primary" href="#waitlist">Register interest</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ PRODUCTS DRAWER (paste verbatim on every page) ============ -->
+<div class="drawer-backdrop" id="drawerBackdrop" tabindex="-1"></div>
+<aside class="drawer" id="productsDrawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" aria-hidden="true">
+  <div class="drawer-head">
+    <div>
+      <span class="eyebrow eyebrow-accent">The InSite suite</span>
+      <h3 id="drawerTitle">Our Products</h3>
+    </div>
+    <button class="drawer-close" data-drawer-close aria-label="Close products menu">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <ul class="drawer-list">
+    <li><a href="https://surveyinsite.com.au" target="_blank" rel="noopener"><span class="dico">Su</span>SurveyInSite<span class="ext" aria-hidden="true">↗</span></a></li>
+    <li><a href="https://sprintinsite.com" target="_blank" rel="noopener"><span class="dico">Sp</span>SprintINSite<span class="ext" aria-hidden="true">↗</span></a></li>
+    <li><a href="https://portfolioinsite.com.au" target="_blank" rel="noopener"><span class="dico">PI</span>PortfolioInSite<span class="ext" aria-hidden="true">↗</span></a></li>
+    <li><a href="https://portfolioinsite.com.au" target="_blank" rel="noopener"><span class="dico">Fc</span>ForecastInSite<span class="ext" aria-hidden="true">↗</span></a></li>
+    <li><a href="https://portfolioinsite.com.au" target="_blank" rel="noopener"><span class="dico">Pl</span>PlanInSite<span class="ext" aria-hidden="true">↗</span></a></li>
+    <li><a href="https://sprintinsite.com" target="_blank" rel="noopener"><span class="dico">Fl</span>FlowInSite<span class="ext" aria-hidden="true">↗</span></a></li>
+    <li><a href="https://reportinsite.com.au" target="_blank" rel="noopener"><span class="dico">Rp</span>ReportInSite<span class="ext" aria-hidden="true">↗</span></a></li>
+    <li><a href="https://careerinsite.com.au" target="_blank" rel="noopener"><span class="dico">Cr</span>CareerInSite<span class="ext" aria-hidden="true">↗</span></a></li>
+    <li><a href="index.html" class="current" aria-current="page"><span class="dico">Ac</span>Agility Ops Academy<span class="cur-tag">You are here</span></a></li>
+    <li><a href="https://fastact.com.au/tools-games" target="_blank" rel="noopener"><span class="dico">TG</span>Tools &amp; Games<span class="ext" aria-hidden="true">↗</span></a></li>
+  </ul>
+  <div class="drawer-foot">
+    <a href="https://agilityops.com.au" target="_blank" rel="noopener">Agility Ops <span aria-hidden="true">↗</span></a>
+  </div>
+</aside>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow eyebrow-accent">Applied AI training · delivered by practitioners</span>
+          <h1 class="display">AI is redrawing the map.<br>We're the compass.</h1>
+          <p class="lead">Practitioner-led applied AI training grounded in production work, not slideware. Career relevance is the new job security — Agility Ops Academy helps teams build real AI capability. Australian-made, Sydney-based.</p>
+          <div class="btns">
+            <a class="btn btn-primary" href="#waitlist">Register interest</a>
+            <a class="btn btn-ghost" href="learning-path.html">See the learning path</a>
+          </div>
+          <div class="hero-meta">
+            <span class="small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>17+ years agile &amp; lean delivery</span>
+            <span class="small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Live cohort learning</span>
+            <span class="small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Australian-made</span>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <svg viewBox="0 0 500 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <defs>
+              <linearGradient id="hg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="var(--accent)"/>
+                <stop offset="1" stop-color="var(--accent-deep)"/>
+              </linearGradient>
+            </defs>
+            <!-- faint path / node lattice -->
+            <g fill="none" stroke="var(--accent)" stroke-opacity=".16" stroke-width="1">
+              <path d="M0 120 H500 M0 200 H500 M0 280 H500"/>
+              <path d="M140 0 V400 M260 0 V400 M380 0 V400"/>
+            </g>
+            <!-- winding path from lower-left toward the compass -->
+            <path d="M40 360 C 120 320, 90 250, 170 230 S 300 210, 250 200"
+                  fill="none" stroke="url(#hg)" stroke-width="4" stroke-linecap="round" stroke-dasharray="6 10" opacity=".55"/>
+            <!-- path nodes -->
+            <circle cx="40" cy="360" r="7" fill="var(--accent)" opacity=".6"/>
+            <circle cx="170" cy="230" r="6" fill="var(--accent)" opacity=".5"/>
+            <!-- compass rose -->
+            <g transform="translate(250,200)">
+              <circle r="96" fill="none" stroke="var(--accent)" stroke-opacity=".14" stroke-width="16"/>
+              <circle r="82" fill="var(--surface)" stroke="var(--line)" stroke-width="1.5"/>
+              <!-- tick marks -->
+              <g stroke="var(--accent)" stroke-opacity=".4" stroke-width="2" stroke-linecap="round">
+                <line x1="0" y1="-82" x2="0" y2="-70"/>
+                <line x1="0" y1="82" x2="0" y2="70"/>
+                <line x1="-82" y1="0" x2="-70" y2="0"/>
+                <line x1="82" y1="0" x2="70" y2="0"/>
+              </g>
+            </g>
+            <!-- needle: animated by app.js (rotates about 250,200) -->
+            <g id="compassNeedle" transform="rotate(-52 250 200)">
+              <polygon points="250,124 262,200 250,214 238,200" fill="url(#hg)"/>
+              <polygon points="250,276 262,200 250,186 238,200" fill="var(--accent)" opacity=".28"/>
+              <circle cx="250" cy="200" r="9" fill="var(--accent-deep)"/>
+              <circle cx="250" cy="200" r="3.5" fill="var(--surface)"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ============ LEARNING PATH TEASER ============ -->
+  <section class="block">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow eyebrow-accent">The flagship learning path</span>
+        <h2>AI Productivity Systems with Claude.</h2>
+        <p class="lead">A six-module live cohort — built for people who do the work, not just talk about it. Each module compounds on the last, from context discipline through to shipping real product with AI.</p>
+      </div>
+      <div class="mod-grid">
+        <div class="mod-card reveal">
+          <div class="num">01</div>
+          <h3>Context</h3>
+          <p>Give AI the right ground truth. Project intelligence, scope and the context that turns a generic assistant into a capable teammate.</p>
+        </div>
+        <div class="mod-card reveal">
+          <div class="num">02</div>
+          <h3>Trust</h3>
+          <p>Know when to lean in and when to verify. Building judgement, guardrails and honest expectations of what AI can and can't do.</p>
+        </div>
+        <div class="mod-card reveal">
+          <div class="num">03</div>
+          <h3>Rhythm</h3>
+          <p>Make AI part of how you work, not a novelty. Daily loops, cadence and the habits that keep output flowing.</p>
+        </div>
+        <div class="mod-card reveal">
+          <div class="num">04</div>
+          <h3>System</h3>
+          <p>Move from one-off prompts to repeatable systems — reusable context, commands and workflows your whole team can run.</p>
+        </div>
+        <div class="mod-card reveal">
+          <div class="num">05</div>
+          <h3>Connection</h3>
+          <p>Wire AI into the tools you already use. Integrations, connectors and the plumbing that removes repeat manual steps.</p>
+        </div>
+        <div class="mod-card reveal">
+          <div class="num">06</div>
+          <h3>Product</h3>
+          <p>Ship something real. Take the capability you've built and turn it into delivered work — the capstone of the path.</p>
+        </div>
+      </div>
+      <div class="btns" style="margin-top:36px">
+        <a class="btn btn-primary" href="learning-path.html">Explore the learning path</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ============ WORKSHOPS TEASER ============ -->
+  <section class="block">
+    <div class="container">
+      <div class="info-strip reveal">
+        <div>
+          <span class="eyebrow eyebrow-accent">Public &amp; in-house workshops</span>
+          <h3 class="mt-s">Short, hands-on sessions on the skills teams need now.</h3>
+          <p>Prompt engineering, AI governance, context saturation labs and agile fundamentals — practical formats you can run with a team in an afternoon. Our first bookable two-hour public workshop is a public commitment: <strong>18 September</strong>.</p>
+          <div class="btns" style="margin-top:22px">
+            <a class="btn btn-ghost" href="workshops.html">See the workshops <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+        <div class="strip-badges">
+          <span class="strip-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Prompt engineering</span>
+          <span class="strip-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>AI governance</span>
+          <span class="strip-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Context saturation labs</span>
+          <span class="strip-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>18 Sep · first public session</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ============ ADVISORY TEASER ============ -->
+  <section class="block">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow eyebrow-accent">Advisory</span>
+        <h2>AI Cognitive Governance &amp; Context Saturation.</h2>
+        <p class="lead">Our flagship advisory practice — helping leaders design how attention, cognitive load and AI guardrails work across a team. Previously known as the GSD Framework, developed within our R&amp;D program.</p>
+      </div>
+      <div class="cards-3">
+        <a class="tool-card reveal" href="advisory.html">
+          <span class="tmono">CL</span>
+          <h3>Cognitive load diagnostics</h3>
+          <p>Surface where attention is genuinely constrained before you add another tool — so AI relieves load rather than adding to it.</p>
+          <span class="tlink">Learn more <span aria-hidden="true">→</span></span>
+        </a>
+        <a class="tool-card reveal" href="advisory.html">
+          <span class="tmono">GD</span>
+          <h3>AI guardrail design</h3>
+          <p>Practical governance for how teams adopt AI — what's allowed, what's reviewed, and how judgement stays with people.</p>
+          <span class="tlink">Learn more <span aria-hidden="true">→</span></span>
+        </a>
+        <a class="tool-card reveal" href="advisory.html">
+          <span class="tmono">DW</span>
+          <h3>Deep work protection</h3>
+          <p>Design the demand governance and attention architecture that protects the focused work AI is meant to amplify.</p>
+          <span class="tlink">Learn more <span aria-hidden="true">→</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ============ WHY PRACTITIONER-LED STRIP ============ -->
+  <section class="block">
+    <div class="container">
+      <div class="info-strip reveal">
+        <div>
+          <span class="eyebrow eyebrow-accent">Why practitioner-led</span>
+          <h3 class="mt-s">Taught by people who ship, from work that's really shipped.</h3>
+          <p>Our material is drawn from production delivery and applied AI capability building — not repackaged theory. Methodology under active R&amp;D development, refined in the open and grounded in 17+ years of agile and lean delivery.</p>
+        </div>
+        <div class="strip-badges">
+          <span class="strip-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Grounded in production work</span>
+          <span class="strip-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Built in the open</span>
+          <span class="strip-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Applied, not slideware</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DARK BAND ============ -->
+  <section class="dark-band">
+    <div class="container">
+      <span class="eyebrow reveal">The relevance question</span>
+      <h2 class="reveal" style="color:#f4efe6;max-width:700px">The map is being redrawn faster than most teams can read it.</h2>
+      <p class="quote reveal">"Career relevance is the new job security — the fastest way to stay relevant is to build real capability, <span>in the open</span>, on real work."</p>
+      <p class="attrib reveal">— The Academy principle · figures illustrative</p>
+      <!-- illustrative line figure: capability compounding over a cohort -->
+      <div class="dviz reveal">
+        <svg viewBox="0 0 1120 260" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="dg" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="var(--accent)" stop-opacity=".2"/>
+              <stop offset="1" stop-color="var(--accent)"/>
+            </linearGradient>
+            <linearGradient id="dfill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="var(--accent)" stop-opacity=".22"/>
+              <stop offset="1" stop-color="var(--accent)" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <!-- baseline grid -->
+          <g stroke="rgba(255,255,255,.08)" stroke-width="1">
+            <line x1="0" y1="70" x2="1120" y2="70"/>
+            <line x1="0" y1="130" x2="1120" y2="130"/>
+            <line x1="0" y1="190" x2="1120" y2="190"/>
+          </g>
+          <!-- compounding capability curve -->
+          <path d="M0 220 C 220 214, 300 196, 430 172 S 700 120, 820 92 S 1010 46, 1120 24"
+                fill="none" stroke="url(#dg)" stroke-width="4" stroke-linecap="round"/>
+          <path d="M0 220 C 220 214, 300 196, 430 172 S 700 120, 820 92 S 1010 46, 1120 24 L 1120 260 L 0 260 Z"
+                fill="url(#dfill)"/>
+          <!-- module markers along the curve -->
+          <g fill="var(--accent)">
+            <circle cx="60" cy="216" r="5"/>
+            <circle cx="280" cy="200" r="5"/>
+            <circle cx="500" cy="160" r="5"/>
+            <circle cx="720" cy="118" r="5"/>
+            <circle cx="940" cy="66" r="5"/>
+            <circle cx="1100" cy="26" r="6"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CLOSING CTA / REGISTER INTEREST ============ -->
+  <section class="cta-band" id="waitlist">
+    <div class="container">
+      <div class="cta-wrap reveal">
+        <span class="eyebrow eyebrow-accent">Register interest</span>
+        <h2>Build the capability that keeps you relevant.</h2>
+        <p class="lead">Register your interest in the learning path, an upcoming workshop, or an advisory conversation — and we'll be in touch with dates and details.</p>
+        <div class="btns">
+          <a class="btn btn-primary" href="#waitlist">Register interest</a>
+          <a class="btn btn-secondary" href="workshops.html">See upcoming workshops</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ STANDARD FOOTER (paste verbatim on every page) ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="lock">
+          <span class="mono">Ac</span>
+          <span class="name">Agility Ops Academy</span>
+        </div>
+        <p>Practitioner-led applied AI training, delivered by FACT. Part of Agility Ops — Australian-made, Sydney-based.</p>
+        <div style="margin-top:16px"><a class="li" href="https://www.linkedin.com/company/agility-ops-pty-ltd/" target="_blank" rel="noopener">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.75V21h-4v-5.6c0-1.34-.02-3.07-1.9-3.07-1.9 0-2.2 1.46-2.2 2.97V21H9z"/></svg>
+          LinkedIn</a></div>
+      </div>
+      <div class="foot-col">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="https://surveyinsite.com.au" target="_blank" rel="noopener">SurveyInSite</a></li>
+          <li><a href="https://sprintinsite.com" target="_blank" rel="noopener">SprintINSite</a></li>
+          <li><a href="https://portfolioinsite.com.au" target="_blank" rel="noopener">PortfolioInSite</a></li>
+          <li><a href="https://portfolioinsite.com.au" target="_blank" rel="noopener">ForecastInSite</a></li>
+          <li><a href="https://portfolioinsite.com.au" target="_blank" rel="noopener">PlanInSite</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>&nbsp;</h4>
+        <ul>
+          <li><a href="https://sprintinsite.com" target="_blank" rel="noopener">FlowInSite</a></li>
+          <li><a href="https://reportinsite.com.au" target="_blank" rel="noopener">ReportInSite</a></li>
+          <li><a href="https://careerinsite.com.au" target="_blank" rel="noopener">CareerInSite</a></li>
+          <li><a href="index.html">Agility Ops Academy</a></li>
+          <li><a href="https://fastact.com.au/tools-games" target="_blank" rel="noopener">Tools &amp; Games</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="https://agilityops.com.au/pages/about.html" target="_blank" rel="noopener">About</a></li>
+          <li><a href="https://agilityops.com.au/pages/team.html" target="_blank" rel="noopener">Team</a></li>
+          <li><a href="https://agilityops.com.au/blog" target="_blank" rel="noopener">Blog</a></li>
+          <li><a href="https://agilityops.com.au/pages/contact.html" target="_blank" rel="noopener">Contact</a></li>
+          <li style="margin-top:8px"><a href="https://agilityops.com.au/pages/privacy.html" target="_blank" rel="noopener">Privacy</a></li>
+          <li><a href="https://agilityops.com.au/pages/terms.html" target="_blank" rel="noopener">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>
+        <div class="cr">© 2026 Agility Ops Business Pty Ltd (ABN 37 650 141 950). All rights reserved.</div>
+        <div class="exp">Internal design experiment — not a live page.</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
