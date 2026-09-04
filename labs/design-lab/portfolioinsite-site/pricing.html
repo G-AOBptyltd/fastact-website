@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>PortfolioInSite — Pricing that scales with your portfolio</title>
+<meta name="description" content="Pricing that scales with your portfolio. A consistent InSite pricing experience, with billing handled securely on PortfolioInSite's own catalogue. Practitioner-led, Australian-made.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/app.js" defer></script>
+<style>
+  /* ---- pricing-specific bits only (no nav/footer/drawer) ---- */
+  .price-note{font-size:14.5px;color:var(--muted);margin-top:20px}
+  .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
+  @media(max-width:920px){.pricing-grid{grid-template-columns:1fr}}
+  .tier{
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);
+    padding:32px 28px;display:flex;flex-direction:column;position:relative;
+    transition:transform .2s var(--ease),box-shadow .2s var(--ease),border-color .2s var(--ease);
+  }
+  .tier:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover);border-color:var(--accent-wash)}
+  .tier.reco{border-color:var(--accent);box-shadow:0 1px 2px rgba(28,26,23,.05),0 22px 44px -16px var(--accent)}
+  .tier .reco-tag{position:absolute;top:-13px;left:28px}
+  .tier .tname{font-family:var(--font-display);font-weight:800;font-size:20px;letter-spacing:-.01em;color:var(--ink)}
+  .tier .who{color:var(--muted);font-size:14.5px;margin-top:6px}
+  .tier .price{display:flex;align-items:baseline;gap:6px;margin:22px 0 4px}
+  .tier .price .fig{font-family:var(--font-display);font-weight:800;font-size:clamp(38px,5vw,46px);letter-spacing:-.02em;color:var(--ink);line-height:1}
+  .tier .price .per{font-size:14px;color:var(--muted);font-weight:500}
+  .tier .price .fig.custom{font-size:clamp(30px,4vw,36px)}
+  .tier .sample{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--accent-deep)}
+  .tier .feats{list-style:none;padding:0;margin:22px 0 26px;display:flex;flex-direction:column;gap:12px;flex:1}
+  .tier .feats li{display:flex;gap:11px;align-items:flex-start;font-size:14.5px;color:var(--ink)}
+  .tier .feats li svg{width:18px;height:18px;flex:0 0 auto;color:var(--accent);margin-top:1px}
+  .tier .btn{width:100%;justify-content:center;text-align:center}
+  .trial-line{margin-top:26px;font-size:14.5px;color:var(--muted);display:inline-flex;align-items:center;gap:9px}
+  .trial-line svg{width:17px;height:17px;color:var(--accent);flex:0 0 auto}
+  .info-strip{
+    display:flex;gap:16px;align-items:flex-start;
+    background:var(--accent-wash);border:1px solid var(--line);border-left:3px solid var(--accent);
+    border-radius:var(--r);padding:22px 24px;margin-top:12px;
+  }
+  .info-strip .ii{width:34px;height:34px;flex:0 0 auto;border-radius:9px;background:var(--surface);color:var(--accent);display:grid;place-items:center;border:1px solid var(--line)}
+  .info-strip .ii svg{width:18px;height:18px}
+  .info-strip h4{font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--ink);margin-bottom:5px}
+  .info-strip p{font-size:14.5px;color:var(--muted);max-width:760px}
+  .faq-list{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:760px){.faq-list{grid-template-columns:1fr}}
+  .faq-item{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:24px 26px}
+  .faq-item h3{font-size:17px;margin-bottom:9px}
+  .faq-item p{color:var(--muted);font-size:15px}
+</style>
+</head>
+<body>
+
+<!-- ============ STANDARD HEADER ============ -->
+<header class="site-header">
+  <div class="container">
+    <div class="bar">
+      <a class="lockup" href="index.html" aria-label="PortfolioInSite home">
+        <span class="mono">PI</span>
+        <span class="words">
+          <span class="wordmark">PortfolioInSite</span>
+          <span class="byline">by Agility Ops <a href="https://agilityops.com.au" target="_blank" rel="noopener">↗</a></span>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <div class="links">
+          <a href="index.html">Overview</a>
+          <a href="features.html">Features</a>
+          <a href="tools.html">Tools</a>
+          <a href="pricing.html" class="on">Pricing</a>
+          <a href="contact.html">Contact</a>
+          <button class="drawer-toggle" data-drawer-open aria-expanded="false" aria-controls="productsDrawer" aria-haspopup="dialog">
+            Our Products <span class="caret" aria-hidden="true">▾</span>
+          </button>
+        </div>
+        <a class="btn btn-primary btn-sm" href="pricing.html">Start free trial</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </nav>
+    </div>
+    <!-- mobile sheet -->
+    <div class="mobile-nav" id="mobileNav">
+      <a href="index.html">Overview</a>
+      <a href="features.html">Features</a>
+      <a href="tools.html">Tools</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="contact.html">Contact</a>
+      <button data-drawer-open aria-controls="productsDrawer">Our Products ▾</button>
+      <a class="btn btn-primary" href="pricing.html">Start free trial</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ PRODUCTS DRAWER (paste verbatim on every page) ============ -->
+<div class="drawer-backdrop" id="drawerBackdrop" tabindex="-1"></div>
+<aside class="drawer" id="productsDrawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" aria-hidden="true">
+  <div class="drawer-head">
+    <div>
+      <span class="eyebrow eyebrow-accent">The InSite suite</span>
+      <h3 id="drawerTitle">Our Products</h3>
+    </div>
+    <button class="drawer-close" data-drawer-close aria-label="Close products menu">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <ul class="drawer-list">
+    <li><a href="https://surveyinsite.com.au" target="_blank" rel="noopener"><span class="dico">Su</span>SurveyInSite<span class="ext" aria-hidden="true">↗</span></a></li>
+    <li><a href="https://sprintinsite.com" target="_blank" rel="noopener"><span class="dico">Sp</span>SprintINSite<span class="ext" aria-hidden="true">↗</span></a></li>
+    <li><a href="index.html" class="current" aria-current="page"><span class="dico">PI</span>PortfolioInSite<span class="cur-tag">You are here</span></a></li>
+    <li><a href="https://portfolioinsite.com.au" target="_blank" rel="noopener"><span class="dico">Fc</span>ForecastInSite<span class="ext" aria-hidden="true">↗</span></a></li>
+    <li><a href="https://portfolioinsite.com.au" target="_blank" rel="noopener"><span class="dico">Pl</span>PlanInSite<span class="ext" aria-hidden="true">↗</span></a></li>
+    <li><a href="https://sprintinsite.com" target="_blank" rel="noopener"><span class="dico">Fl</span>FlowInSite<span class="ext" aria-hidden="true">↗</span></a></li>
+    <li><a href="https://reportinsite.com.au" target="_blank" rel="noopener"><span class="dico">Rp</span>ReportInSite<span class="ext" aria-hidden="true">↗</span></a></li>
+    <li><a href="https://careerinsite.com.au" target="_blank" rel="noopener"><span class="dico">Cr</span>CareerInSite<span class="ext" aria-hidden="true">↗</span></a></li>
+    <li><a href="https://fastact.com.au" target="_blank" rel="noopener"><span class="dico">Ac</span>Agility Ops Academy<span class="ext" aria-hidden="true">↗</span></a></li>
+    <li><a href="https://fastact.com.au/tools-games" target="_blank" rel="noopener"><span class="dico">TG</span>Tools &amp; Games<span class="ext" aria-hidden="true">↗</span></a></li>
+  </ul>
+  <div class="drawer-foot">
+    <a href="https://agilityops.com.au" target="_blank" rel="noopener">Agility Ops <span aria-hidden="true">↗</span></a>
+  </div>
+</aside>
+
+<main>
+
+  <!-- ============ PRICING HERO ============ -->
+  <section class="block">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow eyebrow-accent">Pricing</span>
+        <h1 class="display">Pricing that scales with your portfolio.</h1>
+        <p class="lead">One consistent InSite pricing experience, priced by the size of your governed portfolio — start on a free trial, then choose the tier that fits your steering committee.</p>
+      </div>
+
+      <!-- ============ PRICING GRID ============ -->
+      <div class="pricing-grid">
+
+        <div class="tier reveal">
+          <div class="tname">Team</div>
+          <div class="who">For a single PMO or a small portfolio finding its rhythm.</div>
+          <div class="price">
+            <span class="fig">$49</span>
+            <span class="per">per month · sample</span>
+          </div>
+          <span class="sample">Illustrative figure</span>
+          <ul class="feats">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Up to 30 governed initiatives</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Portfolio scoring &amp; health signals</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Jira Cloud Forge app</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Email support</li>
+          </ul>
+          <a class="btn btn-secondary" href="contact.html">Start free trial</a>
+        </div>
+
+        <div class="tier reco reveal">
+          <span class="chip chip-wash reco-tag">Recommended</span>
+          <div class="tname">Business</div>
+          <div class="who">For an established portfolio and a working steering committee.</div>
+          <div class="price">
+            <span class="fig">$149</span>
+            <span class="per">per month · sample</span>
+          </div>
+          <span class="sample">Illustrative figure</span>
+          <ul class="feats">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Unlimited governed initiatives</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Scenario modelling &amp; investment mix</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>AI-assisted auto-scoring</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>PortfolioInSite Web companion</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Priority support</li>
+          </ul>
+          <a class="btn btn-primary" href="contact.html">Start free trial</a>
+        </div>
+
+        <div class="tier reveal">
+          <div class="tname">Enterprise</div>
+          <div class="who">For multi-portfolio governance across business units.</div>
+          <div class="price">
+            <span class="fig custom">Let's talk</span>
+          </div>
+          <span class="sample">Custom pricing</span>
+          <ul class="feats">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Everything in Business</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Multiple portfolios &amp; roll-up views</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Custom scoring models &amp; governance</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Onboarding &amp; dedicated contact</li>
+          </ul>
+          <a class="btn btn-secondary" href="contact.html">Contact sales</a>
+        </div>
+
+      </div>
+
+      <div class="trial-line reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        Every plan starts with a 14-day free trial — no card needed to begin.
+      </div>
+      <p class="price-note reveal">All figures shown are illustrative samples for this design experiment, not live pricing. Prices are in AUD and would be confirmed at checkout.</p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ============ HYBRID BILLING NOTE ============ -->
+  <section class="block">
+    <div class="container">
+      <div class="info-strip reveal">
+        <span class="ii"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg></span>
+        <div>
+          <h4>One pricing experience, billing that's specific to the product.</h4>
+          <p>Checkout is handled securely on PortfolioInSite's own billing — each InSite product manages its own plans and Stripe catalogue. The pricing experience is consistent across the suite; the billing is product-specific.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ============ FAQ ============ -->
+  <section class="block">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow eyebrow-accent">Questions</span>
+        <h2>The pricing details, plainly.</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <h3>Is there a free trial?</h3>
+          <p>Yes. Every plan opens with a 14-day free trial so your committee can prioritise real initiatives before committing. You can start without entering card details.</p>
+        </div>
+        <div class="faq-item reveal">
+          <h3>Which products does this cover?</h3>
+          <p>This pricing covers PortfolioInSite — the Jira Forge governance app and its embedded tools. Other InSite products carry their own plans, priced on their own pages.</p>
+        </div>
+        <div class="faq-item reveal">
+          <h3>How is it billed?</h3>
+          <p>Billing runs on PortfolioInSite's own Stripe catalogue and is processed securely at checkout. The look and feel is shared across the suite; the commerce is specific to each product.</p>
+        </div>
+        <div class="faq-item reveal">
+          <h3>Can I change tiers?</h3>
+          <p>Yes. You can move between tiers as your portfolio grows or contracts — the change applies to your next billing cycle, with no need to start over.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CLOSING CTA ============ -->
+  <section class="cta-band">
+    <div class="container">
+      <div class="cta-wrap reveal">
+        <span class="eyebrow eyebrow-accent">Ready when you are</span>
+        <h2>Start governing with evidence.</h2>
+        <p class="lead">Begin a 14-day free trial inside your Jira Cloud, or take a closer look at what PortfolioInSite does.</p>
+        <div class="btns">
+          <a class="btn btn-primary" href="contact.html">Start free trial</a>
+          <a class="btn btn-secondary" href="features.html">See features <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ STANDARD FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="lock">
+          <span class="mono">PI</span>
+          <span class="name">PortfolioInSite</span>
+        </div>
+        <p>AI-native portfolio governance for Jira Cloud. Part of the InSite suite from Agility Ops — Australian-made, Sydney-based.</p>
+        <div style="margin-top:16px"><a class="li" href="https://www.linkedin.com/company/agility-ops-pty-ltd/" target="_blank" rel="noopener">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.75V21h-4v-5.6c0-1.34-.02-3.07-1.9-3.07-1.9 0-2.2 1.46-2.2 2.97V21H9z"/></svg>
+          LinkedIn</a></div>
+      </div>
+      <div class="foot-col">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="https://surveyinsite.com.au" target="_blank" rel="noopener">SurveyInSite</a></li>
+          <li><a href="https://sprintinsite.com" target="_blank" rel="noopener">SprintINSite</a></li>
+          <li><a href="index.html">PortfolioInSite</a></li>
+          <li><a href="https://portfolioinsite.com.au" target="_blank" rel="noopener">ForecastInSite</a></li>
+          <li><a href="https://portfolioinsite.com.au" target="_blank" rel="noopener">PlanInSite</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>&nbsp;</h4>
+        <ul>
+          <li><a href="https://sprintinsite.com" target="_blank" rel="noopener">FlowInSite</a></li>
+          <li><a href="https://reportinsite.com.au" target="_blank" rel="noopener">ReportInSite</a></li>
+          <li><a href="https://careerinsite.com.au" target="_blank" rel="noopener">CareerInSite</a></li>
+          <li><a href="https://fastact.com.au" target="_blank" rel="noopener">Agility Ops Academy</a></li>
+          <li><a href="https://fastact.com.au/tools-games" target="_blank" rel="noopener">Tools &amp; Games</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="https://agilityops.com.au/pages/about.html" target="_blank" rel="noopener">About</a></li>
+          <li><a href="https://agilityops.com.au/pages/team.html" target="_blank" rel="noopener">Team</a></li>
+          <li><a href="https://agilityops.com.au/blog" target="_blank" rel="noopener">Blog</a></li>
+          <li><a href="https://agilityops.com.au/pages/contact.html" target="_blank" rel="noopener">Contact</a></li>
+          <li style="margin-top:8px"><a href="https://agilityops.com.au/pages/privacy.html" target="_blank" rel="noopener">Privacy</a></li>
+          <li><a href="https://agilityops.com.au/pages/terms.html" target="_blank" rel="noopener">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>
+        <div class="cr">© 2026 Agility Ops Business Pty Ltd (ABN 37 650 141 950). All rights reserved.</div>
+        <div class="exp">Internal design experiment — not a live page.</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

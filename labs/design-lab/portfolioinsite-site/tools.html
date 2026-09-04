@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Tools — the PortfolioInSite portfolio toolkit</title>
+<meta name="description" content="Standalone web tools that plug into your PortfolioInSite governance — forecasting, PI planning and a Jira-free portfolio view. Practitioner-led, Australian-made.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<script src="assets/app.js" defer></script>
+</head>
+<body>
+
+<!-- ============ STANDARD HEADER ============ -->
+<header class="site-header">
+  <div class="container">
+    <div class="bar">
+      <a class="lockup" href="index.html" aria-label="PortfolioInSite home">
+        <span class="mono">PI</span>
+        <span class="words">
+          <span class="wordmark">PortfolioInSite</span>
+          <span class="byline">by Agility Ops <a href="https://agilityops.com.au" target="_blank" rel="noopener">↗</a></span>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <div class="links">
+          <a href="index.html">Overview</a>
+          <a href="features.html">Features</a>
+          <a href="tools.html" class="on">Tools</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="contact.html">Contact</a>
+          <button class="drawer-toggle" data-drawer-open aria-expanded="false" aria-controls="productsDrawer" aria-haspopup="dialog">
+            Our Products <span class="caret" aria-hidden="true">▾</span>
+          </button>
+        </div>
+        <a class="btn btn-primary btn-sm" href="pricing.html">Start free trial</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </nav>
+    </div>
+    <!-- mobile sheet -->
+    <div class="mobile-nav" id="mobileNav">
+      <a href="index.html">Overview</a>
+      <a href="features.html">Features</a>
+      <a href="tools.html">Tools</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="contact.html">Contact</a>
+      <button data-drawer-open aria-controls="productsDrawer">Our Products ▾</button>
+      <a class="btn btn-primary" href="pricing.html">Start free trial</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ PRODUCTS DRAWER (paste verbatim on every page) ============ -->
+<div class="drawer-backdrop" id="drawerBackdrop" tabindex="-1"></div>
+<aside class="drawer" id="productsDrawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" aria-hidden="true">
+  <div class="drawer-head">
+    <div>
+      <span class="eyebrow eyebrow-accent">The InSite suite</span>
+      <h3 id="drawerTitle">Our Products</h3>
+    </div>
+    <button class="drawer-close" data-drawer-close aria-label="Close products menu">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <ul class="drawer-list">
+    <li><a href="https://surveyinsite.com.au" target="_blank" rel="noopener"><span class="dico">Su</span>SurveyInSite<span class="ext" aria-hidden="true">↗</span></a></li>
+    <li><a href="https://sprintinsite.com" target="_blank" rel="noopener"><span class="dico">Sp</span>SprintINSite<span class="ext" aria-hidden="true">↗</span></a></li>
+    <li><a href="index.html" class="current" aria-current="page"><span class="dico">PI</span>PortfolioInSite<span class="cur-tag">You are here</span></a></li>
+    <li><a href="https://portfolioinsite.com.au" target="_blank" rel="noopener"><span class="dico">Fc</span>ForecastInSite<span class="ext" aria-hidden="true">↗</span></a></li>
+    <li><a href="https://portfolioinsite.com.au" target="_blank" rel="noopener"><span class="dico">Pl</span>PlanInSite<span class="ext" aria-hidden="true">↗</span></a></li>
+    <li><a href="https://sprintinsite.com" target="_blank" rel="noopener"><span class="dico">Fl</span>FlowInSite<span class="ext" aria-hidden="true">↗</span></a></li>
+    <li><a href="https://reportinsite.com.au" target="_blank" rel="noopener"><span class="dico">Rp</span>ReportInSite<span class="ext" aria-hidden="true">↗</span></a></li>
+    <li><a href="https://careerinsite.com.au" target="_blank" rel="noopener"><span class="dico">Cr</span>CareerInSite<span class="ext" aria-hidden="true">↗</span></a></li>
+    <li><a href="https://fastact.com.au" target="_blank" rel="noopener"><span class="dico">Ac</span>Agility Ops Academy<span class="ext" aria-hidden="true">↗</span></a></li>
+    <li><a href="https://fastact.com.au/tools-games" target="_blank" rel="noopener"><span class="dico">TG</span>Tools &amp; Games<span class="ext" aria-hidden="true">↗</span></a></li>
+  </ul>
+  <div class="drawer-foot">
+    <a href="https://agilityops.com.au" target="_blank" rel="noopener">Agility Ops <span aria-hidden="true">↗</span></a>
+  </div>
+</aside>
+
+<main>
+
+  <!-- ============ PAGE HERO ============ -->
+  <section class="block">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow eyebrow-accent">Tools</span>
+        <h2 class="display">The portfolio toolkit.</h2>
+        <p class="lead">Standalone web tools that plug into your PortfolioInSite governance — for the forecasting, planning and portfolio analysis that surround the steering-committee view.</p>
+        <div class="btns" style="display:flex;gap:14px;margin-top:26px;flex-wrap:wrap">
+          <a class="btn btn-primary" href="pricing.html">Start free trial</a>
+          <a class="btn btn-ghost" href="features.html">Compare features <span aria-hidden="true">→</span></a>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:26px;flex-wrap:wrap">
+          <span class="chip chip-wash">Practitioner-led</span>
+          <span class="chip chip-outline">Australian-made</span>
+          <span class="chip chip-outline">Export &amp; JSON restore</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ============ TOOL SHOWCASE ============ -->
+  <section class="block">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow eyebrow-accent">Three tools, one governance model</span>
+        <h2>The standalone web tools around PortfolioInSite.</h2>
+        <p class="lead">Each runs on its own in the browser, and each shares the scoring and governance model behind PortfolioInSite — so a forecast, a plan and a portfolio view all speak the same language.</p>
+      </div>
+
+      <div class="tools-3">
+
+        <!-- ForecastInSite -->
+        <div class="tool-card reveal">
+          <svg viewBox="0 0 260 130" role="img" aria-label="ForecastInSite delivery forecast fan chart" style="width:100%;height:auto;border-radius:12px;background:var(--accent-wash);margin-bottom:18px;display:block">
+            <defs>
+              <linearGradient id="fcFan" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#0891b2" stop-opacity=".05"/>
+                <stop offset="1" stop-color="#0891b2" stop-opacity=".32"/>
+              </linearGradient>
+            </defs>
+            <g fill="none" stroke="#0891b2" stroke-opacity=".16" stroke-width="1">
+              <path d="M20 26 H244 M20 60 H244 M20 94 H244"/>
+            </g>
+            <!-- confidence fan widening to the right -->
+            <path d="M24 62 C90 58 150 40 236 18 L236 108 C150 100 90 78 24 74 Z" fill="url(#fcFan)"/>
+            <!-- throughput history line -->
+            <path d="M24 68 L58 64 L92 66 L126 58 L160 60 L194 50 L236 46" fill="none" stroke="#0e7490" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <g fill="#0891b2">
+              <circle cx="24" cy="68" r="3"/><circle cx="58" cy="64" r="3"/><circle cx="92" cy="66" r="3"/><circle cx="126" cy="58" r="3"/><circle cx="160" cy="60" r="3"/><circle cx="194" cy="50" r="3"/>
+            </g>
+            <line x1="236" y1="12" x2="236" y2="116" stroke="#0e7490" stroke-width="1.5" stroke-dasharray="4 4" stroke-opacity=".7"/>
+          </svg>
+          <span class="tmono">Fc</span>
+          <h3>ForecastInSite</h3>
+          <p>Delivery forecasting that turns historical throughput into confidence ranges — a defensible answer to "when will it ship?" without single-point guesswork.</p>
+          <ul style="list-style:none;padding:0;margin:16px 0 0;display:flex;flex-direction:column;gap:9px">
+            <li style="display:flex;gap:9px;font-size:14.5px;color:var(--muted)"><svg viewBox="0 0 24 24" fill="none" stroke="#0891b2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px;flex:0 0 auto;margin-top:2px"><path d="M20 6 9 17l-5-5"/></svg>Forecast from throughput, not gut feel</li>
+            <li style="display:flex;gap:9px;font-size:14.5px;color:var(--muted)"><svg viewBox="0 0 24 24" fill="none" stroke="#0891b2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px;flex:0 0 auto;margin-top:2px"><path d="M20 6 9 17l-5-5"/></svg>Confidence ranges, not false precision</li>
+            <li style="display:flex;gap:9px;font-size:14.5px;color:var(--muted)"><svg viewBox="0 0 24 24" fill="none" stroke="#0891b2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px;flex:0 0 auto;margin-top:2px"><path d="M20 6 9 17l-5-5"/></svg>Compare scenarios side by side</li>
+            <li style="display:flex;gap:9px;font-size:14.5px;color:var(--muted)"><svg viewBox="0 0 24 24" fill="none" stroke="#0891b2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px;flex:0 0 auto;margin-top:2px"><path d="M20 6 9 17l-5-5"/></svg>Export the forecast for the committee pack</li>
+          </ul>
+          <a class="btn btn-secondary btn-sm" href="https://portfolioinsite.com.au" target="_blank" rel="noopener" style="margin-top:20px">Open ForecastInSite <span aria-hidden="true">↗</span></a>
+        </div>
+
+        <!-- PlanInSite -->
+        <div class="tool-card reveal">
+          <svg viewBox="0 0 260 130" role="img" aria-label="PlanInSite capacity and increment planning board" style="width:100%;height:auto;border-radius:12px;background:var(--accent-wash);margin-bottom:18px;display:block">
+            <g fill="none" stroke="#0891b2" stroke-opacity=".16" stroke-width="1">
+              <path d="M96 14 V116 M178 14 V116"/>
+            </g>
+            <!-- three increment columns of cards -->
+            <g>
+              <rect x="20" y="20" width="60" height="18" rx="5" fill="#0891b2" opacity=".85"/>
+              <rect x="20" y="44" width="60" height="18" rx="5" fill="#0891b2" opacity=".5"/>
+              <rect x="20" y="68" width="60" height="18" rx="5" fill="#0891b2" opacity=".3"/>
+              <rect x="102" y="20" width="60" height="18" rx="5" fill="#0e7490" opacity=".9"/>
+              <rect x="102" y="44" width="60" height="18" rx="5" fill="#0891b2" opacity=".5"/>
+              <rect x="184" y="20" width="60" height="18" rx="5" fill="#0891b2" opacity=".6"/>
+              <rect x="184" y="44" width="60" height="18" rx="5" fill="#0891b2" opacity=".35"/>
+              <rect x="184" y="68" width="60" height="18" rx="5" fill="#0891b2" opacity=".25"/>
+            </g>
+            <!-- capacity bar -->
+            <rect x="20" y="98" width="224" height="12" rx="6" fill="#0891b2" opacity=".14"/>
+            <rect x="20" y="98" width="150" height="12" rx="6" fill="url(#fcFan)"/>
+            <rect x="20" y="98" width="150" height="12" rx="6" fill="#0e7490" opacity=".55"/>
+          </svg>
+          <span class="tmono">Pl</span>
+          <h3>PlanInSite</h3>
+          <p>PI planning and capacity in one board — import your backlog and team velocity, plan increments, and balance capacity before the plan is locked.</p>
+          <ul style="list-style:none;padding:0;margin:16px 0 0;display:flex;flex-direction:column;gap:9px">
+            <li style="display:flex;gap:9px;font-size:14.5px;color:var(--muted)"><svg viewBox="0 0 24 24" fill="none" stroke="#0891b2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px;flex:0 0 auto;margin-top:2px"><path d="M20 6 9 17l-5-5"/></svg>Import backlog and team velocity separately</li>
+            <li style="display:flex;gap:9px;font-size:14.5px;color:var(--muted)"><svg viewBox="0 0 24 24" fill="none" stroke="#0891b2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px;flex:0 0 auto;margin-top:2px"><path d="M20 6 9 17l-5-5"/></svg>Plan across increments, team by team</li>
+            <li style="display:flex;gap:9px;font-size:14.5px;color:var(--muted)"><svg viewBox="0 0 24 24" fill="none" stroke="#0891b2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px;flex:0 0 auto;margin-top:2px"><path d="M20 6 9 17l-5-5"/></svg>Balance capacity against commitments</li>
+            <li style="display:flex;gap:9px;font-size:14.5px;color:var(--muted)"><svg viewBox="0 0 24 24" fill="none" stroke="#0891b2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px;flex:0 0 auto;margin-top:2px"><path d="M20 6 9 17l-5-5"/></svg>Export a self-describing plan backup</li>
+          </ul>
+          <a class="btn btn-secondary btn-sm" href="https://portfolioinsite.com.au" target="_blank" rel="noopener" style="margin-top:20px">Open PlanInSite <span aria-hidden="true">↗</span></a>
+        </div>
+
+        <!-- PortfolioInSite Web -->
+        <div class="tool-card reveal">
+          <svg viewBox="0 0 260 130" role="img" aria-label="PortfolioInSite Web scoring and health view" style="width:100%;height:auto;border-radius:12px;background:var(--accent-wash);margin-bottom:18px;display:block">
+            <!-- health ring -->
+            <g transform="translate(58,65)">
+              <circle r="34" fill="none" stroke="#0891b2" stroke-opacity=".16" stroke-width="9"/>
+              <circle r="34" fill="none" stroke="#0e7490" stroke-width="9" stroke-linecap="round" stroke-dasharray="160 214" transform="rotate(-90)"/>
+              <text x="0" y="6" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="22" fill="#0e7490">74</text>
+            </g>
+            <!-- investment-mix bars -->
+            <g transform="translate(118,26)">
+              <rect x="0" y="0"  width="120" height="14" rx="7" fill="#0891b2" opacity=".85"/>
+              <rect x="0" y="26" width="86"  height="14" rx="7" fill="#0891b2" opacity=".55"/>
+              <rect x="0" y="52" width="58"  height="14" rx="7" fill="#0891b2" opacity=".4"/>
+              <rect x="0" y="78" width="34"  height="14" rx="7" fill="#0891b2" opacity=".28"/>
+            </g>
+          </svg>
+          <span class="tmono">PW</span>
+          <h3>PortfolioInSite Web</h3>
+          <p>The standalone web view of portfolio scoring, health and investment mix — for steering committees and stakeholders who want the picture without a Jira licence.</p>
+          <ul style="list-style:none;padding:0;margin:16px 0 0;display:flex;flex-direction:column;gap:9px">
+            <li style="display:flex;gap:9px;font-size:14.5px;color:var(--muted)"><svg viewBox="0 0 24 24" fill="none" stroke="#0891b2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px;flex:0 0 auto;margin-top:2px"><path d="M20 6 9 17l-5-5"/></svg>Score and rank initiatives — no Jira required to try</li>
+            <li style="display:flex;gap:9px;font-size:14.5px;color:var(--muted)"><svg viewBox="0 0 24 24" fill="none" stroke="#0891b2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px;flex:0 0 auto;margin-top:2px"><path d="M20 6 9 17l-5-5"/></svg>See health signals at a glance</li>
+            <li style="display:flex;gap:9px;font-size:14.5px;color:var(--muted)"><svg viewBox="0 0 24 24" fill="none" stroke="#0891b2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px;flex:0 0 auto;margin-top:2px"><path d="M20 6 9 17l-5-5"/></svg>Read the investment mix by theme</li>
+            <li style="display:flex;gap:9px;font-size:14.5px;color:var(--muted)"><svg viewBox="0 0 24 24" fill="none" stroke="#0891b2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px;flex:0 0 auto;margin-top:2px"><path d="M20 6 9 17l-5-5"/></svg>Move to the Forge app when you're ready</li>
+          </ul>
+          <a class="btn btn-secondary btn-sm" href="https://portfolioinsite.com.au" target="_blank" rel="noopener" style="margin-top:20px">Open the web view <span aria-hidden="true">↗</span></a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ============ HOW THEY FIT TOGETHER ============ -->
+  <section class="block">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow eyebrow-accent">How they fit together</span>
+        <h2>Start with one. Add the others when it helps.</h2>
+        <p class="lead">There's no lock-in and no forced order. Each tool stands alone, and because they share a model and a file format, moving between them is a JSON file — not a migration.</p>
+      </div>
+      <div class="cards-3">
+        <div class="fcard reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg></div>
+          <h3>Export and JSON restore</h3>
+          <p>Every tool writes a self-describing JSON backup you can restore later — or hand to another tool in the family. Your work is portable by default.</p>
+        </div>
+        <div class="fcard reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div>
+          <h3>One shared governance model</h3>
+          <p>Scoring, health and investment mix mean the same thing across the toolkit — so a forecast, a plan and a portfolio view all reinforce the same story.</p>
+        </div>
+        <div class="fcard reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>
+          <h3>Grow at your pace</h3>
+          <p>Trial a single tool, prove the value, then bring in the rest of the suite — and step up to the PortfolioInSite Forge app when governance moves into Jira.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DARK BAND ============ -->
+  <section class="dark-band">
+    <div class="container">
+      <span class="eyebrow reveal">Your data, your machine</span>
+      <h2 class="reveal" style="color:#f4efe6;max-width:660px">The tools run in your browser.</h2>
+      <p class="lead reveal" style="color:rgba(244,239,230,.78);max-width:640px;margin-top:16px">Each web tool works client-side — your backlog, velocity and portfolio data stay with you as a file you own. Nothing to provision, nothing to keep in sync by hand.</p>
+      <div class="stat-strip reveal">
+        <div class="stat"><div class="n">3</div><div class="l">Standalone web tools</div></div>
+        <div class="stat"><div class="n">1</div><div class="l">Shared governance model</div></div>
+        <div class="stat"><div class="n">0</div><div class="l">Lock-in — export any time</div></div>
+        <div class="stat"><div class="n">JSON</div><div class="l">Backup and restore</div></div>
+      </div>
+      <p class="quote reveal">"Governance should <span>travel</span> with your data — never be trapped inside one screen."</p>
+      <p class="attrib reveal">— The PortfolioInSite principle · figures illustrative</p>
+    </div>
+  </section>
+
+  <!-- ============ CLOSING CTA ============ -->
+  <section class="cta-band">
+    <div class="container">
+      <div class="cta-wrap reveal">
+        <span class="eyebrow eyebrow-accent">Ready when you are</span>
+        <h2>Pick a tool and start today.</h2>
+        <p class="lead">Trial the toolkit free, or line the tools up against the full PortfolioInSite feature set before you commit.</p>
+        <div class="btns">
+          <a class="btn btn-primary" href="pricing.html">Start free trial</a>
+          <a class="btn btn-secondary" href="features.html">Compare features <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ STANDARD FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="lock">
+          <span class="mono">PI</span>
+          <span class="name">PortfolioInSite</span>
+        </div>
+        <p>AI-native portfolio governance for Jira Cloud. Part of the InSite suite from Agility Ops — Australian-made, Sydney-based.</p>
+        <div style="margin-top:16px"><a class="li" href="https://www.linkedin.com/company/agility-ops-pty-ltd/" target="_blank" rel="noopener">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.75V21h-4v-5.6c0-1.34-.02-3.07-1.9-3.07-1.9 0-2.2 1.46-2.2 2.97V21H9z"/></svg>
+          LinkedIn</a></div>
+      </div>
+      <div class="foot-col">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="https://surveyinsite.com.au" target="_blank" rel="noopener">SurveyInSite</a></li>
+          <li><a href="https://sprintinsite.com" target="_blank" rel="noopener">SprintINSite</a></li>
+          <li><a href="index.html">PortfolioInSite</a></li>
+          <li><a href="https://portfolioinsite.com.au" target="_blank" rel="noopener">ForecastInSite</a></li>
+          <li><a href="https://portfolioinsite.com.au" target="_blank" rel="noopener">PlanInSite</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>&nbsp;</h4>
+        <ul>
+          <li><a href="https://sprintinsite.com" target="_blank" rel="noopener">FlowInSite</a></li>
+          <li><a href="https://reportinsite.com.au" target="_blank" rel="noopener">ReportInSite</a></li>
+          <li><a href="https://careerinsite.com.au" target="_blank" rel="noopener">CareerInSite</a></li>
+          <li><a href="https://fastact.com.au" target="_blank" rel="noopener">Agility Ops Academy</a></li>
+          <li><a href="https://fastact.com.au/tools-games" target="_blank" rel="noopener">Tools &amp; Games</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="https://agilityops.com.au/pages/about.html" target="_blank" rel="noopener">About</a></li>
+          <li><a href="https://agilityops.com.au/pages/team.html" target="_blank" rel="noopener">Team</a></li>
+          <li><a href="https://agilityops.com.au/blog" target="_blank" rel="noopener">Blog</a></li>
+          <li><a href="https://agilityops.com.au/pages/contact.html" target="_blank" rel="noopener">Contact</a></li>
+          <li style="margin-top:8px"><a href="https://agilityops.com.au/pages/privacy.html" target="_blank" rel="noopener">Privacy</a></li>
+          <li><a href="https://agilityops.com.au/pages/terms.html" target="_blank" rel="noopener">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>
+        <div class="cr">© 2026 Agility Ops Business Pty Ltd (ABN 37 650 141 950). All rights reserved.</div>
+        <div class="exp">Internal design experiment — not a live page.</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
