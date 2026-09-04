@@ -257,7 +257,7 @@
 
 <div class="summary">
   <div class="summary-inner wrap" style="padding-left:0;padding-right:0">
-    <span class="stat"><b id="cDecided">0</b>/ 5 decisions</span>
+    <span class="stat"><b id="cDecided">0</b>/ 6 decisions</span>
     <span class="stat"><b id="cAdjust">0</b>adjustments</span>
     <span class="stat" id="cAck" style="color:#f0b9a4">Safety not yet confirmed</span>
     <span class="spacer"></span>
@@ -286,26 +286,34 @@ const DECISIONS = [
      {v:'reconcile', l:'Retain & reconcile', d:'Keep each site broadly as-is but fix the drifts (align fonts, buttons, footer, byline) to the majority pattern. Lower effort/risk, smaller UI/UX gain — standards stay a list of exceptions rather than one simple system.'},
      {v:'hybrid', l:'New kit, phased', d:'Build the new kit but roll it out opportunistically as each site is next touched (not big-bang). Balances the rework upside with lower delivery risk.'}
    ]},
-  {id:'styleVsStandards', q:'Style vs standards — how far does a chosen visual style override retained standards?',
-   hint:'Applies to real AOB site builds (header, footer, menu, colours, logo).',
+  {id:'aestheticBase', q:'Aesthetic base — which direction should the real kit feel like?',
+   hint:'You adopted "navy base" as the CURRENT pattern, but Web Kit v1 is warm-light. Pick the target for the actual kit.',
    opts:[
-     {v:'two-modes', l:'Two modes', rec:true, d:'Study = full restyle for exploration (the 7 studies). Site = keep AOB standard chrome/colours/footer, style only hero/sections/components. Pick per run.'},
-     {v:'chrome-fixed', l:'Chrome always fixed', d:'Every build keeps the AOB standard header/footer/menu/colours/logo; the style only ever touches content. Maximum consistency, no full-restyle mode.'},
-     {v:'full-restyle', l:'Full restyle always', d:'The chosen style governs everything including chrome. Maximum creative freedom, least consistency — standards not enforced.'}
+     {v:'warm-light', l:'Warm-light (Web Kit v1)', rec:true, d:'The lighter, warmer, more premium direction in the concept you just saw — a clear step up from the current look. One accent + one dark band for rhythm.'},
+     {v:'navy', l:'Navy base (current)', d:'Keep the dark-navy chrome family (#0a0f1c) most sites use today, just unified and cleaned up. Familiar, least visual change, closest to the existing feel.'},
+     {v:'study', l:'Anchor to a study', d:'Base the kit on one of the 7 studies you preferred (e.g. Console, Editorial-clay). Tell me which in the note and I re-cut the kit in that language.'}
    ]},
-  {id:'headerModel', q:'Header / nav model — the retained standard for product sites?',
-   hint:'Sites are split 3 ways today.',
+  {id:'skillScope', q:'Skill scope — when agilityweb builds a page, what may it restyle?',
+   hint:'Controls how much the skill can change vs. the locked AOB kit. (Previously "style vs standards".)',
    opts:[
-     {v:'product-first', l:'Product-first', rec:true, d:"Product wordmark + its own nav + a dimmed 'by Agility Ops ↗' byline; corporate menu only on agilityops.com.au. Matches the revised 15 Aug rule and CareerInSite direction."},
-     {v:'corporate', l:'Corporate chrome everywhere', d:'AO logo + Home/About/Our Products/Team/Blog/Contact on every product site (current SurveyInSite/ReportInSite). Every site identical up top.'},
-     {v:'match', l:'Match each target', d:'No single standard — clone whatever chrome the target site already uses. Preserves current per-site differences.'}
+     {v:'two-modes', l:'Two modes (Explore + Build)', rec:true, d:'You pick per run. EXPLORE = throwaway concept pages, full freedom (like the 7 studies + this kit) to trial looks — never shipped. BUILD = real pages that MUST use the locked AOB kit (header/footer/colours/buttons); only the page body/sections vary. Sandbox AND guaranteed standards.'},
+     {v:'chrome-fixed', l:'One mode — kit always on', d:'Every build uses the locked AOB kit chrome; the skill can only arrange page content, never restyle chrome. Simplest to reason about, but no exploration sandbox.'},
+     {v:'full-restyle', l:'Free restyle (mock-ups only)', d:'The skill may restyle everything including the kit chrome. Most freedom, weakest standards — only really for throwaway mock-ups.'}
+   ]},
+  {id:'headerModel', q:'Header nav — ALL options use one standard header shell; what do the nav LINKS point to?',
+   hint:'It is always the same kit header. Note: "corporate everywhere" REVERSES a standing rule you set 15 Aug — product-first came from CareerInSite testing where corporate nav bounced users off the product site.',
+   opts:[
+     {v:'reconcile', l:'Product nav + Products drawer', rec:true, d:"Same standard header; nav = the product's own pages (Product/Features/Pricing/Docs) PLUS an 'Our Products' item that opens the suite in a drawer (no leaving the site). Uniform component, product-first behaviour, corporate discoverability — resolves your 'standards vs product-first' tension."},
+     {v:'product-first', l:'Product-first', d:"Nav = the product's own pages + a single dimmed 'by Agility Ops ↗' link. Keeps visitors on the product site. Still a standard (one header component, product-scoped links). The current 15 Aug rule."},
+     {v:'corporate', l:'Corporate everywhere', d:'Nav = the corporate menu (Home/About/Our Products/Team/Blog/Contact) on every product site, all pointing to agilityops.com.au. Maximum uniformity, but every nav click leaves the product site (the issue the 15 Aug rule fixed).'},
+     {v:'match', l:'Match each target', d:"No single standard — clone each target site's current header. Preserves today's per-site differences."}
    ]},
   {id:'pricing', q:'Pricing-page standard — purchase flows are split today.',
    hint:'Central page vs per-product on-site Stripe (SurveyInSite &amp; CareerInSite already live).',
    opts:[
      {v:'per-product', l:'Per-product on-site', d:'Each site owns its pricing page + Stripe checkout (newest live products do this). One standard card layout. Note: contradicts the current "route to central" rule.'},
      {v:'central', l:'Central pricing', d:'All purchase/trial CTAs route to agilityops.com.au/pages/pricing (current legal-compliance rule; Sprint/Portfolio/Report). One page to maintain.'},
-     {v:'hybrid', l:'Hybrid', rec:true, d:'Show pricing cards on-site for clarity, but checkout deep-links to the central page. Best of both, slightly more wiring.'}
+     {v:'hybrid', l:'Hybrid (your choice)', rec:true, d:'One standard AOB pricing-PAGE look & feel (cards, layout, CTA) across all sites; each product keeps its OWN Stripe catalogue/products/prices + its own checkout (CareerInSite, SurveyInSite bill on their own Stripe). Standard presentation, per-product commerce. Caveat: Stripe-HOSTED checkout only allows limited branding (logo + colour), so the standard look mainly lands on the pricing page.'}
    ]},
   {id:'testTarget', q:'Complex-site test — which should I build next as a full multi-page site?',
    hint:'Shared design system, chosen style, on a feature branch preview.',
