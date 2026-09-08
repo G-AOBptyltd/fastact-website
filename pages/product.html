@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Dynamic meta tags set by JS -->
-  <title>Loading... — Agility Ops Academy</title>
+  <title>Loading... — Agility Ops InSite Academy</title>
   <meta name="description" content="Software products by Agility Ops — tools for agile teams, AI governance, and operational excellence.">
   <meta name="robots" content="index, follow">
 
@@ -474,7 +474,7 @@
 
     function renderProduct(product) {
       // Update page title
-      document.title = `${product.productName} — Agility Ops Academy`;
+      document.title = `${product.productName} — Agility Ops InSite Academy`;
       const metaDesc = document.querySelector('meta[name="description"]');
       if (metaDesc && product.shortDescription) {
         metaDesc.setAttribute('content', product.shortDescription.replace(/<[^>]*>/g, '').substring(0, 160));

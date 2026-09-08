@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Dynamic meta tags set by JS -->
-  <title>Loading... — Agility Ops Academy</title>
-  <meta name="description" content="FACT Training content — practitioner-led training, coaching, and advisory by Agility Ops.">
+  <title>Loading... — Agility Ops InSite Academy</title>
+  <meta name="description" content="Agility Ops InSite Academy content — practitioner-led training, coaching, and advisory by Agility Ops.">
   <meta name="robots" content="index, follow">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -444,7 +444,7 @@
 
     function renderDetail(item) {
       // Update page title
-      document.title = `${item.title} — Agility Ops Academy`;
+      document.title = `${item.title} — Agility Ops InSite Academy`;
       const metaDesc = document.querySelector('meta[name="description"]');
       if (metaDesc && item.description) {
         metaDesc.setAttribute('content', item.description.replace(/<[^>]*>/g, '').substring(0, 160));

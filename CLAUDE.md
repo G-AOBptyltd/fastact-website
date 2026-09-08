@@ -6,7 +6,7 @@
 
 Standalone marketing website for FACT — the training, coaching, facilitation, and AI advisory brand of AOB.
 
-**Domain:** https://fastact.com.au
+**Domain:** https://insiteacademy.com.au
 **GitHub:** https://github.com/G-AOBptyltd/fastact-website (public)
 **Hosting:** Netlify (auto-deploys from main)
 **Netlify subdomain:** https://fastact.netlify.app
@@ -105,15 +105,15 @@ fastact-website/
 - GSD Framework retained as "Previously known as" — don't remove reference
 - FACT was formerly "Fast Agile Coaching & Training" — abbreviation kept, full name retired
 - DNS was forwarding to agilityops.com.au — had to remove forwarding in GoDaddy before A records could be edited
-- **GA4:** fastact.com.au has its own property (G-XPLEWG5GR4) — do not revert to shared G-LLJ1KPTDMK
+- **GA4:** insiteacademy.com.au has its own property (G-XPLEWG5GR4) — do not revert to shared G-LLJ1KPTDMK
 - **og:image:** Generated via Python/Pillow from `agility_ops_logo_master.svg` at `img/og-image.png`
 - **Product pages are brand-scoped:** product.html fetches `brand=fact` so only FACT products appear
 
 ---
 
-## Status — 19 Aug 2026: Agility Ops Academy revamp LIVE
+## Status — 19 Aug 2026: Agility Ops InSite Academy revamp LIVE
 
-- **Brand:** site is now **Agility Ops Academy — delivered by FACT** (AO lockup, byline, JSON-LD renamed; FACT kept as alternateName). Hero: "AI is redrawing the map. We're the compass." + trAIning badge; sub ends "delivered by practitioners".
+- **Brand:** site is now **Agility Ops InSite Academy — delivered by FACT** (AO lockup, byline, JSON-LD renamed; FACT kept as alternateName). Hero: "AI is redrawing the map. We're the compass." + trAIning badge; sub ends "delivered by practitioners".
 - **Theme:** `css/portal.css` (clay/cream, CPN-portal-aligned) is the site stylesheet for index, launchpad, launchpad-claude, tools-games, and the content/product templates (compat shim: `--white`→ink, `--font-display` defined inline). Antigravity playbook keeps its inline styles with tokens re-pointed to clay. **Legacy var names (--purple, --navy…) are re-pointed in portal.css so CMS-injected markup restyles itself — keep the notion-cms.js class contract (workshop-card, btn-purple, tag-bookable, etc.) intact.** Inner /games/ and /tools/ pages are intentionally full-screen arcade (own styling); their titles still say "FACT Tools & Games" (rename pending).
 - **Homepage IA:** hero (flagship 6-module Learning Path card) → roadmap ("ship in public", **18 Sep first 2-hour workshop is a public commitment**) → guides (live) → workshops (CMS; cards auto-flip to "Book here" when a Workshops DB row has Payment Link + Live + seats) → depth strip → advisory → community → waitlist (EOI trimmed to 4 options; Netlify form `fact-waitlist`, notifications → greg@ + info@).
 - **Chrome:** clay sidebar + Academy lockup, topbar (Ask FACT stub, founding-member chip, AO mark), AOB suite footer (canonical 10-product list, LinkedIn vanity agility-ops-pty-ltd, no GitHub).
