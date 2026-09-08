@@ -3,7 +3,7 @@
 ## Architecture
 
 ```
-Browser (fastact.com.au)
+Browser (insiteacademy.com.au)
     ↓ fetch('/api/cms?type=workshops')
 Netlify Function (notion-cms.js)
     ↓ Notion API (secret key, server-side only)
@@ -61,11 +61,11 @@ Push to GitHub and deploy. The Netlify function will automatically be built from
 Once deployed, the CMS is available at:
 
 ```
-GET https://fastact.com.au/api/cms?type=workshops
-GET https://fastact.com.au/api/cms?type=guides
-GET https://fastact.com.au/api/cms?type=courses
-GET https://fastact.com.au/api/cms?type=instructors
-GET https://fastact.com.au/api/cms?type=sites
+GET https://insiteacademy.com.au/api/cms?type=workshops
+GET https://insiteacademy.com.au/api/cms?type=guides
+GET https://insiteacademy.com.au/api/cms?type=courses
+GET https://insiteacademy.com.au/api/cms?type=instructors
+GET https://insiteacademy.com.au/api/cms?type=sites
 ```
 
 Responses are cached for 5 minutes at the CDN level.

@@ -5,4 +5,4 @@ Allow: /
 Disallow: /pages/product.html
 Disallow: /pages/content.html
 
-Sitemap: https://fastact.com.au/sitemap.xml
+Sitemap: https://insiteacademy.com.au/sitemap.xml
