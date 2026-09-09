@@ -1,6 +1,33 @@
 [build]
   publish = "."
 
+# --- Legacy hostnames → canonical insiteacademy.com.au (301, path-preserving) ---
+# Must come first: later path rules (/content/*, /tools-games …) match any host
+# and would otherwise serve content on the legacy domains instead of redirecting.
+[[redirects]]
+  from = "https://fastact.com.au/*"
+  to = "https://insiteacademy.com.au/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.fastact.com.au/*"
+  to = "https://insiteacademy.com.au/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://insiteacademy.app/*"
+  to = "https://insiteacademy.com.au/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.insiteacademy.app/*"
+  to = "https://insiteacademy.com.au/:splat"
+  status = 301
+  force = true
+
 # --- Content & Product landing page routes ---
 # /content/some-slug → content.html (JS reads slug from URL)
 [[redirects]]
