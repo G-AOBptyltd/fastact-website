@@ -1,0 +1,24 @@
+{
+  "date": "2026-09-09",
+  "program": "Agility Ops InSite Academy",
+  "program_former": "Agility Ops Academy (fastact.com.au)",
+  "program_renamed_on": "2026-09-08",
+  "financial_year": "FY27",
+  "status": "logged",
+  "method": "session close-out (/AOBclose)",
+  "experiments_today": [],
+  "eligible_hours_net_new": 0,
+  "outputs_verification": {
+    "tag": "ADMIN",
+    "summary": "Post-cutover verification pass, one day on: confirmed insiteacademy.com.au apex/www/tools-games, fastact.com.au and agilityops.com.au all return 200; certificate still issued (expires 7 Dec); Google MX/SPF/DMARC intact; About-page compliance fix and 2026 rebrand milestone still live; all six AOB sites carry the InSite Academy footer links with zero fastact references remaining; no open PRs and no stray git worktrees across seven repos."
+  },
+  "outputs_app_diagnosis": {
+    "tag": "ADMIN",
+    "summary": "Diagnosed why insiteacademy.app has no certificate: DNS is correct (delegated p01, resolving to Netlify, no CAA block), but Netlify's managed certificate issues only two base domains and silently excludes the third. Established that the estate precedent (portfolioinsite.app) uses GoDaddy domain forwarding rather than a Netlify alias. Documented three options rather than continuing to retry."
+  },
+  "outputs_repo_hygiene": {
+    "tag": "ADMIN",
+    "summary": "Session close-out and repo cleanup: confirmed the portal-revamp branch fully merged and removed its worktree + branch; rescued stranded RDTI records (26 Aug daily from an orphaned worktree branch, program-continuity config mapping, and the 2/7/8/9 Sep dailies) into PR #3; repaired and removed the broken legacy encore-deploy worktree (branch preserved on origin). No site changes."
+  },
+  "note": "Verification and diagnosis only — 0 eligible hours. No code written, no experiment run. Confirms the 2026-09-08 cutover entry."
+}

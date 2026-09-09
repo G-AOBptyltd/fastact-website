@@ -1,5 +1,5 @@
 {
-  "project": "FACT / Agility Ops Academy website",
+  "project": "Agility Ops InSite Academy",
   "product_code": "FCT-WEB",
   "suite": "AOB web estate",
   "company": "Agility Ops Business Pty Ltd",
@@ -7,7 +7,29 @@
   "financial_year": "FY27",
   "fy_start": "2026-07-01",
   "fy_end": "2027-06-30",
-  "note": "FACT / the Academy is COMMERCIAL TRAINING — per standing decision it is NOT part of the product RDTI program (course content and marketing-site work = 0 eligible hours by default). This log exists for honest 0-hour records and for any future exception (e.g. a genuinely novel learning-platform build such as TrainingInSite would be assessed on its own merits before any claim).",
+  "workstream": "A",
+  "program_history": [
+    {
+      "name": "FACT / Fast Agile Coaching Training",
+      "domain": "fastact.com.au",
+      "from": "2017",
+      "to": "2026-08-19"
+    },
+    {
+      "name": "Agility Ops Academy",
+      "domain": "fastact.com.au",
+      "from": "2026-08-19",
+      "to": "2026-09-08"
+    },
+    {
+      "name": "Agility Ops InSite Academy",
+      "domain": "insiteacademy.com.au",
+      "from": "2026-09-08",
+      "to": null
+    }
+  ],
+  "continuity_note": "ONE CONTINUOUS PROGRAM, renamed twice — not three separate programs. For the grant body and the ATO: entries dated before 2026-09-08 legitimately carry the earlier `program` values and must NEVER be retrospectively rewritten; they are contemporaneous records. Entries from 2026-09-08 onward carry both `program` and `program_former` so consecutive entries chain together. The repo, this .rdti path and the Netlify project all remain named `fastact` — the evidence trail follows the REPO, not the brand. FACT is not a retired predecessor: it is retained as the delivery credit and legal shell ('delivered by FACT' is still live in the product lockup, and the terms/privacy clauses still name FACT Training), so FACT is the delivering entity behind the renamed program.",
+  "note": "The Academy is COMMERCIAL TRAINING — per standing decision it is NOT part of the product RDTI program (course content and marketing-site work = 0 eligible hours by default). This log exists for honest 0-hour records and for any future exception (e.g. a genuinely novel learning-platform build, such as the reserved insiteacademy.app platform, would be assessed on its own merits before any claim).",
   "cost_rates": { "_note": "Cost rates are NOT stored here — held in Notion RDTI log only. Never commit rates to this repo." },
   "activity_codes": {
     "RD-CORE": { "description": "Core R&D — systematic experimentation to resolve technical uncertainty", "rdti_eligible": true },

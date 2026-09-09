@@ -1,0 +1,13 @@
+{
+  "date": "2026-09-02",
+  "program": "FACT / Agility Ops Academy website",
+  "financial_year": "FY27",
+  "status": "logged",
+  "method": "session close-out (/AOBclose). Work verified from artifacts: FACT-Course-Signal-Review-2026-09-02.html, AOB-Course-Roadmap-Signal-Log.md rows 77-93, aob-anthropic-partner memory, Notion Platform Tracker CPN row.",
+  "experiments_today": [],
+  "eligible_hours_net_new": 0,
+  "outputs_signal_review": { "tag": "ADMIN", "summary": "Course-trigger review: subagent analysis of 76 un-processed signals vs the 6 built FACT modules (M3 confirmed missing = launch blocker; M1/M2 validated; M4/M5/M6 expansion candidates); built the interactive 16-card decision sheet FACT-Course-Signal-Review-2026-09-02.html (10 ranked build candidates + 2 global calls + 4 Greg-commissioned new modules, JSON export drives the build brief). Synthesis/tooling on a static HTML page — no technical uncertainty." },
+  "outputs_cpn_learning": { "tag": "ADMIN", "summary": "Captured Greg's single-day CPN completion run (Courses 5 Extensibility, 6 Security & Governance, 7 Administration & Measurement, 8 Delivery Methodology, + the 4-lab Claude Code Capstone) into durable form: partner memory (full lesson-level detail incl. plugin fitness table, five-surface observability stack, OTel pipeline + cost attribution, five-phase activation arc, capstone labs), Notion tracker row, and 17 course signals (#77-#93). Professional development documentation — administration." },
+  "outputs_modules_commissioned": { "tag": "ADMIN", "summary": "Four new FACT modules commissioned with complete syllabi from CPN material + own signals: D11 Finances/Costing/Metrics, D12 AI Governance/Compliance/Observability, D13 Pilot Design & Engagement Delivery (incl. the Mode-1→Mode-2 commercial architecture for the 18 Sep workshops), D14 Claude Code Practitioner Labs. Course design — administration." },
+  "note": "FACT = commercial training: 0 eligible hours by standing decision; nothing today involved genuine R&D uncertainty (signal synthesis, decision tooling, course-note capture). Signal counter at 93/20 — course-build trigger MASSIVELY overdue; the decision sheet awaits Greg's export → build brief → archive & reset. Also today (separate stream, logged in its own VF1 .rdti per zero-crossover): VF1 steward-app production launch."
+}
