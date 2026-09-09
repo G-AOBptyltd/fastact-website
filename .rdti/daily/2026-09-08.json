@@ -1,0 +1,32 @@
+{
+  "date": "2026-09-08",
+  "program": "Agility Ops InSite Academy",
+  "program_former": "Agility Ops Academy (fastact.com.au)",
+  "program_renamed_on": "2026-09-08",
+  "financial_year": "FY27",
+  "status": "logged",
+  "method": "session close-out (/AOBclose)",
+  "experiments_today": [],
+  "eligible_hours_net_new": 0,
+  "outputs_domain_cutover": {
+    "tag": "DEV",
+    "summary": "Rebranded FACT / Agility Ops Academy to Agility Ops InSite Academy on the newly registered insiteacademy.com.au. Created both Netlify DNS zones (.com.au p09, .app p01), staged records, attached the domains as aliases on the existing GitHub-built Netlify project, and drove Let's Encrypt certificate issuance. Standard DNS/hosting configuration against documented vendor behaviour \u2014 no technical uncertainty."
+  },
+  "outputs_mail_config": {
+    "tag": "DEV",
+    "summary": "Configured mail for info@insiteacademy.com.au: Google Workspace 5-record MX set, SPF include:_spf.google.com, DMARC p=none with rua reporting \u2014 replicating the proven careerinsite.com.au pattern. Awaiting Greg's Workspace domain-alias verification TXT + DKIM key. Routine configuration."
+  },
+  "outputs_link_sweep": {
+    "tag": "DEV",
+    "summary": "Estate-wide link and brand sweep, 8 PRs merged across 6 repos: aob-corporate-hub (47 links + 23 labels), fastact-website (site rebrand, 22 domain refs, canonical/sitemap/robots), careerinsite, surveyinsite-website (+ restored missing CareerInSite entry), reportinsite-website (7 to 10 products), portfolioinsite-website and sprintinsite-website (suite footer column added to 10 pages each). Mechanical find/replace and markup insertion, verified by tag-balance checks."
+  },
+  "outputs_compliance_fix": {
+    "tag": "ADMIN",
+    "summary": "Corrected a live compliance misstatement on agilityops.com.au/pages/about: the 2017 milestone claimed FACT was a 'registered training organisation' (a protected ASQA term never held). Now states the APMG International Accredited Training Organisation status actually held. Shipped on its own branch so it was not gated on the domain cutover."
+  },
+  "outputs_audit_docs": {
+    "tag": "ADMIN",
+    "summary": "Produced two decision documents in the AOB architecture vault (domain migration plan + estate-wide link-sweep audit with per-repo change spec), and a registrar/portfolio audit of all 17 GoDaddy domains covering auto-renew exposure, the Afternic listing, WHOIS exposure and protection tiers."
+  },
+  "note": "FACT / Academy = commercial training: 0 eligible hours by standing decision, and independently none of today's work qualifies. Domain migration, DNS and mail configuration, link rewriting and brand renaming are all routine engineering and administration against documented vendor behaviour \u2014 no hypothesis, no experiment, and no outcome a competent developer could not predict. Hours are estimates; confirm against actual before lodgement."
+}
